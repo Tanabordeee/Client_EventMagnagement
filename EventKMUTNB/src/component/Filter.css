@@ -1,0 +1,10 @@
+.filter{
+    padding: 20px;
+}
+
+.drop {
+    display: grid;
+}
+.option{
+    display: grid;
+}

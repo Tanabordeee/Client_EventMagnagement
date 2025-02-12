@@ -1,0 +1,15 @@
+.topbar {
+    padding-top: 1%;
+    justify-content: space-between;
+    display: flex;
+    /* padding-left: 180px; */
+    /* background-color: antiquewhite; */
+}
+.search_topbar{
+    display: flex;
+    /* justify-content: center; */
+    padding: 10px;
+}
+.search_input{
+    padding-left: 12px;
+}

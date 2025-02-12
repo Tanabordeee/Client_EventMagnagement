@@ -1,0 +1,20 @@
+.container_Menu{
+    display: grid;
+    justify-content: center;
+    /* padding-left: 50%;
+    padding-top: 20%; */
+    background-color: cadetblue;
+}
+.Picture {
+    font-size: 18px;
+    justify-content: center;
+    padding: 3px;
+    padding-bottom: 123px;
+}
+.sidebar_function{
+    display: grid;
+    padding-bottom: 13px;
+}
+.sidebar_function a{
+    padding-top: 5px;
+}
