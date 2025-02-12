@@ -12,8 +12,8 @@ function Filter() {
             <select name="Faculty" id="Faculty">
                 <option value="">Faculty</option>
                 <option value="Science">Science</option>
-                <option value="Engineer"></option>
-                <option value="Achitevture"></option>
+                <option value="Engineer">Engineer</option>
+                <option value="Achitecture">Achitecture</option>
             </select>
             <select name="Time" id="Time">
                 <option value="">Time</option>

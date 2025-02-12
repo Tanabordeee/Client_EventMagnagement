@@ -1,0 +1,12 @@
+.event{
+    justify-content: center;
+    padding: 10px;
+    display: grid;
+}
+.event h2{
+    padding-bottom: 10px;
+}
+.event p{
+    padding-bottom: 10px;
+
+}

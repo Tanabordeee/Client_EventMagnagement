@@ -1,4 +1,3 @@
-import React from 'react'
 import './Search_bar.css'
 function Search_bar() {
   return (

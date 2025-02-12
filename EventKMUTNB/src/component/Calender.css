@@ -1,16 +1,17 @@
 .calender {
-    padding-left: 20px;
-    padding-top: 20px;
+    padding: 20px;
+    flex: 1;
 }
 .header_calender{
-    font-size: 20px;
     padding-bottom: 10px;
     padding-top: 5px;
     padding-left: 30px;
 }
 .contain_calender{
     display: flex;
+    justify-content: space-between;
 }
-.contain_calender p{
-    padding: 30px;
+.table{
+    flex: 1;
+    padding: 10px;
 }

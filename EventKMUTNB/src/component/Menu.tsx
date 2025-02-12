@@ -1,4 +1,4 @@
-import React from 'react'
+
 import './Menu.css'
 function Menu() {
   return (
@@ -11,6 +11,11 @@ function Menu() {
             <a href="#">Notification</a>
             <a href="#">Settin</a>
           </div>
+          <footer className='footer'>
+            <p>Contact us</p>
+            <p>tell : 099-999-9999</p>
+            <p>line : @gm2</p>
+          </footer>
           
         </div>
         
