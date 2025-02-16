@@ -1,4 +1,3 @@
-import './Search_bar.css'
 function Search_bar() {
   return (
     <div className="topbar">

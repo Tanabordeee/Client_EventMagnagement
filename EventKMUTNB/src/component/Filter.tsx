@@ -1,14 +1,14 @@
-import './Filter.css'
+
 import { useState } from 'react';
 function Filter() {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   return (
-    <div className="filter">
+    <div className="p-3">
         <div className="label">
-            <h2>Filter</h2>
+            <h2 className='text-xl font-bold'>Filter</h2>
             <br />
         </div>
-        <div className="drop">
+        <div className="flex flex-col">
             <select name="Faculty" id="Faculty">
                 <option value="">Faculty</option>
                 <option value="Science">Science</option>
@@ -29,8 +29,8 @@ function Filter() {
             </select>
             <br />
         </div>
-        <div className="option">
-            <h2>Option</h2>
+        <div className="flex flex-col">
+            <h2 className='text-xl font-bold'>Option</h2>
             <label >
                 <input 
                     type="checkbox"
