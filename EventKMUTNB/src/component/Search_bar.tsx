@@ -3,7 +3,7 @@ function Search_bar() {
     <div className="topbar">
         
         <div className="search_topbar">
-            <input type="text" placeholder="search" className="search_input" />
+            <div className="bg-gray-200 rounded-xl px-3 py-1 shadow-lg"><input type="text" placeholder="search" className="search_input" /></div>
         </div>
         
     </div>
