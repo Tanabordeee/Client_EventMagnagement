@@ -8,10 +8,10 @@ function Menu() {
           </div>
           <div className="flex-1">
             <div className="flex-col flex py-5">
-              <div className="text-xl p-2"><Link to ="/" >Home</Link></div>
-              <div className="text-xl p-2"><Link to ="/favorite" >Favorite</Link></div>
-              <div className="text-xl p-2"><Link to ="/notification">Notification</Link></div>
-              <div className="text-xl p-2"><Link to ="/setting">Setting</Link></div>
+              <div className="text-xl p-2"><Link to ="calender" >Home</Link></div>
+              <div className="text-xl p-2"><Link to ="favorite" >Favorite</Link></div>
+              <div className="text-xl p-2"><Link to ="notification">Notification</Link></div>
+              <div className="text-xl p-2"><Link to ="setting">Setting</Link></div>
             </div>
           </div>
           <footer className='footer'>

@@ -5,7 +5,7 @@ import Function from './component/Function.tsx'
 import Filter from './component/Filter.tsx'
 import Favorite from './component/Favorite.tsx'
 import Notification from './component/Notification.tsx'
-import {Route, Routes } from 'react-router'
+import {Route, Outlet} from 'react-router'
 import Setting from './component/Setting.tsx'
 
 function User() {
@@ -21,12 +21,7 @@ function User() {
           </div>
           <div className="flex justify-between pt-2 gap-2">
               <div className="rounded-xl bg-gray-50 flex-1 m-2">
-                <Routes>
-                  <Route path='/' element = {<Calender/>}/>
-                  <Route path='/favorite' element = {<Favorite/>}/>
-                  <Route path='/notification' element = {<Notification/>}/>
-                  <Route path='/setting' element = {<Setting/>}/>
-                </Routes>
+                <Outlet/>
               </div>
               <div className="rounded-xl bg-gray-50 m-2"><Filter/></div>
           </div>
