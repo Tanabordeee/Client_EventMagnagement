@@ -36,11 +36,11 @@ jobs:
             --output-file ./eslint-results.sarif
         continue-on-error: true
 
-      - name: List files to verify ESLint output
-        run: ls -la
+      - name: List files after ESLint run
+        run: ls -la /home/runner/work/Client_EventMagnagement
 
       - name: Upload analysis results to GitHub
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: ./eslint-results.sarif
+          sarif_file: /home/runner/work/Client_EventMagnagement/eslint-results.sarif
           wait-for-processing: true
