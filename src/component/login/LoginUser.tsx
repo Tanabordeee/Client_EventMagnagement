@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function LoginUser() {
@@ -17,48 +17,25 @@ function LoginUser() {
         setPassword(e.target.value);
     };
     const Clicky = async () => {
-        console.log(username);
-        console.log(email);
-        console.log(password);
-        
         const url = 'http://localhost:3000/api/auth/userlogin';
         try{
             const response = await axios.post(url , {
                 username: username,
                 email: email,
                 password: password
-            });
+            }, {withCredentials : true,}
+            );
             
             console.log(response.data.message);
             if(response.data.message == 'Login Successfully'){
                 console.log(response.data.message);
+                console.log(document.cookie);
                 navigate("/user");
             }
         } catch (error) {
             console.log("fail");
         } 
-    }
-    // useEffect(() => {
-    //     const url = 'http://localhost:3000/api/auth/userlogin';
-    //     try{
-    //         axios.post(url , {
-    //             username:"wave",
-    //             email:"wave@55.com",
-    //             password:"wave2"
-    //         });
-    //     } catch (error) {
-    //         console.log("error");
-    //     }
-    // }, []);
-    // const [id, setIdPoke] = useState();
-    // useEffect(() => {
-    //     const url = 'http://localhost:3000/api/event/byuser';
-    //     axios.get(url)
-    //         .then((response) => {
-    //             console.log(response.data.id);
-    //             setIdPoke(response.data.id);
-    //         });
-    // }, []);
+    };
   return (
     <div>
         <nav className="h-screen flex items-center justify-center">
@@ -82,7 +59,6 @@ function LoginUser() {
                         </div>
                     </div>
                 </div>
-                {/* <div className="text-xl text-red-500">{id}</div> */}
             </div>
         </nav>
     </div>

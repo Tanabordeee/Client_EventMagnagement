@@ -2,6 +2,18 @@
 import { useState } from 'react';
 function Filter() {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    const option : string[] = [
+        "consert",
+        "event",
+        "study",
+    ];
+    const [isChoose, setisChoose] = useState([false, false, false]);
+    const choose = (index : number) => {
+        const newOption = isChoose.map((state, indx) =>
+            indx === index ? !state : state
+        );
+        setisChoose(newOption);
+    }
   return (
     <div className="p-3">
         <div className="label">
@@ -31,30 +43,18 @@ function Filter() {
         </div>
         <div className="flex flex-col">
             <h2 className='text-xl font-bold'>Option</h2>
-            <label >
-                <input 
-                    type="checkbox"
-                    value= "option1"
-                    checked={selectedOptions.includes('option1')}
-                 />
-                 filter
-            </label>
-            <label >
-                <input 
-                    type="checkbox"
-                    value= "option2"
-                    checked={selectedOptions.includes('option2')}
-                 />
-                 filter
-            </label>
-            <label >
-                <input 
-                    type="checkbox"
-                    value= "option3"
-                    checked={selectedOptions.includes('option3')}
-                 />
-                 filter
-            </label>
+            <div className="py-2 flex-col flex">
+                {isChoose.map((Choose, index) => (
+                    <label>
+                        <input type="checkbox" 
+                        key = {index}
+                        value={option[index]}
+                        onClick={() => choose(index)}/>
+                        {option[index]}
+                    </label>
+                ))}
+            </div>
+            
         </div>
     </div>
   )

@@ -1,5 +1,5 @@
 
-import Event from './Event'
+import Event from '../Event'
 function Calender() {
   return (
     <div className="flex-1 p-3">
