@@ -16,6 +16,9 @@ import List from "./component/club/List.tsx"
 import Club from "./Club.tsx"
 import Manage from "./component/admin/Manage.tsx"
 import Admin from "./Admin.tsx"
+import RegisUser from "./component/register/RegisUser.tsx"
+import RegisClub from "./component/register/RegisClub.tsx"
+import RegisNav from "./RegisNav.tsx"
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -27,6 +30,11 @@ function App() {
           <Route path="loginuser" element = {<LoginUser/>}></Route>
           <Route path="loginclub" element = {<LoginClub/>}></Route>
           <Route path="loginadmin" element = {<LoginAdmin/>}></Route>
+        </Route>
+        <Route path = "/register" element = {<RegisNav/>}>
+          <Route index element = {<RegisUser/>}></Route>
+          <Route path="regisuser" element = {<RegisUser/>}></Route>
+          <Route path="regisclub" element = {<RegisClub/>}></Route>
         </Route>
         <Route path = "/user" element = {<User/>}>
           <Route index element = {<Calender/>}/>

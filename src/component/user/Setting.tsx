@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from "axios";
 const Setting = () => {
     const [new_name, setNew_name] = useState('');
     const [new_email, setNew_email] = useState('');
@@ -18,7 +19,35 @@ const Setting = () => {
     };
     const onChangeRepass = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRe_pass(e.target.value);
-    console.log(e.target.value);
+        console.log(e.target.value);
+    };
+    const Clicky = async () => {
+        const url = 'http://localhost:3000/api/users/update';
+        if(new_pass == re_pass){
+            try{
+                const response = await axios.patch(url , {
+                    username: new_name,
+                    email: new_email,
+                    password: new_pass
+                }, {withCredentials : true,}
+                );
+                
+                console.log(response.data);
+                if(response.data.username == new_name){
+                    console.log(response.data.message);
+                    console.log(document.cookie);
+                    setNew_name('');
+                    setNew_email('');
+                    setNew_pass('');
+                    setRe_pass('');
+                }
+            } catch (error) {
+                console.log("fail");
+                setNew_pass('');
+                setRe_pass('');
+            } 
+        }
+        
     };
   return (
     <div className='flex-1'>
@@ -38,7 +67,7 @@ const Setting = () => {
                         <div className="bg-gray-200 m-1"><input type="text" placeholder="new-password" value={new_pass} onChange={onChangeNewpass}/></div>
                         <div className="bg-gray-200 m-1"><input type="text" placeholder="re-password" value={re_pass} onChange={onChangeRepass}/></div>
                         <div className="flex">
-                            <div className="ml-auto bg-green-500 p-1 m-2 rounded-xl px-2 text-gray-50"><button>save</button></div>
+                            <button className="ml-auto bg-green-500 p-1 m-2 rounded-xl px-2 text-gray-50 hover:bg-green-300" onClick={Clicky}>save</button>
                         </div>
                     </div>
                 </div>

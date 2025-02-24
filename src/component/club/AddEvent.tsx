@@ -26,8 +26,8 @@ function AddEvent() {
                          <div className="flex justify-center h-50 w-73 rounded-lg border border-black">
                             <img src= {imagePreview} alt="Preview" />
                         </div>
-                        <div className="relative p-3">
-                            <button className='bg-green-500 absolute px-2 rounded-xl p-1'>change</button>
+                        <div className="relative p-2">
+                            <button className='absolute px-2 rounded-xl p-1'>change</button>
                             <input type="file" accept='image/*' onChange={selected} className='file:bg-green-500 bg-red-500 grid opacity-0 w-17'/>
                             
                         </div>
@@ -46,8 +46,8 @@ function AddEvent() {
                 <div className="flex justify-center text-sm">วันที่และเวลา</div>
                 <input type="text"placeholder='Enter Date and Time'  className='flex jusify-center p-2 rounded-xl border border-black'/>
                 <div className="flex justify-between p-2">
-                    <button className='bg-red-500 px-2 rounded-xl shadow-xl'>cancle</button>
-                    <button className='bg-green-500 px-2 rounded-xl shadow-xl'>send</button>
+                    <button className='bg-red-500  hover:bg-red-300 px-2 rounded-xl shadow-xl'>cancle</button>
+                    <button className='bg-green-500 hover:bg-green-300 px-2 rounded-xl shadow-xl'>send</button>
                 </div>
             </div>
             
