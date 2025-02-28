@@ -20,12 +20,12 @@ function Favorite() {
         setDataevent(response.data);
       }catch(error){
         console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
-        navigate("/")
+        // navigate("/");
       }
     };
     fetchData();
   }, []);
-  console.log(dataevent);
+  // console.log(dataevent);
   const [data, setData] = useState(
     {
       eventName : "Consert",
@@ -39,16 +39,16 @@ function Favorite() {
         <div className="flex-1 p-3">
             <h2 className='pb-2 pt-1 pl-3 text-2xl font-bold justify-center flex'>Favorite</h2>
             <div className="flex flex-wrap p-3">
-                <div className="lg:w-1/3 w-1/2 flex justify-center items-center pt-10">
+                <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
                   <div className="bg-gray-200 px-3 py-5 rounded-xl shadow-lg"><Event Eventprop ={data}/></div>
                 </div>
-                <div className="lg:w-1/3 w-1/2 flex justify-center items-center pt-10">
+                <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
                   <div className="bg-gray-200 px-3 py-5 rounded-xl shadow-lg"><Event Eventprop ={data}/></div>
                 </div>
-                <div className="lg:w-1/3 w-1/2 flex justify-center items-center pt-10">
+                <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
                   <div className="bg-gray-200 px-3 py-5 rounded-xl shadow-lg"><Event Eventprop ={data}/></div>
                 </div>
-                <div className="lg:w-1/3 w-1/2 flex justify-center items-center pt-10">
+                <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
                   <div className="bg-gray-200 px-3 py-5 rounded-xl shadow-lg"><Event Eventprop ={data}/></div>
                 </div>
             </div>

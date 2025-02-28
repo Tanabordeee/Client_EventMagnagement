@@ -17,9 +17,9 @@ function RegisNav() {
             setRegisSelect(newStates);
     }   
   return (
-    <div>
-        <div className="flex justify-center">
-            <div className="flex">
+    <div className="flex justify-center items-center max-sm:bg-gray-50 bg-gray-300 h-screen">
+        <div className="flex justify-center rounded-xl bg-gray-50 shadow-lg max-sm:shadow-none">
+            <div className="flex justify-between px-20 py-10">
                 <div><Outlet/></div>
                 <div className= " flex items-center justify-center">
                     <div className="grid">

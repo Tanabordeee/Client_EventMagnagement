@@ -7,9 +7,9 @@ function Search_bar() {
   return (
     <div className="topbar">
         
-        <div className="flex">
+        <div className="flex  relative">
             <input type="text" placeholder="search" value={search} onChange={onChangeSearch} className="bg-gray-200 rounded-xl px-3 py-1 shadow-lg mx-2"/>
-            <div className="rounded-xl bg-green-300 px-2 text-sm shadow-lg flex"><button>search</button></div>
+            <button className="rounded-xl bg-green-300 px-2 text-sm shadow-lg absolute right-2 top-0 p-1 pb-2">search</button>
         </div>
         
     </div>

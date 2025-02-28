@@ -19,7 +19,7 @@ function ClubMenu() {
     setIsSelect(newStates);
   }
   return (
-    <div>
+    <div className="flex-1">
         <div className="flex flex-col justify-between h-screen shadow-[4px_0_6px_rgba(0,0,0,0.1)]">
           <div className="shadow-lg justify-center  items-center flex pb-7">
             <a href="#" className='text-xl font-bold p-3'>Picture</a>

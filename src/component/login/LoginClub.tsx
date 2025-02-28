@@ -48,7 +48,8 @@ function LoginClub() {
     <nav className=" flex items-center justify-center">
         <div className="flex justify-center items-center">
             <div className="items-center  rounded-xl bg-gray-200 p-6 shadow-xl">
-                <div className="font-bold text-2xl justify-center flex">
+                <div className="text-lg justify-center flex items-center flex-col">
+                    <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className='w-40'/>
                     Login Club
                 </div>
                 <br />
