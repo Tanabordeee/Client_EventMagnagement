@@ -41,19 +41,16 @@ function LoginUser() {
     };
   return (
     <div>
-        <nav className="h-screen flex items-center justify-center">
+        <nav className="flex items-center justify-center">
             <div className="flex justify-center items-center">
-                <div className="items-center  rounded-xl bg-cyan-100 p-6 shadow-lg">
+                <div className="items-center rounded-xl bg-gray-200 p-6 shadow-xl">
                     <div className="font-bold text-2xl justify-center flex">
                         Login User
                     </div>
                     <br />
                     <div className="grid p-4">
-                        {/* username */}
                         <input type="text" placeholder="username" className="bg-cyan-50 rounded-lg p-2 my-2"  value={username} onChange={onUserChange}/>
-                        {/* email */}
                         <input type="text" placeholder="email" className="bg-cyan-50 rounded-lg p-2 my-2"  value={email} onChange={onEmailChange}/>
-                        {/* password */}
                         <input type="text" placeholder="password" className="bg-cyan-50 rounded-lg p-2 my-2" value={password} onChange={onPassChange}/>
                         <br />
                         <div className="flex justify-between p-1">

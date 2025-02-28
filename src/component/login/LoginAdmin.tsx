@@ -40,9 +40,9 @@ function LoginAdmin() {
     };
   return (
     <div>
-        <nav className="h-screen flex items-center justify-center">
+        <nav className="flex items-center justify-center">
             <div className="flex justify-center items-center">
-                <div className="items-center  rounded-xl bg-cyan-100 p-6 shadow-lg">
+                <div className="items-center  rounded-xl bg-gray-200 p-6 shadow-lg">
                     <div className="font-bold text-2xl justify-center flex">
                         Login Admin
                     </div>

@@ -11,7 +11,7 @@ function User() {
             <Menu/>
         </div>
         <div className="flex flex-col flex-1 bg-zinc-200">
-          <div className="flex justify-between items-center p-3 shadow-lg bg-gray-50">
+          <div className="flex justify-between items-center p-3 shadow-lg ">
             <Search_bar/>
             <Function/>
           </div>
