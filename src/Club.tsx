@@ -35,7 +35,7 @@ function Club() {
               <ClubFunc/>
             </div>
             <div className={`flex justify-between pt-2 gap-2 ${isclick? 'opacity-20 pointer-events-none': ''}`}>
-                <div className="rounded-xl bg-gray-50 flex-1 m-2">
+                <div className="rounded-xl bg-gray-50 flex-1 m-2 w-full">
                   <Outlet/>
                 </div>
             </div>

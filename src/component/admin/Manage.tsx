@@ -31,46 +31,7 @@ function Manage() {
         {Time : 'dwasdwasd', Title : 'dwasdwasddwasdwad', Faculty :'Faculty', Status :'Status', Requestor :'Requestor', Action :'Action'},
     ]);
     return (
-        <div className="p-4 w-screen">
-            {/* <div className="flex justify-between px-3 overflow-x-auto">
-                <div className ="flex">
-                    <div className ="w-auto border flex-col bg-red-500">
-                        <div className="flex flex-1 justify-center border">Time</div>
-                        {time.map((value, index) => (
-                            <div className="flex w-full inline-block justify-center border">{value}</div>
-                        ))}
-                    </div>
-                    <div className ="w-auto border flex-col">
-                        <div className="flex flex-1 justify-center border">Title</div>
-                        {title.map((value, index) => (
-                            <div className="flex w-full justify-center border">{value}</div>
-                        ))}
-                    </div>
-                    <div className ="w-auto border flex-col ">
-                        <div className="flex flex-1 justify-center border">Faculty</div>
-                        {faculty.map((value, index) => (
-                            <div className="flex w-full inline-block justify-center border">{value}</div>
-                        ))}
-                    </div>
-                    <div className ="w-auto border flex-col ">
-                       <div className="flex flex-1 justify-center border">Status</div>
-                       {status.map((value, index) => (
-                            <div className="flex w-full inline-block justify-center border">{value}</div>
-                        ))}
-                    </div>
-                    <div className ="w-auto border flex-col ">
-                        <div className="flex flex-1 justify-center border">Requestor</div>
-                        {reques.map((value, index) => (
-                            <div className="flex w-full inline-block justify-center border">{value}</div>
-                        ))}
-                    </div>
-                    <div className ="w-auto border flex-col ">
-                        <div className="flex flex-1 justify-center border">Action</div>
-                        {action.map((value, index) => (
-                            <div className="flex w-full inline-block justify-center border">{value}</div>
-                        ))}
-                    </div>
-                </div> */}
+        <div className="p-4 w-full">
                 <div className ="flex-col overflow-x-auto">
                     {item.map((item, idex) =>{
                         return <div className="grid grid-cols-6">

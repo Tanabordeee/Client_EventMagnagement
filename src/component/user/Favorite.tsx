@@ -30,9 +30,9 @@ function Favorite() {
   if(dataevent.length == 0){
     return (
       <>
-          <div className="flex-1 m-3">
+          <div className="flex-1 m-3 min-h-full">
               <h2 className='pb-2 pt-1 pl-3 text-2xl font-bold justify-center flex'>Favorite</h2>
-              <div className="flex justify-center min-h-full items-center">
+              <div className="flex justify-center  min-h-105 items-center">
                   <div className="flex justify-center items-center bg-gray-300 p-10 rounded-xl">
                     <div className="bg-red-500 flex justify-center">ไม่มีการสมัคร</div>
                   </div>

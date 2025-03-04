@@ -30,6 +30,7 @@ const Setting = () => {
     };
     const Clicky = async () => {
         const url = 'http://localhost:3000/api/users/update';
+        const login = 'http://localhost:3000/api/auth/userlogin';
         if(new_name != "" || new_email != "" || new_pass != "" || re_pass != ""){
             if(new_pass == re_pass){
                 try{
@@ -42,12 +43,12 @@ const Setting = () => {
                     
                     console.log(response.data);
                     if(response.data.username == new_name){
-                        console.log(response.data.message);
                         console.log(document.cookie);
                         setNew_name('');
                         setNew_email('');
                         setNew_pass('');
                         setRe_pass('');
+                        getuser();
                     }
                 } catch (error) {
                     console.log("fail", error);
@@ -63,20 +64,22 @@ const Setting = () => {
             }
         }
     };
-    
-    useEffect(() => {
-        const url = 'http://localhost:3000/api/users/profile';
-        const fetchuser = async() => {
-            try{
-                const respon = await axios.get(url, {withCredentials : true});
-                setUser(respon.data);
-            }catch(error){
-                console.log("error : " , error);
-                navigator("/")
-            }
-        };
-        fetchuser();
-    }, []);
+    const getuser = () => {
+        useEffect(() => {
+            const url = 'http://localhost:3000/api/users/profile';
+            const fetchuser = async() => {
+                try{
+                    const respon = await axios.get(url, {withCredentials : true});
+                    setUser(respon.data);
+                }catch(error){
+                    console.log("error : " , error);
+                    // navigator("/")
+                }
+            };
+            fetchuser();
+        }, []);
+    }
+    getuser();
   return (
     <div className='flex-1'>
         <div className="flex flex-1 justify-center text-2xl font-bold p-5">

@@ -21,7 +21,7 @@ function User() {
               <button className='absolute mx-20 my-10' onClick={click}>cancle</button>
             </div>
         </div>
-        <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen `} >
+        <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen`} >
           <div className="flex justify-between items-center p-3 shadow-lg ">
             <div className='flex items-center'>
               <div className= {`sm:hidden ${isclick? 'hidden' : ''}`}>
@@ -35,7 +35,7 @@ function User() {
             </div>
             <Function/>
           </div>
-          <div className={`${isclick? 'opacity-20 pointer-events-none': ''}`}>
+          <div className={`min-h-full ${isclick? 'opacity-20 pointer-events-none': ''}`}>
             <Filter/>
           </div>
           
