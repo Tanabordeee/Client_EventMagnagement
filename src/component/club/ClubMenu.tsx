@@ -21,8 +21,8 @@ function ClubMenu() {
   return (
     <div className="flex-1">
         <div className="flex flex-col justify-between h-screen shadow-[4px_0_6px_rgba(0,0,0,0.1)]">
-          <div className="shadow-lg justify-center  items-center flex pb-7">
-            <a href="#" className='text-xl font-bold p-3'>Picture</a>
+          <div className="shadow-lg justify-center  items-center flex pb-4 pt-3">
+          <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className="w-40"/>
           </div>
           <div className="flex-1">
             <div className="flex-col flex py-5">

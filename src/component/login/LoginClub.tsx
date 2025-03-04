@@ -50,7 +50,7 @@ function LoginClub() {
             <div className="items-center  rounded-xl bg-gray-200 p-6 shadow-xl">
                 <div className="text-lg justify-center flex items-center flex-col">
                     <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className='w-40'/>
-                    Login Club
+                    {/* Login Club */}
                 </div>
                 <br />
                 <div className="grid p-4">

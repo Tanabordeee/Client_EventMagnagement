@@ -14,16 +14,16 @@ function AddEvent() {
     };
   return (
     <div className='flex flex-1 justify-center'>
-        <div className="flex justify-between bg-gray-200 m-2 rounded-xl p-2">
+        <div className="flex max-sm:flex-col justify-between bg-gray-200 max-sm:bg-gray-50 m-2 rounded-xl p-2">
             <div className="flex-col p-3">
                 <div className="text-xl font-bold">Event</div>
                 <div className="flex justify-end">Edit</div>
                 {!imagePreview ? (
-                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border file:border-black  file:text-white cursor-pointer mb-4'/>
+                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border-2 file:border-black  file:text-white cursor-pointer mb-4'/>
                 ) : 
                 (
                     <div className="flex-col">
-                         <div className="flex justify-center h-50 w-73 rounded-lg border border-black">
+                         <div className="flex justify-center h-50 w-73 rounded-lg border-2  border-black">
                             <img src= {imagePreview} alt="Preview" />
                         </div>
                         <div className="relative p-2">

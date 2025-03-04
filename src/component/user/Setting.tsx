@@ -1,25 +1,32 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+interface User {
+    username : string;
+    userId : string;
+}
 const Setting = () => {
     const [new_name, setNew_name] = useState('');
     const [new_email, setNew_email] = useState('');
     const [new_pass, setNew_pass] = useState('');
     const [re_pass, setRe_pass] = useState('');
+    const [user, setUser] = useState<User>({
+        username : '',
+        userId : ''
+    });
+    const navigator = useNavigate();
     const onChangeNewname = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNew_name(e.target.value);
-        console.log(e.target.value);
     };
     const onChangeNewemail = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNew_email(e.target.value);
-        console.log(e.target.value);
     };
     const onChangeNewpass = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNew_pass(e.target.value);
-        console.log(e.target.value);
     };
     const onChangeRepass = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRe_pass(e.target.value);
-        console.log(e.target.value);
     };
     const Clicky = async () => {
         const url = 'http://localhost:3000/api/users/update';
@@ -43,13 +50,33 @@ const Setting = () => {
                         setRe_pass('');
                     }
                 } catch (error) {
-                    console.log("fail");
+                    console.log("fail", error);
+                    setNew_name('');
+                    setNew_email('');
                     setNew_pass('');
                     setRe_pass('');
                 } 
+            }else{
+                console.log("wrong pass");
+                setNew_pass('');
+                setRe_pass('');
             }
         }
     };
+    
+    useEffect(() => {
+        const url = 'http://localhost:3000/api/users/profile';
+        const fetchuser = async() => {
+            try{
+                const respon = await axios.get(url, {withCredentials : true});
+                setUser(respon.data);
+            }catch(error){
+                console.log("error : " , error);
+                navigator("/")
+            }
+        };
+        fetchuser();
+    }, []);
   return (
     <div className='flex-1'>
         <div className="flex flex-1 justify-center text-2xl font-bold p-5">
@@ -59,8 +86,8 @@ const Setting = () => {
                 <div className="bg-gray-200 rounded-lg shadow-lg flex max-sm:flex-col max-sm:bg-inherit">
                     <div className='flex flex-col justify-center p-5'>
                         <h1 className="flex justify-center">Picture</h1>
-                        <h1 className="flex justify-center">Name</h1>
-                        <h1 className="flex justify-center">Id</h1>
+                        <h1 className="flex justify-center">{user.username}</h1>
+                        <h1 className="flex justify-center">{user.userId}</h1>
                     </div>
                     <div className="flex flex-col p-5">
                         <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>
