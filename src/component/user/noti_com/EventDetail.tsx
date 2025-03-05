@@ -4,6 +4,7 @@ interface Listevent {
         eventDate : string;
         time : string;
         image : string;
+        detail : string;
       };
     
   }
@@ -19,7 +20,7 @@ const EventDetail: React.FC<Listevent> = ({Eventprop}) => {
                   </div>
                   <div className="justify-center p-5">
                       <p className="p-1 pr-5 pl-5 flex justify-center">{Eventprop.eventName}</p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">detail</p>
+                      <p className="p-1 pr-5 pl-5 flex justify-center">เงื่อนไข : {Eventprop.detail}</p>
                       <p className="p-1 pr-5 pl-5 flex justify-center">วันที่ :{Eventprop.eventDate}</p>
                       <p className="p-1 pr-5 pl-5 flex justify-center">เวลา :{Eventprop.time}</p>
                       <p className="p-1 pr-5 pl-5 flex justify-center">contact</p>

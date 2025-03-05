@@ -9,6 +9,7 @@ interface dataEvent{
   eventDate : string;
   time : string;
   image : string;
+  detail : string,
 }
 
 function Notification() {
@@ -22,9 +23,8 @@ function Notification() {
       try{
         const respon = await axios.get(url, {withCredentials : true});
         setListevent(respon.data);
-        listevent.map(value => {
-          setSelct((prevItem) => [...prevItem, false]);
-        })
+        setSelct(new Array(respon.data.length).fill(false))
+        console.log("select : ",select)
       }catch(error){
         console.log('Error: ', error);
         // navigate("/");
@@ -32,13 +32,12 @@ function Notification() {
     };
     getData();
   }, []);
-  console.log(listevent);
   const changeEvent = (index : number) => {
     setEvent(listevent[index]);
   }
   const selected = (index : number) => {
     const newselect = select.map((value, ind) =>
-      index === ind ? !value : value
+      index === ind ? true : false
     );
     setSelct(newselect);
   }
@@ -65,9 +64,9 @@ function Notification() {
                     <div className="text-lg font-bold pb-2">My Event</div>
                     {listevent.map((value,index) => {
                       return(
-                        <div onClick={() => changeEvent(index)}>
+                        <div onClick={() => changeEvent(index)} key={index}>
                           <button 
-                          className={`p-1 ${select[index]? 'text-red-500' : 'text-black'}`} 
+                          className={`p-1 ${select[index]? 'text-red-500 bg-gray-200' : 'text-black'}`} 
                           onClick={() => selected(index)}>
                             {value.eventName}
                           </button>

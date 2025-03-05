@@ -10,7 +10,7 @@ function Club() {
   }
   return (
     <div className="flex" onClick={isclick? click : undefined}>
-      <div>
+      <div className="flex">
         <div className="flex flex-col max-sm:hidden">
             <ClubMenu/>
         </div>

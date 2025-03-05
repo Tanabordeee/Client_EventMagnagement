@@ -10,7 +10,7 @@ function Admin() {
   }
   return (
     <div className="flex" onClick={isclick? click : undefined}>
-      <div>
+      <div className='flex'>
         <div className="flex flex-col max-sm:hidden">
             <AdminMenu/>
         </div>

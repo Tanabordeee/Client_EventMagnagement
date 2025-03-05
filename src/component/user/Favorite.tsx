@@ -8,6 +8,7 @@ interface dataEvent{
   eventDate : string,
   time : string,
   image : string,
+  detail : string,
 }
 
 function Favorite() {
@@ -19,6 +20,7 @@ function Favorite() {
       try{
         const response = await axios.get(url, {withCredentials : true});
         setDataevent(response.data);
+        console.log(response.data);
       }catch(error){
         console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
         // navigate("/");
@@ -50,7 +52,7 @@ function Favorite() {
                   {dataevent.map((value, index) => {
                     return(
                       <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
-                        <div className="bg-gray-200 px-3 py-5 rounded-xl shadow-lg"><Event Eventprop ={value}/></div>
+                        <div className="bg-gray-200 mx-1 my-3 rounded-xl shadow-lg"><Event Eventprop ={value}/></div>
                       </div>
                     )
                   })}
