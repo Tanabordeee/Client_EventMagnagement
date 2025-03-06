@@ -85,42 +85,45 @@ function Calender() {
 
   // console.log(dataevent);
   return (
-    <div className="flex-1 p-3 flex max-sm:flex-col">
+    <div className="flex-1 p-3 ">
         <h2 className='py-3 px-7 text-2xl font-bold'>Calender</h2>
-        <div className="flex max-sm:flex-col justify-between">
-          <div className="flex-1 p-2 flex justify-center">
-            <div className="w-80 bg-white shadow-lg rounded-lg p-4">
-              <div className="bg-green-400 rounded-xl p-2">
-                <div className="flex justify-between items-center">
-                  <button onClick={prevMonth} className="p-2 rounded-full hover:bg-gray-200">
-                    <ChevronLeft size={20} />
-                  </button>
-                  <h2 className="text-lg font-semibold">
-                    {currentDate.format("MMMM YYYY")}
-                  </h2>
-                  <button onClick={nextMonth} className="p-2 rounded-full hover:bg-gray-200">
-                    <ChevronRight size={20} />
-                  </button>
+        <div className="flex max-sm:flex-col">
+          <div className="flex max-sm:flex-col justify-between">
+            <div className="flex-1 p-2 flex justify-center">
+              <div className="w-80 bg-white shadow-lg rounded-lg p-4">
+                <div className="bg-green-400 rounded-xl p-2">
+                  <div className="flex justify-between items-center">
+                    <button onClick={prevMonth} className="p-2 rounded-full hover:bg-gray-200">
+                      <ChevronLeft size={20} />
+                    </button>
+                    <h2 className="text-lg font-semibold">
+                      {currentDate.format("MMMM YYYY")}
+                    </h2>
+                    <button onClick={nextMonth} className="p-2 rounded-full hover:bg-gray-200">
+                      <ChevronRight size={20} />
+                    </button>
+                  </div>
+                  <div className="grid grid-cols-7 gap-5 text-center font-semibold">
+                    {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                      <div key={day} className="text-gray-600">
+                        {day}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="grid grid-cols-7 gap-5 text-center font-semibold">
-                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                    <div key={day} className="text-gray-600">
-                      {day}
-                    </div>
-                  ))}
-                </div>
+                <div className="grid grid-cols-7 gap-2 mt-2">{generateCalendar()}</div>
               </div>
-              <div className="grid grid-cols-7 gap-2 mt-2">{generateCalendar()}</div>
+            </div>
+          </div>
+          <div className="flex justify-center ">
+            <div className="justify-center flex bg-gray-200 rounded-lg shadow-lg p-4"> 
+              {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
+                <Event key={index} Eventprop={event} />
+              ))}
             </div>
           </div>
         </div>
-        <div className="flex justify-center ">
-          <div className="justify-center flex bg-gray-200 rounded-lg shadow-lg p-4"> 
-            {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-              <Event key={index} Eventprop={event} />
-            ))}
-          </div>
-        </div>
+        
     </div>
   )
 }
