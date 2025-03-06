@@ -1,6 +1,15 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useAuth } from "../AuthContext";
+import { useNavigate } from "react-router-dom";
 function Search_bar() {
   const [search, setSearch] = useState('');
+  const {user} = useAuth();
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!user){
+      navigate("/");
+    }
+  })
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
     setSearch(e.target.value);
   };
