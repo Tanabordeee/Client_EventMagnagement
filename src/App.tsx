@@ -19,11 +19,13 @@ import Admin from "./Admin.tsx"
 import RegisUser from "./component/register/RegisUser.tsx"
 import RegisClub from "./component/register/RegisClub.tsx"
 import RegisNav from "./RegisNav.tsx"
+import { AuthProvider } from "./AuthContext.tsx"
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
     <>
+    <AuthProvider>
       <Routes>
         <Route path = "/" element = {<LoginNav/>}>
           <Route index element = {<LoginUser/>}></Route>
@@ -57,6 +59,7 @@ function App() {
           <Route path = "manage" element = {<Manage/>}/>
         </Route>
       </Routes>
+      </AuthProvider>
     </>
     
   )
