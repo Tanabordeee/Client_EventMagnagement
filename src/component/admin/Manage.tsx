@@ -16,8 +16,8 @@ interface Event{
 function Manage() {
     const [histevent, setHistevent] = useState<Event[]>([]);
     useEffect(() => {
-        const url = 'http://localhost:3000/api/event/getallbyadmin';
-        
+        // const url = 'http://localhost:3000/api/event/getallbyadmin';
+        const url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyadmin`
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});

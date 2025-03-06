@@ -12,7 +12,9 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
     "axios": "^1.7.9",
+    "dayjs": "^1.11.13",
     "eventkmutnb": "file:",
+    "lucide-react": "^0.477.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5"

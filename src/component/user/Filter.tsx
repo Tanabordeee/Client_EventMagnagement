@@ -56,9 +56,8 @@ function Filter() {
                     <h2 className='text-xl font-bold'>Option</h2>
                     <div className="py-2 flex-col flex">
                         {isChoose.map((Choose, index) => (
-                            <label>
+                            <label key = {index}>
                                 <input type="checkbox" 
-                                key = {index}
                                 value={option[index]}
                                 onClick={() => choose(index)}/>
                                 {option[index]}

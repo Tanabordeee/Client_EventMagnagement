@@ -13,7 +13,7 @@ interface dataEvent{
 }
 
 function Notification() {
-  const url = 'http://localhost:3000/api/event/byuser';
+  const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`;
   const navigate = useNavigate();
   const [listevent, setListevent] = useState<dataEvent[]>([]);
   const [event, setEvent] = useState<dataEvent | null>(null);

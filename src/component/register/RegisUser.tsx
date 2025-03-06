@@ -20,7 +20,8 @@ function RegisUser() {
         setRepassword(e.target.value);
     };
     const Clicky = async () => {
-        const url = 'http://localhost:3000/api/users/register';
+        // const url = 'http://localhost:3000/api/users/register';
+        const url = `${import.meta.env.VITE_REACT_API_URL}users/register`;
         if(password == repassword){
             try{
                 const response = await axios.post(url , {

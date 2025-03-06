@@ -29,8 +29,7 @@ const Setting = () => {
         setRe_pass(e.target.value);
     };
     const Clicky = async () => {
-        const url = 'http://localhost:3000/api/users/update';
-        const login = 'http://localhost:3000/api/auth/userlogin';
+        const url = `${import.meta.env.VITE_REACT_API_URL}users/update`;
         if(new_name != "" || new_email != "" || new_pass != "" || re_pass != ""){
             if(new_pass == re_pass){
                 try{
@@ -40,6 +39,10 @@ const Setting = () => {
                         password: new_pass
                     }, {withCredentials : true,}
                     );
+                    setUser({
+                        username : response.data.username,
+                        userId : response.data.userId
+                    })
                     
                     console.log(response.data);
                     if(response.data.username == new_name){
@@ -66,7 +69,7 @@ const Setting = () => {
     };
     const getuser = () => {
         useEffect(() => {
-            const url = 'http://localhost:3000/api/users/profile';
+            const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`;
             const fetchuser = async() => {
                 try{
                     const respon = await axios.get(url, {withCredentials : true});

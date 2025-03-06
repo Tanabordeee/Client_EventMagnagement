@@ -14,7 +14,8 @@ interface Event{
 function HistoryAdd() {
     const [histevent, setHistevent] = useState<Event[]>([]);
     useEffect(() => {
-        const url = 'http://localhost:3000/api/event/getallbyclub';
+        // const url = 'http://localhost:3000/api/event/getallbyclub';
+        const url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`;
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});

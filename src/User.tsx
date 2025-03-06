@@ -4,12 +4,14 @@ import Function from './component/Function.tsx'
 import Filter from './component/user/Filter.tsx'
 import {Route, Outlet} from 'react-router'
 import { useState } from 'react'
+import { useAuth } from './AuthContext.tsx'
 
 function User() {
   const [isclick ,setIsclick] = useState(false);
   const click = () => {
     setIsclick(!isclick);
   }
+  // const {user, setUser} = useAuth();
   return (
     <div className= "flex" onClick={isclick? click : undefined}>
         <div className="flex">
@@ -22,23 +24,7 @@ function User() {
             </div>
         </div>
         <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen`} >
-          <div className="flex justify-between items-center p-3 shadow-lg ">
-            <div className='flex items-center'>
-              <div className= {`sm:hidden ${isclick? 'hidden' : ''}`}>
-                <div className= "pt-2" onClick={click}>
-                  <div className="w-8 h-1 bg-gray-400 m-1 rounded-2xl"></div>
-                  <div className="w-8 h-1 bg-gray-400 m-1 rounded-2xl"></div>
-                  <div className="w-8 h-1 bg-gray-400 m-1 rounded-2xl"></div>
-                </div>
-              </div>
-              <Search_bar/>
-            </div>
-            <Function/>
-          </div>
-          <div className={`min-h-full ${isclick? 'opacity-20 pointer-events-none': ''}`}>
-            <Filter/>
-          </div>
-          
+          <Search_bar clicker = {isclick}/>
         </div>
       </div>
   )

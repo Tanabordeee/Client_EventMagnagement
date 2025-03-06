@@ -37,7 +37,8 @@ function AddEvent() {
         }
     };
     const send = async () => {
-        const url = 'http://localhost:3000/api/event/create';
+        // const url = 'http://localhost:3000/api/event/create';
+        const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         try{
             const respon = await axios.post(url, {
                 eventName : name,

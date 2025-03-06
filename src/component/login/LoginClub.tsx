@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../AuthContext";
+
 function LoginClub() {
     const [club, setClub] = useState('');
-    const [description, setDesscription] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const {clubid, setClubID} = useAuth();
     let navigate = useNavigate();
     const onClubChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setClub(e.target.value);
-    };
-    const onDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setDesscription(e.target.value);
     };
     const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setEmail(e.target.value);
@@ -19,17 +18,21 @@ function LoginClub() {
     const onPassChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setPassword(e.target.value);
     };
+    // useEffect(() => {
+    //     if (clubid) {
+    //         navigate('/club');
+    //     }
+    //     }, [clubid, navigate]);
     const Clicky = async () => {
         const url = 'http://localhost:3000/api/auth/clublogin';
         try{
             const response = await axios.post(url , {
-                clubname: club,
-                description: description,
-                email: email,
-                password: password
+                club,
+                email,
+                password
             }, {withCredentials : true,}
             );
-            
+            console.log(response.data)
             console.log(response.data.message);
             if(response.data.message == 'Login Successfully'){
                 console.log(response.data.message);
@@ -56,8 +59,6 @@ function LoginClub() {
                 <div className="grid p-4">
                     {/* username */}
                     <input type="text" placeholder="username" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onClubChange}/>
-                    {/* description */}
-                    <input type="text" placeholder="description" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onDescriptionChange}/>
                     {/* email */}
                     <input type="text" placeholder="email" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onEmailChange}/>
                     {/* password */}

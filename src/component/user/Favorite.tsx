@@ -12,7 +12,8 @@ interface dataEvent{
 }
 
 function Favorite() {
-  const url = 'http://localhost:3000/api/event/byuser';
+  const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`
+  console.log(url);
   const navigate = useNavigate();
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
   useEffect(() => {

@@ -39,12 +39,8 @@ function LoginUser() {
         { withCredentials: true }
       );
       setUser(response.data.user);
+      console.log(response.data);
       console.log(response.data.message);
-      if (response.data.message === 'Login Successfully') {
-        console.log(response.data.message);
-        console.log(document.cookie);
-        navigate('/user');
-      }
     } catch (error) {
       console.log('fail');
     }
