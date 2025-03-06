@@ -1,9 +1,6 @@
-import Search_bar from "./component/Search_bar"
-import { Outlet } from "react-router-dom"
-import ClubFunc from "./component/club/ClubFunc"
 import ClubMenu from "./component/club/ClubMenu"
 import { useState } from "react"
-import Search_nofil from "./component/Search_nofil"
+import Search_club from "./component/Search_club"
 function Club() {
   const [isclick ,setIsclick] = useState(false);
   const click = () => {
@@ -22,7 +19,7 @@ function Club() {
       </div>
       <div className = "flex-1" >
         <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen `}>
-          <Search_nofil clicker = {isclick}/>
+          <Search_club clicker = {isclick}/>
         </div>
       </div>
     </div>

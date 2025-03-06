@@ -1,33 +1,33 @@
 import { useEffect, useState } from "react"
 import Filter from "./user/Filter";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
-import Menu from "./user/Menu";
+import ClubMenu from "./club/ClubMenu";
 
 type Props = {
   clicker : boolean;
 }
-function Search_bar ({clicker} : Props) {
-  const [search, setSearch] = useState('');
-  const {user} = useAuth();
-  const [isclick , setIsclick] = useState(clicker)
-  const navigate = useNavigate();
-  useEffect(() => {
-    // if(!user){
-    //   navigate("/");
-    // }
-  }, [])
-  const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
-    setSearch(e.target.value);
-  };
-  const click = () => {
-    setIsclick(!isclick);
-  }
+function Search_club({clicker}: Props) {
+    const [search, setSearch] = useState('');
+    const {user} = useAuth();
+    const [isclick , setIsclick] = useState(clicker)
+    const navigate = useNavigate();
+    useEffect(() => {
+      // if(!user){
+      //   navigate("/");
+      // }
+    }, [])
+    const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
+      setSearch(e.target.value);
+    };
+    const click = () => {
+      setIsclick(!isclick);
+    }
   return (
     <div className="flex">
       <div className={`${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
-          <Menu />
+          <ClubMenu />
         </div>
       </div>
       <div className = "flex flex-1" onClick={isclick? click : undefined}>
@@ -78,10 +78,7 @@ function Search_bar ({clicker} : Props) {
       </div>
     
   </div>
-
-
-    
   )
 }
 
-export default Search_bar
+export default Search_club

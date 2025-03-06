@@ -3,7 +3,8 @@ import Search_bar from './component/Search_bar'
 import Function from './component/Function'
 import { Outlet } from 'react-router-dom'
 import { useState } from 'react'
-import Search_nofil from './component/Search_nofil'
+import Search_nofil from './component/Search_admin'
+import Search_admin from './component/Search_admin'
 function Admin() {
   const [isclick ,setIsclick] = useState(false);
   const click = () => {
@@ -22,7 +23,7 @@ function Admin() {
       </div>
       <div className='flex-1' >
         <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen `}>
-          <Search_nofil clicker = {isclick}/>
+          <Search_admin clicker = {isclick}/>
         </div>
       </div>
     </div>
