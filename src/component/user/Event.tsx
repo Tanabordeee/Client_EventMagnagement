@@ -10,6 +10,9 @@ interface Listevent {
   };
   
 }
+interface childprop {
+  Eventprop : Listevent | null
+}
 const Event: React.FC<Listevent> = ({Eventprop}) => {
   // console.log(Eventprop.eventName);
   return (

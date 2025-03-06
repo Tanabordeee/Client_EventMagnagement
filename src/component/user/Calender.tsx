@@ -4,7 +4,7 @@ import Event from './Event'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import dayjs from "dayjs";
+import dayjs, {Dayjs} from "dayjs";
 
 interface dataEvent{
   eventName : string,
@@ -13,52 +13,67 @@ interface dataEvent{
   image : string,
   detail : string,
 }
+interface childprop {
+  Eventprop: dataEvent | null;
+}
 
 function Calender() {
-  const [currentDate, setCurrentDate] = useState(dayjs());
+  const [currentDate, setCurrentDate] = useState<Dayjs>(dayjs());
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+  const [apiEvents, setApiEvents] = useState<dataEvent[]>([]);
+  const [selectedEvents, setSelectedEvents] = useState<dataEvent[]>([]);
+
+  useEffect(() => {
+    const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`
+    const fetchData = async() => {
+      try{
+        const response = await axios.get(url, {withCredentials : true});
+        const extractedEvents = response.data.map((item: dataEvent) => ({
+          ...item,
+          eventDate: dayjs(item.eventDate).format("YYYY-MM-DD")
+        }));
+        console.log("Fetched Events (Formatted):", extractedEvents);
+        setApiEvents(extractedEvents);
+      }catch(error){
+        console.error("Error fetching dates:", error);
+      }
+    }
+    fetchData();
+  }, []);
+  console.log(apiEvents)
   const startOfMonth = currentDate.startOf("month");
-  const endOfMonth = currentDate.endOf("month");
   const daysInMonth = currentDate.daysInMonth();
   const firstDayOfWeek = startOfMonth.day();
   
   const prevMonth = () => setCurrentDate(currentDate.subtract(1, "month"));
   const nextMonth = () => setCurrentDate(currentDate.add(1, "month"));
 
-  const [data, setData] = useState(
-    {
-      eventName : "Consert",
-      eventDate : "dwasddwa",
-      time : "available",
-      image : "The toy",
-      detail : "dwasd",
-    }
-  )
-  // const url = 'http://localhost:3000/api/event/byuser';
-  const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`;
-  const navigate = useNavigate();
-  const [dataevent, setDataevent] = useState<dataEvent[]>([]);
-  useEffect(() => {
-    const fetchData = async() => {
-      try{
-        const response = await axios.get(url, {withCredentials : true});
-        setDataevent(response.data);
-      }catch(error){
-        console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
-        // navigate("/");
-      }
-    };
-    fetchData();
-  }, []);
+  const isDateHighlighted = (date: Dayjs): boolean => {
+    return apiEvents.some(event => event.eventDate === date.format("YYYY-MM-DD"));
+  };
+
+  const handleDateClick = (date: Dayjs) => {
+    setSelectedDate(date);
+    const events = apiEvents.filter(event => event.eventDate === date.format("YYYY-MM-DD"));
+    setSelectedEvents(events);
+  };
+
   const generateCalendar = () => {
     let days = [];
     for (let i = 0; i < firstDayOfWeek; i++) {
       days.push(<div key={`empty-${i}`} className="text-gray-400"></div>);
     }
     for (let i = 1; i <= daysInMonth; i++) {
+      const date = currentDate.date(i);
+      const isHighlighted = isDateHighlighted(date);
+      const isSelected = selectedDate && selectedDate.isSame(date, "day");
       days.push(
         <div
           key={i}
-          className="p-2 flex justify-center items-center rounded-full w-10 h-10 cursor-pointer hover:bg-blue-500 hover:text-white transition"
+          className={`p-2 flex justify-center items-center rounded-xl w-10 h-10 cursor-pointer transition border border-black 
+            ${isHighlighted ? "bg-yellow-300" : ""} 
+            ${isSelected ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
+          onClick={() => handleDateClick(date)}
         >
           {i}
         </div>
@@ -66,36 +81,44 @@ function Calender() {
     }
     return days;
   };
+
+
   // console.log(dataevent);
   return (
-    <div className="flex-1 p-3 ">
+    <div className="flex-1 p-3 flex max-sm:flex-col">
         <h2 className='py-3 px-7 text-2xl font-bold'>Calender</h2>
         <div className="flex max-sm:flex-col justify-between">
           <div className="flex-1 p-2 flex justify-center">
             <div className="w-80 bg-white shadow-lg rounded-lg p-4">
-              <div className="flex justify-between items-center mb-4">
-                <button onClick={prevMonth} className="p-2 rounded-full hover:bg-gray-200">
-                  <ChevronLeft size={20} />
-                </button>
-                <h2 className="text-lg font-semibold">
-                  {currentDate.format("MMMM YYYY")}
-                </h2>
-                <button onClick={nextMonth} className="p-2 rounded-full hover:bg-gray-200">
-                  <ChevronRight size={20} />
-                </button>
+              <div className="bg-green-400 rounded-xl p-2">
+                <div className="flex justify-between items-center">
+                  <button onClick={prevMonth} className="p-2 rounded-full hover:bg-gray-200">
+                    <ChevronLeft size={20} />
+                  </button>
+                  <h2 className="text-lg font-semibold">
+                    {currentDate.format("MMMM YYYY")}
+                  </h2>
+                  <button onClick={nextMonth} className="p-2 rounded-full hover:bg-gray-200">
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+                <div className="grid grid-cols-7 gap-5 text-center font-semibold">
+                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+                    <div key={day} className="text-gray-600">
+                      {day}
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-7 gap-1 text-center font-semibold">
-                {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-                  <div key={day} className="text-gray-600">
-                    {day}
-                  </div>
-                ))}
-              </div>
-              <div className="grid grid-cols-7 gap-1 mt-2">{generateCalendar()}</div>
+              <div className="grid grid-cols-7 gap-2 mt-2">{generateCalendar()}</div>
             </div>
           </div>
-          <div className="flex justify-center ">
-            <div className="justify-center flex bg-gray-200 rounded-lg shadow-lg p-4"> <Event Eventprop={data}/></div>
+        </div>
+        <div className="flex justify-center ">
+          <div className="justify-center flex bg-gray-200 rounded-lg shadow-lg p-4"> 
+            {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
+              <Event key={index} Eventprop={event} />
+            ))}
           </div>
         </div>
     </div>
