@@ -66,21 +66,21 @@ function LoginUser() {
               <input
                 type="text"
                 placeholder="username"
-                className="bg-cyan-50 rounded-lg p-2 my-2"
+                className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
                 value={username}
                 onChange={onUserChange}
               />
               <input
                 type="text"
                 placeholder="email"
-                className="bg-cyan-50 rounded-lg p-2 my-2"
+                className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
                 value={email}
                 onChange={onEmailChange}
               />
               <input
                 type="text"
                 placeholder="password"
-                className="bg-cyan-50 rounded-lg p-2 my-2"
+                className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
                 value={password}
                 onChange={onPassChange}
               />

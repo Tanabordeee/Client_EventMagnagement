@@ -58,11 +58,11 @@ function LoginClub() {
                 <br />
                 <div className="grid p-4">
                     {/* username */}
-                    <input type="text" placeholder="username" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onClubChange}/>
+                    <input type="text" placeholder="username" className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onClubChange}/>
                     {/* email */}
-                    <input type="text" placeholder="email" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onEmailChange}/>
+                    <input type="text" placeholder="email" className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onEmailChange}/>
                     {/* password */}
-                    <input type="text" placeholder="password" className="bg-cyan-50 rounded-lg p-2 my-2" onChange={onPassChange}/>
+                    <input type="text" placeholder="password" className="bg-cyan-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onPassChange}/>
                     <br />
                     <div className="flex justify-between p-1">
                         <button className="bg-slate-800 p-2 rounded-xl text-slate-50 hover:bg-stone-300 hover:text-gray-950" onClick={regis}>Register</button>

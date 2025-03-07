@@ -5,11 +5,15 @@ function AdminMenu() {
     "Home",
     "Manage",
   ]
+  const logo: string[] = [
+    "https://media.discordapp.net/attachments/1344393907634573434/1347587598545191023/homee.png?ex=67cc5e40&is=67cb0cc0&hm=ca20d63cf2ea6817c81df8ed7a8c92a33e026cb65fa3591406a8c6d8bb54a50c&=&format=webp&quality=lossless",
+    "https://media.discordapp.net/attachments/1344393907634573434/1347587599023345684/maange.png?ex=67cc5e40&is=67cb0cc0&hm=efbb8aedad2865be96b4ea11f4f49a05dc18bd2859dd301ae47ad40baa867aa0&=&format=webp&quality=lossless",
+  ]
   const path: string[] = [
     "manage", //รอเปลี่ยน
     "manage",
   ]
-  const [isSelect, setIsSelect] = useState([true, false, false, false]);
+  const [isSelect, setIsSelect] = useState([true, false]);
   const Clicky = (index: number) => {
     const newStates = isSelect.map((state, idx) =>
       idx === index ? true : false
@@ -28,7 +32,7 @@ function AdminMenu() {
                 key = {index}
                 onClick={() => Clicky(index)} 
                 className= {`text-xl p-2 ${isSelect ? 'text-red-500' : 'text-gray-900'}`}>
-                <Link to = {path[index]}> <div className="flex justify-start h-10 w-30">{text[index]}</div> </Link>
+                <Link to = {path[index]}> <div className="flex transition-transform transform hover:scale-110"><img src= {logo[index]} className="w-5 h-5 mt-2 mx-2 object-cover" /><div className="flex justify-start h-10 w-30 mt-1">{text[index]}</div></div> </Link>
               </button>
             ))}
           </div>

@@ -73,7 +73,7 @@ function Calender() {
       days.push(
         <div
           key={i}
-          className={`p-2 flex justify-center items-center rounded-xl w-10 h-10 cursor-pointer transition border border-black 
+          className={`p-2 flex  transition-transform transform hover:scale-110 justify-center items-center rounded-xl w-10 h-10 cursor-pointer transition border border-black 
             ${isHighlighted ? "bg-yellow-300" : ""} 
             ${isSelected ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
           onClick={() => handleDateClick(date)}
@@ -96,14 +96,14 @@ function Calender() {
               <div className="w-80 bg-white shadow-lg rounded-lg p-4">
                 <div className="bg-green-400 rounded-xl p-2">
                   <div className="flex justify-between items-center">
-                    <button onClick={prevMonth} className="p-2 rounded-full hover:bg-gray-200">
-                      <ChevronLeft size={20} />
+                    <button onClick={prevMonth} className="p-2">
+                      <ChevronLeft size={20} className='transition-transform transform hover:scale-150'/>
                     </button>
                     <h2 className="text-lg font-semibold">
                       {currentDate.format("MMMM YYYY")}
                     </h2>
-                    <button onClick={nextMonth} className="p-2 rounded-full hover:bg-gray-200">
-                      <ChevronRight size={20} />
+                    <button onClick={nextMonth} className="p-2">
+                      <ChevronRight size={20} className='transition-transform transform hover:scale-150'/>
                     </button>
                   </div>
                   <div className="grid grid-cols-7 gap-5 text-center font-semibold">

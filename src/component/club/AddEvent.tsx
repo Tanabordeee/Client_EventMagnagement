@@ -64,7 +64,7 @@ function AddEvent() {
                 <div className="text-xl font-bold">Event</div>
                 <div className="flex justify-end">Edit</div>
                 {!imagePreview ? (
-                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border-2 file:border-black  file:text-white cursor-pointer mb-4'/>
+                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border-2 file:border-black  file:text-white cursor-pointer mb-4 transition-transform transform hover:scale-105'/>
                 ) : 
                 (
                     <div className="flex-col">

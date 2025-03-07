@@ -27,7 +27,7 @@ function Filter({search}: Searching) {
     <div className="flex justify-between pt-2 gap-2 relative">
         <div className="rounded-xl bg-gray-50 flex-1 m-2 flex relative">
             <Outlet context={search}/>
-            <button className='sm:hidden absolute right-4 top-5' onClick={click}>Filter</button>
+            <button className='sm:hidden absolute right-4 top-5 hover:font-bold transition-transform transform hover:scale-125' onClick={click}>Filter</button>
         </div>
         <div className= {`absolute right-4 ${isclick? '' : 'hidden'}`}>
             <div className="p-3 rounded-xl bg-gray-50 m-2 ">
