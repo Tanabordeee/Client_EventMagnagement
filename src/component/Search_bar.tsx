@@ -12,6 +12,7 @@ function Search_bar ({clicker} : Props) {
   const {user} = useAuth();
   const [isclick , setIsclick] = useState(clicker)
   const navigate = useNavigate();
+  const [gosearch, setGosearch] = useState('')
   useEffect(() => {
     // if(!user){
     //   navigate("/");
@@ -22,6 +23,10 @@ function Search_bar ({clicker} : Props) {
   };
   const click = () => {
     setIsclick(!isclick);
+  }
+  const searching = () => {
+    setGosearch(search);
+    setSearch('');
   }
   return (
     <div className="flex">
@@ -51,7 +56,7 @@ function Search_bar ({clicker} : Props) {
                       onChange={onChangeSearch}
                       className="absolute left-2 top-0 mx-1 rounded-xl bg-gray-200 pl-15 py-1 shadow-lg w-50"
                     />
-                    <button className="absolute left-2 top-0 rounded-xl bg-green-300 px-2 py-1 pb-2 text-sm shadow-lg">
+                    <button className="absolute left-2 top-0 rounded-xl bg-green-300 px-2 py-1 pb-2 text-sm shadow-lg hover:bg-green-500" onClick={searching}>
                       search
                     </button>
                   </div>
@@ -72,7 +77,7 @@ function Search_bar ({clicker} : Props) {
           </div>
 
           <div className={`min-h-full ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
-            <Filter />
+            <Filter search = {gosearch}/>
           </div>
         </div>
       </div>

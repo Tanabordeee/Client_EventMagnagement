@@ -1,8 +1,12 @@
 
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-function Filter() {
+type Searching = {
+    search : string;
+}
+function Filter({search}: Searching) {
     const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+    // console.log(search);
     const option : string[] = [
         "consert",
         "event",
@@ -22,7 +26,7 @@ function Filter() {
   return (
     <div className="flex justify-between pt-2 gap-2 relative">
         <div className="rounded-xl bg-gray-50 flex-1 m-2 flex relative">
-            <Outlet/>
+            <Outlet context={search}/>
             <button className='sm:hidden absolute right-4 top-5' onClick={click}>Filter</button>
         </div>
         <div className= {`absolute right-4 ${isclick? '' : 'hidden'}`}>

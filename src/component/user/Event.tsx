@@ -1,4 +1,5 @@
-import List from "../club/List";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 interface Listevent {
   Eventprop:{
@@ -7,23 +8,59 @@ interface Listevent {
     time : string;
     image : string;
     detail : string;
+    eventID : string;
   };
-  
 }
-interface childprop {
-  Eventprop : Listevent | null
+interface DataEvent {
+  eventName : string;
+  eventDate : string;
+  time : string;
+  image : string;
+  detail : string;
+  eventID : string;
 }
+
 const Event: React.FC<Listevent> = ({Eventprop}) => {
-  // console.log(Eventprop.eventName);
+  const url = `${import.meta.env.VITE_REACT_API_URL}event/favorites/${Eventprop.eventID}`
+  const url_getprofile = `${import.meta.env.VITE_REACT_API_URL}users/profile`
+  const [status, setStatus] = useState<boolean | null>(null);
+  const [events, setEvents] = useState<DataEvent[]>([]);
+  useEffect(() => {
+    const fetchstatus = async() => {
+      try{
+        const response = await axios.get(url_getprofile, {withCredentials :true})
+        console.log(response.data.events);
+        setEvents(response.data.events);
+      }catch(error){
+        console.log("error : " , error);
+      }
+    }
+    fetchstatus();
+  }, [Eventprop])
+  useEffect(() => {
+    if (events.length > 0) { 
+      mapstatus();
+    }
+  }, [events]);
+  const mapstatus = () => {
+    console.log("run");
+    console.log(events);
+    const isadd = events.some(event => event.eventID === Eventprop.eventID)
+    setStatus(isadd);
+    console.log(isadd);
+  }
   return (
     <div className="grid m-2 max-sm:flex justify-center">
+      <div>
         <h2 className='p-2 text-lg font-bold'>{Eventprop.eventName}</h2>
-        <div>
-          <p className='p-2'>{Eventprop.image}</p>
-          <p className='p-2'>เงื่อนไข :{Eventprop.detail}</p>
-          <p className='p-2'>วันที่ :{Eventprop.eventDate}</p>
-          <h2 className='p-2'>เวลา :{Eventprop.time}</h2>
-        </div>
+        <p className='p-2'>{Eventprop.image}</p>
+      </div>
+      <div className="flex flex-col justify-center">
+        <button className={`text-xl ${status? 'text-red-500': 'text-green-500'}`}>{status? 'Cancle' : 'Apply'}</button>
+        <p className='p-2 flex justify-center'>เงื่อนไข :{Eventprop.detail}</p>
+        <p className='p-2 flex justify-center'>วันที่ :{Eventprop.eventDate}</p>
+        <h2 className='p-2 flex justify-center'>เวลา :{Eventprop.time}</h2>
+      </div>
     </div>
   )
 }

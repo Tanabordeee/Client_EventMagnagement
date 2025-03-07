@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Event from "./Event"
 import axios from "axios"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 interface dataEvent{
   eventName : string,
@@ -9,10 +9,13 @@ interface dataEvent{
   time : string,
   image : string,
   detail : string,
+  eventID : string,
 }
 
 function Favorite() {
-  const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`
+  const search = useOutletContext();
+  let url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
+  
   console.log(url);
   const navigate = useNavigate();
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
@@ -20,15 +23,15 @@ function Favorite() {
     const fetchData = async() => {
       try{
         const response = await axios.get(url, {withCredentials : true});
-        setDataevent(response.data);
-        console.log(response.data);
+        setDataevent(response.data.events);
+        console.log(response.data.events);
       }catch(error){
         console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
         // navigate("/");
       }
     };
     fetchData();
-  }, []);
+  }, [url]);
   console.log(dataevent);
   if(dataevent.length == 0){
     return (

@@ -72,7 +72,7 @@ function Search_club({clicker}: Props) {
           </div>
 
           <div className={`min-h-full ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
-            <Filter />
+            <Outlet/>
           </div>
         </div>
       </div>

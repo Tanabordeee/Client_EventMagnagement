@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import Event from './Event'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import dayjs, {Dayjs} from "dayjs";
@@ -12,19 +12,21 @@ interface dataEvent{
   time : string,
   image : string,
   detail : string,
+  eventID : string,
 }
-interface childprop {
-  Eventprop: dataEvent | null;
-}
+
 
 function Calender() {
   const [currentDate, setCurrentDate] = useState<Dayjs>(dayjs());
   const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
   const [apiEvents, setApiEvents] = useState<dataEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<dataEvent[]>([]);
-
+  const search = useOutletContext();
+  let url = search? `${import.meta.env.VITE_REACT_API_URL}event/namebyuser?eventName=${search}`:
+    `${import.meta.env.VITE_REACT_API_URL}event/byuser`
+  console.log(url);
   useEffect(() => {
-    const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`
+    
     const fetchData = async() => {
       try{
         const response = await axios.get(url, {withCredentials : true});
@@ -39,7 +41,8 @@ function Calender() {
       }
     }
     fetchData();
-  }, []);
+  }, [url]);
+  
   console.log(apiEvents)
   const startOfMonth = currentDate.startOf("month");
   const daysInMonth = currentDate.daysInMonth();
@@ -85,9 +88,9 @@ function Calender() {
 
   // console.log(dataevent);
   return (
-    <div className="flex-1 p-3 ">
+    <div className="flex-1 p-3">
         <h2 className='py-3 px-7 text-2xl font-bold'>Calender</h2>
-        <div className="flex max-sm:flex-col">
+        <div className="flex flex-1 max-sm:flex-col justify-center">
           <div className="flex max-sm:flex-col justify-between">
             <div className="flex-1 p-2 flex justify-center">
               <div className="w-80 bg-white shadow-lg rounded-lg p-4">

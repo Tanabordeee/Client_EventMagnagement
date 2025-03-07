@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import EventDetail from "./noti_com/EventDetail"
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -13,7 +13,8 @@ interface dataEvent{
 }
 
 function Notification() {
-  const url = `${import.meta.env.VITE_REACT_API_URL}event/byuser`;
+  const search = useOutletContext();
+  let url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   const navigate = useNavigate();
   const [listevent, setListevent] = useState<dataEvent[]>([]);
   const [event, setEvent] = useState<dataEvent | null>(null);
@@ -22,8 +23,8 @@ function Notification() {
     const getData = async() => {
       try{
         const respon = await axios.get(url, {withCredentials : true});
-        setListevent(respon.data);
-        setSelct(new Array(respon.data.length).fill(false))
+        setListevent(respon.data.events);
+        setSelct(new Array(respon.data.events.length).fill(false))
         console.log("select : ",select)
       }catch(error){
         console.log('Error: ', error);
@@ -31,7 +32,7 @@ function Notification() {
       }
     };
     getData();
-  }, []);
+  }, [url]);
   const changeEvent = (index : number) => {
     setEvent(listevent[index]);
   }
