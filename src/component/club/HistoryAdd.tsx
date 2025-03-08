@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import EventClub from "./EventClub"
 import axios from "axios";
+import { useOutletContext } from "react-router-dom";
 
 interface Event{
     eventName : string;
@@ -12,10 +13,12 @@ interface Event{
 
 
 function HistoryAdd() {
+    const search = useOutletContext();
     const [histevent, setHistevent] = useState<Event[]>([]);
+    let url = search? `${import.meta.env.VITE_REACT_API_URL}club/getonebyclub/${search}`:
+    `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`
     useEffect(() => {
-        // const url = 'http://localhost:3000/api/event/getallbyclub';
-        const url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`;
+        
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});

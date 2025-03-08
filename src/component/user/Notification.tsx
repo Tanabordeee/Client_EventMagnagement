@@ -50,7 +50,7 @@ function Notification() {
               <h2 className='pb-2 pt-1 pl-3 text-2xl font-bold justify-center flex'>Notification</h2>
               <div className="flex justify-center min-h-105 items-center">
                   <div className="flex justify-center items-center bg-gray-300 p-10 rounded-xl">
-                    <div className="bg-red-500 flex justify-center">ไม่มีการสมัคร</div>
+                    <div className="bg-red-500 flex justify-center px-5 rounded-xl py-2">ไม่มีการสมัคร</div>
                   </div>
               </div>
           </div>
