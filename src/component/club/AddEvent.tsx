@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface Event {
     eventName : string;
@@ -12,6 +12,7 @@ function AddEvent() {
     const [detail, setDetail] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [time, setTime] = useState<string>('');
+
     const onNamechange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     }
@@ -39,8 +40,22 @@ function AddEvent() {
     };
     const send = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
+        const API_URL = "https://pic.in.th/api/1/upload";
+        const API_KEY = "YOUR_API_KEY";
         try{
-            console.log("send")
+            const base_64 = await axios.post(API_URL, {
+                source : imagePreview,
+                format : "json",
+            },{
+                headers : {
+                    "X-API-Key" : API_KEY,
+                }
+            })
+            console.log(base_64.data.image);
+        }catch(error){
+            console.log(error);
+        }
+        try{
             const respon = await axios.post(url, {
                 eventName : name,
                 eventDate : date,

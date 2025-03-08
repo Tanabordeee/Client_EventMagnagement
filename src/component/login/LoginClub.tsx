@@ -32,14 +32,12 @@ function LoginClub() {
                 password
             }, {withCredentials : true,}
             );
-            console.log(response.data)
             setUser(response.data.user);
-            // console.log(response.data.message);
-            // if(response.data.message == 'Login Successfully'){
-            //     console.log(response.data.message);
-            //     console.log(document.cookie);
-            //     navigate("/club");
-            // }
+            if(response.data.message == 'Login Successfully'){
+                console.log(response.data.message);
+                console.log(document.cookie);
+                navigate("/club");
+            }
         } catch (error) {
             console.log("fail");
         } 

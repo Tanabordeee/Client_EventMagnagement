@@ -9,6 +9,7 @@ interface Event{
     time : string;
     image : string;
     status : string;
+    detail : string;
 };
 
 
@@ -23,6 +24,7 @@ function HistoryAdd() {
         try{
             const respon = await axios.get(url, {withCredentials : true});
             setHistevent(respon.data);
+            console.log(respon.data);
         }catch(error){
             console.log('Error: ', error);
             // navigate("/");
@@ -39,7 +41,7 @@ function HistoryAdd() {
                 {histevent.map(value => {
                     return(
                         <div className="xl:w-1/3 w-1/2 max-sm:w-1/1 flex justify-center items-center pt-10">
-                            <div className="bg-gray-200 px-3 py-2 rounded-xl shadow-lg"><EventClub Event = {value}/></div>
+                            <div className=" mx-3 my-2 rounded-xl"><EventClub Event = {value}/></div>
                         </div>
                     )
                 })}

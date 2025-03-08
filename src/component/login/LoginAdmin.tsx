@@ -33,12 +33,11 @@ function LoginAdmin() {
             }, {withCredentials : true,}
             );
             setUser(response.data.user);
-            // console.log(response.data.message);
-            // if(response.data.message == 'Login Successfully'){
-            //     console.log(response.data.message);
-            //     console.log(document.cookie);
-            //     navigate("/admin");
-            // }
+            if(response.data.message == 'Login Successfully'){
+                console.log(response.data.message);
+                console.log(document.cookie);
+                navigate("/admin");
+            }
         } catch (error) {
             console.log("fail");
         } 

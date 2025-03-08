@@ -1,18 +1,15 @@
 import axios from "axios";
 import { useEffect, useState  } from "react";
 import { useOutletContext } from "react-router-dom";
+import AdminCol from "./AdminCol";
 
-interface User{
-    username :string;
-    userId : string;
-}
 interface Event{
     eventName : string;
     eventDate : string;
     time : string;
     image : string;
     status : string;
-    users : User[];
+    details :string;
 };
 function Manage() {
     const [histevent, setHistevent] = useState<Event[]>([]);
@@ -45,21 +42,23 @@ function Manage() {
                     <div className=" border w-auto break-words text-center">Requestor</div>
                     <div className=" border w-auto break-words text-center">Action</div>
                 </div>
-                    {(histevent).map((value, index) => {
-                        return(
-                            <div className="grid grid-cols-6" key={index}>
-                                <div className=" border w-auto break-words text-center">
-                                    {new Date(value.eventDate).toISOString().split('T')[0]}
-                                </div>
-                                <div className=" border w-auto break-words text-center">{value.eventName}</div>
-                                <div className=" border w-auto break-words text-center">Faculty</div>
-                                <div className=" border w-auto break-words text-center">{value.status }</div>
-                                <div className=" border w-auto break-words text-center">Major</div>
-                                <div className=" border w-auto break-words text-center">{value.status}</div>
-                            </div>
+                    {histevent.length > 0 ? histevent.map((value, index) => {
+                        
+                        return <AdminCol Eventprop={value} key={index}/>
+                    }) : <div className="flex justify-center items-center">loading....</div> }
+                    {/* // return(
+                        //     <div className="grid grid-cols-6" key={index}>
+                        //         <div className=" border w-auto break-words text-center">
+                        //             {new Date(value.eventDate).toISOString().split('T')[0]}
+                        //         </div>
+                        //         <div className=" border w-auto break-words text-center">{value.eventName}</div>
+                        //         <div className=" border w-auto break-words text-center">Faculty</div>
+                        //         <div className=" border w-auto break-words text-center">{value.status }</div>
+                        //         <div className=" border w-auto break-words text-center">Major</div>
+                        //         <div className=" border w-auto break-words text-center">{value.status}</div>
+                        //     </div>
                             
-                        )
-                    })}
+                        // )  */}
                 {/* <div className="flex justify-center p-3">จำนวนนักศึกษาที่พบ{(histevent ?? []).reduce((acc, value) => acc + (value.users ? value.users.length : 0), 0)}</div> */}
             </div>
         </div>
