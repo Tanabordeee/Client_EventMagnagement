@@ -12,7 +12,6 @@ function AddEvent() {
     const [detail, setDetail] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [time, setTime] = useState<string>('');
-    const [image, setImage] = useState<string>('');
     const onNamechange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     }
@@ -30,16 +29,18 @@ function AddEvent() {
         const file = event.target.files?.[0];
         if(file){
             const reader = new FileReader();
+            reader.readAsDataURL(file);
             reader.onload = () => {
                 setImagePreview(reader.result as string);
+                console.log(reader.result as string);
             };
-            reader.readAsDataURL(file);
+            
         }
     };
     const send = async () => {
-        // const url = 'http://localhost:3000/api/event/create';
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         try{
+            console.log("send")
             const respon = await axios.post(url, {
                 eventName : name,
                 eventDate : date,
@@ -59,12 +60,12 @@ function AddEvent() {
     }
   return (
     <div className='flex flex-1 justify-center'>
-        <div className="flex max-sm:flex-col justify-between bg-gray-200 max-sm:bg-gray-50 m-2 rounded-xl p-2">
+        <div className="flex max-sm:flex-col justify-between bg-gray-100 mt-4 max-sm:bg-gray-50 m-2 rounded-xl p-2">
             <div className="flex-col p-3">
                 <div className="text-xl font-bold">Event</div>
                 <div className="flex justify-end">Edit</div>
                 {!imagePreview ? (
-                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border-2 file:border-black  file:text-white cursor-pointer mb-4 transition-transform transform hover:scale-105'/>
+                    <input type="file" accept='image/*' onChange={selected} className='file:flex-1 file:w-73 file:h-50 file:py-2 file:px-4 file:rounded-lg file:border-2 file:border-black  file:max-sm:text-gray-50 file:text-gray-100 cursor-pointer mb-4 transition-transform transform hover:scale-105'/>
                 ) : 
                 (
                     <div className="flex-col">

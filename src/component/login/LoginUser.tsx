@@ -25,9 +25,8 @@ function LoginUser() {
   const onPassChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
+  const url = `${import.meta.env.VITE_REACT_API_URL}auth/userlogin`
   const Clicky = async () => {
-    const url = 'http://localhost:3000/api/auth/userlogin';
     try {
       const response = await axios.post(
         url,

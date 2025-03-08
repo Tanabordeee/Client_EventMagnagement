@@ -18,11 +18,11 @@ interface AuthProviderProps {
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<any>(null); // หรือกำหนด type ชัดเจน
   const [loading, setLoading] = useState<boolean>(true);
-
+  const url = `${import.meta.env.VITE_REACT_API_URL}auth/verify`
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/auth/verify', {
+        const response = await axios.get(url, {
           withCredentials: true,
         });
         setUser(response.data.user);

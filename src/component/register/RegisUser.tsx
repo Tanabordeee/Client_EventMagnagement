@@ -35,7 +35,7 @@ function RegisUser() {
                 if(response.data.username == username){
                     console.log(response.data.message);
                     console.log(document.cookie);
-                    navigate("/");
+                    navigate("/loginuser");
                 }
             } catch (error) {
                 console.log("fail");

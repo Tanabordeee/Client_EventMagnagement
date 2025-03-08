@@ -29,18 +29,18 @@ function RegisClub() {
         if(password == repassword){
             try{
                 const response = await axios.post(url , {
-                    clubname: clubname,
-                    description: description,
+                    clubName : clubname,
+                    description : description,
                     email: email,
-                    password: password
+                    password : password
                 }, {withCredentials : true,}
                 );
                 
-                console.log(response.data.message);
-                if(response.data.message == 'Login Successfully'){
+                console.log(response.data);
+                if(response.data.clubName == clubname){
                     console.log(response.data.message);
                     console.log(document.cookie);
-                    navigate("/");
+                    navigate("/loginclub");
                 }
             } catch (error) {
                 console.log("fail");
@@ -68,13 +68,13 @@ function RegisClub() {
                         <div className="grid p-4">
                             {/* username */}
                             <input type="text" placeholder="clubname" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"  value={clubname} onChange={onClubChange}/>
-                            <input type="text" placeholder="description" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"  value={clubname} onChange={onDescripChange}/>
+                            <input type="text" placeholder="description" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"  value={description} onChange={onDescripChange}/>
                             {/* email */}
                             <input type="text" placeholder="email" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"  value={email} onChange={onEmailChange}/>
                             {/* password */}
                             <input type="text" placeholder="password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={password} onChange={onPassChange}/>
                             {/* password */}
-                            <input type="text" placeholder="re-password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={password} onChange={onRepassChange}/>
+                            <input type="text" placeholder="re-password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={repassword} onChange={onRepassChange}/>
                             <br />
                             <div className="flex justify-between p-1">
                                 <button className="hover:cursor-pointer p-2 rounded-xl text-red-600 hover:text-red-400" onClick={back}>Back</button>

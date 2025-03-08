@@ -7,7 +7,7 @@ function LoginClub() {
     const [club, setClub] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const {clubid, setClubID} = useAuth();
+    const { user, setUser } = useAuth(); 
     let navigate = useNavigate();
     const onClubChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setClub(e.target.value);
@@ -18,11 +18,11 @@ function LoginClub() {
     const onPassChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setPassword(e.target.value);
     };
-    // useEffect(() => {
-    //     if (clubid) {
-    //         navigate('/club');
-    //     }
-    //     }, [clubid, navigate]);
+    useEffect(() => {
+        if (user) {
+            navigate('/club');
+        }
+        }, [user, navigate]);
     const Clicky = async () => {
         const url = 'http://localhost:3000/api/auth/clublogin';
         try{
@@ -33,12 +33,13 @@ function LoginClub() {
             }, {withCredentials : true,}
             );
             console.log(response.data)
-            console.log(response.data.message);
-            if(response.data.message == 'Login Successfully'){
-                console.log(response.data.message);
-                console.log(document.cookie);
-                navigate("/club");
-            }
+            setUser(response.data.user);
+            // console.log(response.data.message);
+            // if(response.data.message == 'Login Successfully'){
+            //     console.log(response.data.message);
+            //     console.log(document.cookie);
+            //     navigate("/club");
+            // }
         } catch (error) {
             console.log("fail");
         } 

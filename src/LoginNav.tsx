@@ -33,7 +33,7 @@ function LoginNav() {
     <div className="flex max-sm:bg-gray-50 bg-gray-300 h-screen">
         <div className="flex flex-1 justify-center rounded-xl bg-gray-200 p-10 m-5 shadow-xl max-sm:shadow-none">
             <div className= " flex items-center justify-center">
-                <div className="flex flex-col justify-center items-center">
+                <div className="flex flex-col justify-center items-center max">
                     {/* {isSelect.map((isActive, index) => (
                         <button
                         key={index}
