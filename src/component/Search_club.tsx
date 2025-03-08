@@ -13,6 +13,7 @@ function Search_club({clicker}: Props) {
     const {user} = useAuth();
     const [isclick , setIsclick] = useState(clicker)
     const navigate = useNavigate();
+    const [gosearch, setGosearch] = useState('')
     const profil_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587600101277696/username.png?ex=67cc5e40&is=67cb0cc0&hm=91754899ada0764339793ae27f1c7399085a8b180a3fc8f64f2b59e524e0c953&=&format=webp&quality=lossless'
   const history_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless'
   const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
@@ -26,6 +27,10 @@ function Search_club({clicker}: Props) {
     };
     const click = () => {
       setIsclick(!isclick);
+    }
+    const searching = () => {
+      setGosearch(search);
+      setSearch('');
     }
   return (
     <div className="flex">
@@ -55,7 +60,7 @@ function Search_club({clicker}: Props) {
                       onChange={onChangeSearch}
                       className="absolute left-2 top-0 mx-1 rounded-xl bg-gray-200 pl-8 py-1 shadow-lg w-50"
                     />
-                    <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm">
+                    <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
                       <Search size={20} className="text-gray-500 mt-1 transition-transform transform hover:scale-125 hover:text-black hover:cursor-pointer" />
                     </button>
                   </div>
@@ -76,7 +81,7 @@ function Search_club({clicker}: Props) {
           </div>
 
           <div className={`min-h-full bg-gray-50 m-2 rounded-xl shadow-xl ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
-            <Outlet/>
+            <Outlet context={gosearch}/>
           </div>
         </div>
       </div>

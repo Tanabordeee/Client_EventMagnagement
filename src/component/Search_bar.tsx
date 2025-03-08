@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Filter from "./user/Filter";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import Menu from "./user/Menu";
 import { Search } from "lucide-react";
@@ -80,8 +80,9 @@ function Search_bar ({clicker} : Props) {
             </div>
           </div>
 
-          <div className={`min-h-full ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
-            <Filter search = {gosearch}/>
+          <div className={`min-h-full  bg-gray-50 m-2 rounded-xl shadow-xl ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
+            {/* <Filter search = {gosearch}/> */}
+            <Outlet context={gosearch}/>
           </div>
         </div>
       </div>

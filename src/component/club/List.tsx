@@ -55,7 +55,9 @@ function List() {
                                     // setStudent(student + 1);
                                     return(
                                         <div className="grid grid-cols-6" key={userindex}>
-                                            <div className=" border w-auto break-words text-center">{value.eventDate}</div>
+                                            <div className=" border w-auto break-words text-center">
+                                                {new Date(value.eventDate).toISOString().split('T')[0]}
+                                            </div>
                                             <div className=" border w-auto break-words text-center">{value.eventName}</div>
                                             <div className=" border w-auto break-words text-center">Faculty</div>
                                             <div className=" border w-auto break-words text-center">{users.username}</div>
