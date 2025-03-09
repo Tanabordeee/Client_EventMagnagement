@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Compressor from 'compressorjs';
 
 
@@ -48,9 +48,6 @@ function AddEvent() {
             };
         }
     };
-    useEffect(() => {
-       
-    }, [imagePreview])
     const send = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         try{

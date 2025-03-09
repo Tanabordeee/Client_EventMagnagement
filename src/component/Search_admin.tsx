@@ -19,7 +19,7 @@ function Search_admin
   const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
     useEffect(() => {
       if(!user){
-        navigate("/");
+        // navigate("/");
       }
     }, [])
     const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
@@ -68,12 +68,14 @@ function Search_admin
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="p-2 transition-transform transform hover:scale-125"><img src={noti_icon} className="w-6 mt-2 object-cover"/></p>
-                  <p className="p-2 transition-transform transform hover:scale-125">
-                    <Link to="notification"><img src={history_icon} className="w-6 mt-2 object-cover"/></Link>
+                  <p className="p-2">
+                    <img src={noti_icon} className="w-6 mt-2 object-cover"/>
                   </p>
-                  <p className="p-2 transition-transform transform hover:scale-125">
-                    <Link to="setting"><img src={profil_icon} className="w-6 mt-2 object-cover"/></Link>
+                  <p className="p-2">
+                    <img src={history_icon} className="w-6 mt-2 object-cover"/>
+                  </p>
+                  <p className="p-2">
+                    <img src={profil_icon} className="w-6 mt-2 object-cover"/>
                   </p>
                 </div>
               </div>

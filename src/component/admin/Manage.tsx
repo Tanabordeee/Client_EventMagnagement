@@ -29,7 +29,7 @@ function Manage() {
             }
         }catch(error){
             console.log('Error: ', error);
-            navigate("/");
+            // navigate("/");
         }
         };
         getData();
