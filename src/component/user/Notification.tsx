@@ -23,22 +23,24 @@ function Notification() {
     const getData = async() => {
       try{
         const respon = await axios.get(url, {withCredentials : true});
-        if(search){
-          const searcher = respon.data.filter((item :dataEvent) => item.eventName === search)
-          setListevent(searcher);
-          setSelct(new Array(searcher.events.length).fill(false))
-        }else{
-          setListevent(respon.data);
-          setSelct(new Array(respon.data.events.length).fill(false))
+        console.log(respon.data)
+        if(respon.data.events.length > 0){
+          if(search){
+            const searcher = respon.data.events.filter((item :dataEvent) => item.eventName === search)
+            setListevent(searcher);
+            setSelct(new Array(searcher.events.length).fill(false))
+          }else{
+            setListevent(respon.data.events);
+            setSelct(new Array(respon.data.events.length).fill(false))
+          }
         }
-        
       }catch(error){
         console.log('Error: ', error);
-        navigate("/");
+        // navigate("/");
       }
     };
     getData();
-  }, [url]);
+  }, []);
   const changeEvent = (index : number) => {
     setEvent(listevent[index]);
   }
@@ -78,7 +80,6 @@ function Notification() {
                             {value.eventName}
                           </button>
                         </div>
-                        
                       )
                     })}
                 </div>

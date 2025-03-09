@@ -11,9 +11,9 @@ function LoginUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      navigate('/user');
-    }
+    // if (user) {
+    //   navigate('/user');
+    // }
   }, [user, navigate]);
 
   const onUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {

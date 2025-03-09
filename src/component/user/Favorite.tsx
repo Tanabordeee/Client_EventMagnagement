@@ -22,15 +22,17 @@ function Favorite() {
     const fetchData = async() => {
       try{
         const response = await axios.get(url, {withCredentials : true});
-        if(search){
-          const searcher = response.data.filter((item :dataEvent) => item.eventName === search)
-          setDataevent(searcher);
-        }else{
-          setDataevent(response.data);
+        if(response.data.events.length > 0){
+          if(search){
+            const searcher = response.data.events.filter((item :dataEvent) => item.eventName === search)
+            setDataevent(searcher);
+          }else{
+            setDataevent(response.data.events);
+          }
         }
       }catch(error){
         console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
-        navigate("/");
+        // navigate("/");
       }
     };
     fetchData();

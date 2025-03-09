@@ -35,18 +35,30 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
       }
     }
     fetchstatus();
-  }, [Eventprop])
+  }, [Eventprop]);
+
   useEffect(() => {
     if (events.length > 0) { 
       mapstatus();
     }
   }, [events]);
+
   const mapstatus = () => {
     console.log("run");
     console.log(events);
     const isadd = events.some(event => event.eventID === Eventprop.eventID)
     setStatus(isadd);
     console.log(isadd);
+  }
+  const changestatus = async () => {
+    const url_fav = status? `${import.meta.env.VITE_REACT_API_URL}event/unfavorite/${Eventprop.eventID}`:
+    `${import.meta.env.VITE_REACT_API_URL}event/favorites/${Eventprop.eventID}`
+    try{
+      await axios.patch(url_fav, {}, {withCredentials: true} )
+      setStatus(!status)
+    }catch(error){
+      console.log(error)
+    }
   }
   return (
     <div className="grid m-2 max-sm:flex justify-center">
@@ -55,7 +67,7 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
         <p className='p-2'>{Eventprop.image}</p>
       </div>
       <div className="flex flex-col justify-center">
-        <button className={`text-xl ${status? 'text-red-500': 'text-green-500'}`}>{status? 'Cancle' : 'Apply'}</button>
+        <button className={`text-xl ${status? 'text-red-500': 'text-green-500'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
         <p className='p-2 flex justify-center'>เงื่อนไข :{Eventprop.detail}</p>
         <p className='p-2 flex justify-center'>วันที่ :{Eventprop.eventDate}</p>
         <h2 className='p-2 flex justify-center'>เวลา :{Eventprop.time}</h2>

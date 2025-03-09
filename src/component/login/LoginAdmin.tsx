@@ -19,9 +19,9 @@ function LoginAdmin() {
         setPassword(e.target.value);
     };
     useEffect(() => {
-        if (user) {
-          navigate('/admin');
-        }
+        // if (user) {
+        //   navigate('/admin');
+        // }
       }, [user, navigate]);
     const url = `${import.meta.env.VITE_REACT_API_URL}auth/adminlogin`
     const Clicky = async () => {

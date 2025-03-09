@@ -19,9 +19,9 @@ function LoginClub() {
         setPassword(e.target.value);
     };
     useEffect(() => {
-        if (user) {
-            navigate('/club');
-        }
+        // if (user) {
+        //     navigate('/club');
+        // }
         }, [user, navigate]);
     const Clicky = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}auth/clublogin`;
