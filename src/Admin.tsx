@@ -1,9 +1,5 @@
 import AdminMenu from './component/admin/AdminMenu'
-import Search_bar from './component/Search_bar'
-import Function from './component/Function'
-import { Outlet } from 'react-router-dom'
 import { useState } from 'react'
-import Search_nofil from './component/Search_admin'
 import Search_admin from './component/Search_admin'
 function Admin() {
   const [isclick ,setIsclick] = useState(false);

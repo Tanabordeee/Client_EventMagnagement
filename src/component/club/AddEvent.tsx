@@ -1,18 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import Compressor from 'compressorjs';
 
-interface Event {
-    eventName : string;
-    eventDate : string;
-    time : string;
-    image : string;
-}
+
 function AddEvent() {
     const [name, setName] = useState<string>('');
     const [detail, setDetail] = useState<string>('');
     const [date, setDate] = useState<string>('');
     const [time, setTime] = useState<string>('');
-
+    const [files, setFiles] = useState<string | null>(null)
     const onNamechange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
     }
@@ -26,42 +22,46 @@ function AddEvent() {
         setTime(e.target.value);
     }
     const [imagePreview, setImagePreview] = useState<string | null>(null);
-    const selected = (event : React.ChangeEvent<HTMLInputElement>) => {
+    const selected = async (event : React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         if(file){
+            new Compressor(file, {
+                quality : 0.6,
+                success(result){
+                    const reader = new FileReader();
+                    reader.readAsDataURL(result);
+                    reader.onload = () => {
+                        const base64 = reader.result;
+                        if(typeof base64 === 'string'){
+                            setFiles(base64);
+                            console.log(base64);
+                        }
+                        // console.log(reader.result as string);
+                    };
+                }
+            })
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => {
                 setImagePreview(reader.result as string);
-                console.log(reader.result as string);
+                // console.log(reader.result as string);
             };
-            
         }
     };
+    useEffect(() => {
+       
+    }, [imagePreview])
     const send = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
-        const API_URL = "https://pic.in.th/api/1/upload";
-        const API_KEY = "YOUR_API_KEY";
-        try{
-            const base_64 = await axios.post(API_URL, {
-                source : imagePreview,
-                format : "json",
-            },{
-                headers : {
-                    "X-API-Key" : API_KEY,
-                }
-            })
-            console.log(base_64.data.image);
-        }catch(error){
-            console.log(error);
-        }
         try{
             const respon = await axios.post(url, {
                 eventName : name,
                 eventDate : date,
                 time : time,
-                image : imagePreview,
+                image : files,
+                detail : detail,
             }, {withCredentials : true})
+            console.log(respon.data)
         }catch(error){
             console.log(error);
         }

@@ -16,14 +16,17 @@ interface Event{
 function HistoryAdd() {
     const search = useOutletContext();
     const [histevent, setHistevent] = useState<Event[]>([]);
-    let url = search? `${import.meta.env.VITE_REACT_API_URL}club/getonebyclub/${search}`:
-    `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`
+    let url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`
     useEffect(() => {
-        
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});
-            setHistevent(respon.data);
+            if(search){
+                const searcher = respon.data.filter((item :Event) => item.eventName === search)
+                setHistevent(searcher);
+            }else{
+                setHistevent(respon.data);
+            }
             console.log(respon.data);
         }catch(error){
             console.log('Error: ', error);

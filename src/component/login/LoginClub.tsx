@@ -24,7 +24,7 @@ function LoginClub() {
         }
         }, [user, navigate]);
     const Clicky = async () => {
-        const url = 'http://localhost:3000/api/auth/clublogin';
+        const url = `${import.meta.env.VITE_REACT_API_URL}auth/clublogin`;
         try{
             const response = await axios.post(url , {
                 club,

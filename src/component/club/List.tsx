@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface User{
     username :string;
@@ -48,7 +48,7 @@ function List() {
                     {(histevent).map((value, index) => {
                         console.log("value : ",value);
                         console.log("value user :", value.users);
-                        const userCount = value.users ? value.users.length : 0;
+                        // const userCount = value.users ? value.users.length : 0;
                         return(
                             <div key={index}>
                                 {(value.users).map((users, userindex) => {

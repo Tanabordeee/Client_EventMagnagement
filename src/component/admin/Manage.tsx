@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState  } from "react";
 import { useOutletContext } from "react-router-dom";
 import AdminCol from "./AdminCol";
-
+import { useNavigate } from "react-router-dom";
 interface Event{
     eventName : string;
     eventDate : string;
@@ -12,6 +12,7 @@ interface Event{
     details :string;
 };
 function Manage() {
+    const navigate = useNavigate();
     const [histevent, setHistevent] = useState<Event[]>([]);
     const search = useOutletContext();
     let url = search? `${import.meta.env.VITE_REACT_API_URL}event/getnamebyadmin?eventName=${search}` : 
@@ -25,7 +26,7 @@ function Manage() {
             console.log(respon.data);
         }catch(error){
             console.log('Error: ', error);
-            // navigate("/");
+            navigate("/");
         }
         };
         getData();
@@ -46,20 +47,6 @@ function Manage() {
                         
                         return <AdminCol Eventprop={value} key={index}/>
                     }) : <div className="flex justify-center items-center">loading....</div> }
-                    {/* // return(
-                        //     <div className="grid grid-cols-6" key={index}>
-                        //         <div className=" border w-auto break-words text-center">
-                        //             {new Date(value.eventDate).toISOString().split('T')[0]}
-                        //         </div>
-                        //         <div className=" border w-auto break-words text-center">{value.eventName}</div>
-                        //         <div className=" border w-auto break-words text-center">Faculty</div>
-                        //         <div className=" border w-auto break-words text-center">{value.status }</div>
-                        //         <div className=" border w-auto break-words text-center">Major</div>
-                        //         <div className=" border w-auto break-words text-center">{value.status}</div>
-                        //     </div>
-                            
-                        // )  */}
-                {/* <div className="flex justify-center p-3">จำนวนนักศึกษาที่พบ{(histevent ?? []).reduce((acc, value) => acc + (value.users ? value.users.length : 0), 0)}</div> */}
             </div>
         </div>
     )

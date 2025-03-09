@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import Filter from "./user/Filter";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import AdminMenu from "./admin/AdminMenu";
@@ -19,9 +18,9 @@ function Search_admin
   const history_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless'
   const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
     useEffect(() => {
-      // if(!user){
-      //   navigate("/");
-      // }
+      if(!user){
+        navigate("/");
+      }
     }, [])
     const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
       setSearch(e.target.value);

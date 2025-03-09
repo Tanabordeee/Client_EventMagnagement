@@ -1,10 +1,6 @@
 import Menu from './component/user/Menu.tsx'
 import Search_bar from './component/Search_bar.tsx'
-import Function from './component/Function.tsx'
-import Filter from './component/user/Filter.tsx'
-import {Route, Outlet} from 'react-router'
 import { useState } from 'react'
-import { useAuth } from './AuthContext.tsx'
 
 function User() {
   const [isclick ,setIsclick] = useState(false);
