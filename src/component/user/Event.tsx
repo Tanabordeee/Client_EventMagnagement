@@ -21,7 +21,6 @@ interface DataEvent {
 }
 
 const Event: React.FC<Listevent> = ({Eventprop}) => {
-  const url = `${import.meta.env.VITE_REACT_API_URL}event/favorites/${Eventprop.eventID}`
   const url_getprofile = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   const [status, setStatus] = useState<boolean | null>(null);
   const [events, setEvents] = useState<DataEvent[]>([]);

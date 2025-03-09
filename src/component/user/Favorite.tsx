@@ -15,7 +15,6 @@ interface dataEvent{
 function Favorite() {
   const search = useOutletContext();
   let url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
-  
   console.log(url);
   const navigate = useNavigate();
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
@@ -23,11 +22,15 @@ function Favorite() {
     const fetchData = async() => {
       try{
         const response = await axios.get(url, {withCredentials : true});
-        setDataevent(response.data.events);
-        console.log(response.data.events);
+        if(search){
+          const searcher = response.data.filter((item :dataEvent) => item.eventName === search)
+          setDataevent(searcher);
+        }else{
+          setDataevent(response.data);
+        }
       }catch(error){
         console.error('Error:', error); // แสดงข้อผิดพลาดหากมี
-        // navigate("/");
+        navigate("/");
       }
     };
     fetchData();
@@ -55,7 +58,7 @@ function Favorite() {
               <div className="flex flex-wrap p-3">
                   {dataevent.map((value, index) => {
                     return(
-                      <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10">
+                      <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10" key={index}>
                         <div className="bg-gray-200 mx-1 my-3 rounded-xl shadow-lg"><Event Eventprop ={value}/></div>
                       </div>
                     )

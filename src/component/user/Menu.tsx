@@ -21,7 +21,7 @@ function Menu() {
   ]
   const [isSelect, setIsSelect] = useState([true, false, false, false]);
   const Clicky = (index: number) => {
-    const newStates = isSelect.map((state, idx) =>
+    const newStates = isSelect.map((_, idx) =>
       idx === index ? true : false
     );
     setIsSelect(newStates);

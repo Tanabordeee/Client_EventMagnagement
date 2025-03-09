@@ -23,12 +23,18 @@ function Notification() {
     const getData = async() => {
       try{
         const respon = await axios.get(url, {withCredentials : true});
-        setListevent(respon.data.events);
-        setSelct(new Array(respon.data.events.length).fill(false))
-        console.log("select : ",select)
+        if(search){
+          const searcher = respon.data.filter((item :dataEvent) => item.eventName === search)
+          setListevent(searcher);
+          setSelct(new Array(searcher.events.length).fill(false))
+        }else{
+          setListevent(respon.data);
+          setSelct(new Array(respon.data.events.length).fill(false))
+        }
+        
       }catch(error){
         console.log('Error: ', error);
-        // navigate("/");
+        navigate("/");
       }
     };
     getData();
@@ -37,7 +43,7 @@ function Notification() {
     setEvent(listevent[index]);
   }
   const selected = (index : number) => {
-    const newselect = select.map((value, ind) =>
+    const newselect = select.map((_, ind) =>
       index === ind ? true : false
     );
     setSelct(newselect);

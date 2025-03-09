@@ -27,7 +27,6 @@ function HistoryAdd() {
             }else{
                 setHistevent(respon.data);
             }
-            console.log(respon.data);
         }catch(error){
             console.log('Error: ', error);
             // navigate("/");
@@ -35,7 +34,7 @@ function HistoryAdd() {
         };
         getData();
         console.log(histevent);
-    }, []);
+    }, [search]);
   return (
     <div>
         <div className="m-4">

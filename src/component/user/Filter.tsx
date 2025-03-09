@@ -5,7 +5,6 @@ type Searching = {
     search : string;
 }
 function Filter({search}: Searching) {
-    const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
     // console.log(search);
     const option : string[] = [
         "consert",
@@ -59,7 +58,7 @@ function Filter({search}: Searching) {
                 <div className="flex flex-col">
                     <h2 className='text-xl font-bold'>Option</h2>
                     <div className="py-2 flex-col flex">
-                        {isChoose.map((Choose, index) => (
+                        {isChoose.map((_, index) => (
                             <label key = {index}>
                                 <input type="checkbox" 
                                 value={option[index]}
@@ -101,7 +100,7 @@ function Filter({search}: Searching) {
             <div className="flex flex-col">
                 <h2 className='text-xl font-bold'>Option</h2>
                 <div className="py-2 flex-col flex">
-                    {isChoose.map((Choose, index) => (
+                    {isChoose.map((_, index) => (
                         <label>
                             <input type="checkbox" 
                             key = {index}

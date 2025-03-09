@@ -76,7 +76,7 @@ const Setting = () => {
                     setUser(respon.data);
                 }catch(error){
                     console.log("error : " , error);
-                    // navigator("/")
+                    navigator("/")
                 }
             };
             fetchuser();

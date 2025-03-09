@@ -4,6 +4,7 @@ import { useOutletContext } from "react-router-dom";
 import AdminCol from "./AdminCol";
 import { useNavigate } from "react-router-dom";
 interface Event{
+    eventID : string;
     eventName : string;
     eventDate : string;
     time : string;
@@ -15,15 +16,17 @@ function Manage() {
     const navigate = useNavigate();
     const [histevent, setHistevent] = useState<Event[]>([]);
     const search = useOutletContext();
-    let url = search? `${import.meta.env.VITE_REACT_API_URL}event/getnamebyadmin?eventName=${search}` : 
-        `${import.meta.env.VITE_REACT_API_URL}event/getallbyadmin`;
-    console.log(url)
+    let url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyadmin`;
     useEffect(() => {
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});
-            setHistevent(respon.data);
-            console.log(respon.data);
+            if(search){
+                const searcher = respon.data.filter((item :Event) => item.eventName === search)
+                setHistevent(searcher);
+            }else{
+                setHistevent(respon.data);
+            }
         }catch(error){
             console.log('Error: ', error);
             navigate("/");
@@ -31,7 +34,7 @@ function Manage() {
         };
         getData();
         // console.log(histevent);
-    }, [url]);
+    }, [search]);
     return (
         <div className="p-4 ">
             <div className ="flex-col overflow-x-auto">

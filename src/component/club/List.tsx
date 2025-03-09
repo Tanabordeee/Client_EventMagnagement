@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
+import { useOutletContext } from 'react-router-dom';
 
 interface User{
     username :string;
@@ -15,23 +16,27 @@ interface Event{
 };
 
 function List() {
+    const search = useOutletContext();
     const [histevent, setHistevent] = useState<Event[]>([]);
     useEffect(() => {
-        // const url = 'http://localhost:3000/api/event/getallbyclub';
         const url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyclub`;
         
         const getData = async() => {
         try{
             const respon = await axios.get(url, {withCredentials : true});
-            setHistevent(respon.data);
+            if(search){
+                const filter = respon.data.filter((item : Event) => item.eventName === search)
+                setHistevent(filter);
+            }else{
+                setHistevent(respon.data);
+            }
         }catch(error){
             console.log('Error: ', error);
-            // navigate("/");
         }
         };
         getData();
         console.log(histevent);
-    }, []);
+    }, [search]);
     console.log(histevent);
     return (
         <div className="p-4 ">

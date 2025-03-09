@@ -22,6 +22,7 @@ function Calender() {
   const [apiEvents, setApiEvents] = useState<dataEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<dataEvent[]>([]);
   const search = useOutletContext();
+  const navigate = useNavigate()
   let url = search? `${import.meta.env.VITE_REACT_API_URL}event/namebyuser?eventName=${search}`:
     `${import.meta.env.VITE_REACT_API_URL}event/byuser`
   console.log(url);
@@ -37,7 +38,7 @@ function Calender() {
         console.log("Fetched Events (Formatted):", extractedEvents);
         setApiEvents(extractedEvents);
       }catch(error){
-        console.error("Error fetching dates:", error);
+        navigate('/')
       }
     }
     fetchData();
@@ -118,10 +119,10 @@ function Calender() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center ">
+          <div className="flex justify-center flex-col">
             <div className={`justify-center flex bg-gray-200 rounded-lg shadow-lg p-4 ${selectedEvents.length >0? '' : 'hidden'}`}> 
               {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-                <Event key={index} Eventprop={event} />
+                 <div className="p-2"><Event key={index} Eventprop={event}/></div> 
               ))}
             </div>
           </div>
