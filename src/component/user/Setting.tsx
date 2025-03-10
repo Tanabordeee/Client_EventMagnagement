@@ -96,9 +96,9 @@ const Setting = () => {
         </div>
             <div className="flex flex-1 justify-center p-6">
                 <div className="bg-gray-200 rounded-lg shadow-lg flex max-sm:flex-col max-sm:bg-inherit">
-                    <div className='flex flex-col justify-center p-5'>
-                        <h1 className="flex justify-center">Picture</h1>
-                        <h1 className="flex justify-center">{user.username}</h1>
+                    <div className='flex flex-col justify-center items-center p-5'>
+                        <img src="https://i.pravatar.cc/150" className="w-50 h-60 object-cover"/>
+                        <h1 className="flex justify-center text-lg font-bold">{user.username}</h1>
                         <h1 className="flex justify-center">{user.userId}</h1>
                     </div>
                     <div className="flex flex-col p-5">
@@ -111,8 +111,10 @@ const Setting = () => {
                         </div>
                     </div>
                 </div>
-                <div className= {`absolute bg-lime-300 backdrop:opacity-20 p-5 top-45 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
-                    Success
+                <div className= {`flex flex-col absolute bg-gray-100  shadow-xl backdrop:opacity-20 p-15 top-15 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
+                    <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
+                    <div className="flex justify-center">Successfully changed</div>
+
                 </div>
             </div>
     </div>

@@ -124,8 +124,9 @@ function AddEvent() {
             </div>
             
         </div>
-        <div className= {`absolute bg-lime-300 backdrop:opacity-20 p-5 top-45 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
-            Already rend
+        <div className= {`flex flex-col absolute bg-gray-50 shadow-xl backdrop:opacity-20 p-15 top-15 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
+            <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
+               <div className="flex justify-center">Already sent</div>
         </div>
     </div>
   )

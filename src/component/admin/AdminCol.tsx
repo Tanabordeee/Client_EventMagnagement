@@ -28,11 +28,11 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
     today.setHours(0, 0, 0, 0);
   
     if (targetDate.getTime() === today.getTime()) {
-      setRunning('⏳Showing')
+      setRunning('https://img.icons8.com/material-sharp/24/clock.png')
     } else if (targetDate < today) {
-      setRunning('End')
+      setRunning('https://img.icons8.com/scribby/100/delete-sign.png')
     } else {
-      setRunning('In coming')
+      setRunning('https://img.icons8.com/color/48/checked--v1.png')
     }
   }, [Eventprop])
 
@@ -58,10 +58,14 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
     <div className="grid grid-cols-6">
         <div className=" border w-auto break-words text-center">
             {new Date(Eventprop.eventDate).toISOString().split('T')[0]}
+            {'\n'}
+            {Eventprop.time}
         </div>
-        <div className=" border w-auto break-words text-center">{Eventprop.eventName}</div>
-        <div className=" border w-auto break-words text-center">{Eventprop.time}</div>
-        <div className=" border w-auto break-words text-center">{running}</div>
+        <div className=" border w-auto break-words text-center">{Eventprop.eventName} </div>
+        <div className=" border w-auto break-words text-center">-</div>
+        <div className="flex justify-center items-center border ">
+          <img src={running} className=" w-auto break-words text-center w-8 h-8"></img>
+        </div>
         <div className=" border w-auto break-words text-center">-</div>
         <div className={`border w-auto break-words text-center hover:cursor-pointer `}
           onClick={change}>
