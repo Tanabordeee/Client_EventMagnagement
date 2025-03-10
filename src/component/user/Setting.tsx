@@ -104,8 +104,8 @@ const Setting = () => {
                     <div className="flex flex-col p-5">
                         <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>
                         <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-email" value={new_email} onChange={onChangeNewemail}/></div>
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-password" value={new_pass} onChange={onChangeNewpass}/></div>
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="re-password" value={re_pass} onChange={onChangeRepass}/></div>
+                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="password" placeholder="new-password" value={new_pass} onChange={onChangeNewpass}/></div>
+                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="password" placeholder="re-password" value={re_pass} onChange={onChangeRepass}/></div>
                         <div className="flex">
                             <button className="flex justify-center items-center ml-auto bg-green-500 m-2 rounded-xl px-2 text-gray-50 hover:bg-green-300" onClick={Clicky}>save</button>
                         </div>

@@ -64,7 +64,7 @@ function Search_club({clicker}: Props) {
                 <div className="flex p-2">
                   <p className="p-2 "><img src={noti_icon} className="w-6 mt-2 object-cover"/></p>
                   <p className="p-2 transition-transform transform hover:scale-125">
-                    <Link to="notification"><img src={history_icon} className="w-6 mt-2 object-cover"/></Link>
+                    <Link to="historyadd"><img src={history_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
                   <p className="p-2 ">
                     <img src={profil_icon} className="w-6 mt-2 object-cover"/>

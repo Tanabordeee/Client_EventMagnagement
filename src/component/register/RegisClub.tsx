@@ -75,9 +75,9 @@ function RegisClub() {
                             {/* email */}
                             <input type="text" placeholder="email" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"  value={email} onChange={onEmailChange}/>
                             {/* password */}
-                            <input type="text" placeholder="password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={password} onChange={onPassChange}/>
+                            <input type="password" placeholder="password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={password} onChange={onPassChange}/>
                             {/* password */}
-                            <input type="text" placeholder="re-password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={repassword} onChange={onRepassChange}/>
+                            <input type="password" placeholder="re-password" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" value={repassword} onChange={onRepassChange}/>
                             <br />
                             <div className="flex justify-between p-1">
                                 <button className="hover:cursor-pointer p-2 rounded-xl text-red-600 hover:text-red-400" onClick={back}>Back</button>

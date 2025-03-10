@@ -84,7 +84,7 @@ function LoginUser() {
                 onChange={onEmailChange}
               />
               <input
-                type="text"
+                type="password"
                 placeholder="password"
                 className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
                 value={password}
