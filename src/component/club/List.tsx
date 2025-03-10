@@ -64,9 +64,9 @@ function List() {
                                                 {new Date(value.eventDate).toISOString().split('T')[0]}
                                             </div>
                                             <div className=" border w-auto break-words text-center">{value.eventName}</div>
-                                            <div className=" border w-auto break-words text-center">Faculty</div>
+                                            <div className=" border w-auto break-words text-center">-</div>
                                             <div className=" border w-auto break-words text-center">{users.username}</div>
-                                            <div className=" border w-auto break-words text-center">Major</div>
+                                            <div className=" border w-auto break-words text-center">-</div>
                                             <div className=" border w-auto break-words text-center">{users.userId}</div>
                                         </div>
                                         

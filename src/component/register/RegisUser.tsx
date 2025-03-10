@@ -39,9 +39,14 @@ function RegisUser() {
                 }
             } catch (error) {
                 console.log("fail");
+                setUsername('');
+                setEmail('');
                 setPassword('');
                 setRepassword('');
             } 
+        }else{
+            setPassword('');
+            setRepassword('');
         }
         
     };

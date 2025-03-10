@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { useState } from 'react'
 
 interface event {
@@ -22,12 +23,14 @@ const  EventClub : React.FC<event> = ({Event}) => {
         <div className="flex justify-between w-80 max-md:50 relative">
             <div className="flex-col  py-2">
                 <img src={Event.image} className='w-50' />
-                <p className= {`p-2 flex justify-center ${Event.status == 'not approve'? 'text-red-500' : 'text-green-500'}`}>{Event.status}</p>
+                <div className= {`p-2 flex justify-center`}>
+                    สถานะ : <div className={`${Event.status == 'not approve'? 'text-red-500' : 'text-green-500'}`}>{Event.status == 'not approve'? '' : 'อนุมัติแล้ว'}</div> 
+                </div>
             </div>
             <div className="flex-col py-2 px-2 ">
                 <h2 className='flex justify-center'>{Event.detail}</h2>
                 {/* <p className='flex justify-center'>description</p> */}
-                <p className='flex justify-center'>{new Date(Event.eventDate).toISOString().split('T')[0]}</p>
+                <p className='flex justify-center'>{dayjs(Event.eventDate).format("YYYY-MM-DD")}</p>
                 <p className='flex justify-center'>{Event.time}</p>
                 <p className='flex justify-center'>contact</p>
                 <div className="flex justify-end">

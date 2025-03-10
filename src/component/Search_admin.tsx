@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import AdminMenu from "./admin/AdminMenu";
 import { Search } from "lucide-react";
+import axios from "axios";
 
 type Props = {
   clicker : boolean;

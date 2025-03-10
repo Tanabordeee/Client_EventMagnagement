@@ -120,9 +120,9 @@ function Calender() {
             </div>
           </div>
           <div className="flex justify-center">
-            <div className={`justify-center flex flex-col bg-gray-200 rounded-lg shadow-lg p-4 ${selectedEvents.length >0? '' : 'hidden'}`}> 
+            <div className={`justify-center flex flex-col ${selectedEvents.length >0? '' : 'hidden'}`}> 
               {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-                 <div className="p-2"><Event key={index} Eventprop={event}/></div> 
+                 <div className="m-2 bg-gray-200 rounded-lg shadow-lg p-4"><Event key={index} Eventprop={event}/></div> 
               ))}
             </div>
           </div>

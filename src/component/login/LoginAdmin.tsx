@@ -19,9 +19,9 @@ function LoginAdmin() {
         setPassword(e.target.value);
     };
     useEffect(() => {
-        // if (user) {
+        if (user) {
         //   navigate('/admin');
-        // }
+        }
       }, [user, navigate]);
     const url = `${import.meta.env.VITE_REACT_API_URL}auth/adminlogin`
     const Clicky = async () => {
@@ -39,7 +39,9 @@ function LoginAdmin() {
                 navigate("/admin");
             }
         } catch (error) {
-            console.log("fail");
+            setAdminname('')
+            setEmail('')
+            setPassword('')
         } 
     };
     const selectLogin =() => {

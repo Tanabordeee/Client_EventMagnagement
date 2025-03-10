@@ -11,10 +11,10 @@ function LoginUser() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // if (user) {
-    //   navigate('/user');
-    // }
-  }, [user, navigate]);
+    if (user) {
+      // navigate('/user');
+    }
+  }, [user]);
 
   const onUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -44,7 +44,9 @@ function LoginUser() {
           navigate("/user");
       }
     } catch (error) {
-      console.log('fail');
+      setUsername('')
+      setEmail('')
+      setPassword('')
     }
   };
 

@@ -62,7 +62,7 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
         <div className=" border w-auto break-words text-center">{Eventprop.eventName}</div>
         <div className=" border w-auto break-words text-center">{Eventprop.time}</div>
         <div className=" border w-auto break-words text-center">{running}</div>
-        <div className=" border w-auto break-words text-center">Requestor</div>
+        <div className=" border w-auto break-words text-center">-</div>
         <div className={`border w-auto break-words text-center hover:cursor-pointer `}
           onClick={change}>
             <div className={`${Status? 'text-green-500': 'text-red-500'}`}>{Status? "Approve" : "Not Approve"}</div> 

@@ -14,7 +14,7 @@ interface dataEvent{
 
 function Favorite() {
   const search = useOutletContext();
-  let url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
+  const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   console.log(url);
   const navigate = useNavigate();
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);

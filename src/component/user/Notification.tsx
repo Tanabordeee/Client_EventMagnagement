@@ -10,6 +10,7 @@ interface dataEvent{
   time : string;
   image : string;
   detail : string,
+  eventID : string,
 }
 
 function Notification() {

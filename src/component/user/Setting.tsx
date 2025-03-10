@@ -28,6 +28,7 @@ const Setting = () => {
     const onChangeRepass = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRe_pass(e.target.value);
     };
+    const [showsuccess, setShowsuccess] = useState(false);
     const Clicky = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}users/update`;
         if(new_name != "" || new_email != "" || new_pass != "" || re_pass != ""){
@@ -39,20 +40,21 @@ const Setting = () => {
                         password: new_pass
                     }, {withCredentials : true,}
                     );
-                    setUser({
-                        username : response.data.username,
-                        userId : response.data.userId
-                    })
+                    
                     
                     console.log(response.data);
                     if(response.data.username == new_name){
-                        console.log(document.cookie);
+                        setUser({
+                            username : response.data.username,
+                            userId : response.data.userId
+                        })
                         setNew_name('');
                         setNew_email('');
                         setNew_pass('');
                         setRe_pass('');
-                        getuser();
+                        changeSuccess();
                     }
+                    
                 } catch (error) {
                     console.log("fail", error);
                     setNew_name('');
@@ -67,24 +69,28 @@ const Setting = () => {
             }
         }
     };
-    const getuser = () => {
-        useEffect(() => {
-            const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`;
-            const fetchuser = async() => {
-                try{
-                    const respon = await axios.get(url, {withCredentials : true});
-                    setUser(respon.data);
-                }catch(error){
-                    console.log("error : " , error);
-                    navigator("/")
-                }
-            };
-            fetchuser();
-        }, []);
+    const changeSuccess = () => {
+        setShowsuccess(true);
+        setTimeout(() => {
+            setShowsuccess(false)
+        }, 3000);
     }
-    getuser();
+    useEffect(() => {
+        const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`;
+        const fetchuser = async() => {
+            try{
+                const respon = await axios.get(url, {withCredentials : true});
+                setUser(respon.data);
+                
+            }catch(error){
+                console.log("error : " , error);
+                // navigator("/")
+            }
+        };
+        fetchuser();
+    }, []);
   return (
-    <div className='flex-1'>
+    <div className='flex-1 relative'>
         <div className="flex flex-1 justify-center text-2xl font-bold p-5">
             <h1>Setting</h1>
         </div>
@@ -105,7 +111,9 @@ const Setting = () => {
                         </div>
                     </div>
                 </div>
-                
+                <div className= {`absolute bg-lime-300 backdrop:opacity-20 p-5 top-45 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
+                    Success
+                </div>
             </div>
     </div>
   )

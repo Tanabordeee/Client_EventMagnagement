@@ -43,7 +43,10 @@ function RegisClub() {
                     navigate("/loginclub");
                 }
             } catch (error) {
-                console.log("fail");
+                setClubname('');
+                setEmail('');
+                setPassword('');
+                setRepassword('');
             } 
         }else{
             setPassword('');

@@ -1,4 +1,5 @@
 import axios from "axios";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
 interface Listevent {
@@ -64,12 +65,12 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
     <div className="grid m-2 max-sm:flex justify-center">
       <div>
         <h2 className='p-2 text-lg font-bold'>{Eventprop.eventName}</h2>
-        <p className='p-2'>{Eventprop.image}</p>
+        <img src={Eventprop.image} className="w-50" />
       </div>
       <div className="flex flex-col justify-center">
-        <button className={`text-xl ${status? 'text-red-500': 'text-green-500'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
+        <button className={`text-xl hover:cursor-pointer ${status? 'text-red-500': 'text-green-500'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
         <p className='p-2 flex justify-center'>เงื่อนไข :{Eventprop.detail}</p>
-        <p className='p-2 flex justify-center'>วันที่ :{Eventprop.eventDate}</p>
+        <p className='p-2 flex justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
         <h2 className='p-2 flex justify-center'>เวลา :{Eventprop.time}</h2>
       </div>
     </div>

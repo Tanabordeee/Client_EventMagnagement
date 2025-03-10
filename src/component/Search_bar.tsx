@@ -18,7 +18,7 @@ function Search_bar ({clicker} : Props) {
   const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
   useEffect(() => {
     if(!user){
-      // navigate("/");
+      navigate("/");
     }
   }, [])
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{

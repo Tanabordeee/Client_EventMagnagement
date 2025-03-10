@@ -48,17 +48,23 @@ function AddEvent() {
             };
         }
     };
+    const [showsuccess, setShowsuccess] = useState(false);
     const send = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         try{
-            const respon = await axios.post(url, {
+            await axios.post(url, {
                 eventName : name,
                 eventDate : date,
                 time : time,
                 image : files,
                 detail : detail,
             }, {withCredentials : true})
-            console.log(respon.data)
+            setName('');
+            setDetail('');
+            setDate('');
+            setTime('');
+            setImagePreview('');
+            changeSuccess();
         }catch(error){
             console.log(error);
         }
@@ -70,8 +76,14 @@ function AddEvent() {
         setTime('');
         setImagePreview('');
     }
+    const changeSuccess = () => {
+        setShowsuccess(true);
+        setTimeout(() => {
+            setShowsuccess(false)
+        }, 3000);
+    }
   return (
-    <div className='flex flex-1 justify-center'>
+    <div className='flex flex-1 justify-center relative'>
         <div className="flex max-sm:flex-col justify-between bg-gray-100 mt-4 max-sm:bg-gray-50 m-2 rounded-xl p-2">
             <div className="flex-col p-3">
                 <div className="text-xl font-bold">Event</div>
@@ -106,11 +118,14 @@ function AddEvent() {
                 <div className="flex justify-center text-sm">เวลา</div>
                 <input type="text"placeholder='Enter Time' value={time} className='flex jusify-center p-2 rounded-xl border border-black' onChange={onTimechange}/>
                 <div className="flex justify-between p-2">
-                    <button className='bg-red-500  hover:bg-red-300 px-2 rounded-xl shadow-xl' onClick={delet}>cancle</button>
-                    <button className='bg-green-500 hover:bg-green-300 px-2 rounded-xl shadow-xl' onClick={send} >send</button>
+                    <button className='bg-red-500  hover:bg-red-300 px-2 rounded-xl shadow-xl text-white text-lg p-1' onClick={delet}>cancle</button>
+                    <button className='bg-green-500 hover:bg-green-300 px-2 rounded-xl shadow-xl text-white text-lg p-1' onClick={send} >send</button>
                 </div>
             </div>
             
+        </div>
+        <div className= {`absolute bg-lime-300 backdrop:opacity-20 p-5 top-45 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
+            Already rend
         </div>
     </div>
   )
