@@ -41,7 +41,7 @@ function Notification() {
       }
     };
     getData();
-  }, []);
+  }, [search]);
   const changeEvent = (index : number) => {
     setEvent(listevent[index]);
   }

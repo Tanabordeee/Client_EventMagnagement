@@ -36,7 +36,7 @@ function Favorite() {
       }
     };
     fetchData();
-  }, [url]);
+  }, [search]);
   console.log(dataevent);
   if(dataevent.length == 0){
     return (
@@ -61,8 +61,8 @@ function Favorite() {
               <div className="flex flex-wrap p-3">
                   {dataevent.map((value, index) => {
                     return(
-                      <div className="w-1/3 max-sm:w-1/1 max-md:w-1/2 flex justify-center items-center pt-10" key={index}>
-                        <div className="bg-gray-200 mx-1 my-3 rounded-xl shadow-lg"><Event Eventprop ={value}/></div>
+                      <div className="w-1/3 max-sm:w-1/1 max-lg:w-1/2 flex justify-center items-center pt-10" key={index}>
+                        <div className="bg-gray-200 mx-1 my-3 rounded-xl shadow-lg px-3"><Event Eventprop ={value}/></div>
                       </div>
                     )
                   })}
