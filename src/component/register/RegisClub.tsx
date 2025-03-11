@@ -8,6 +8,7 @@ function RegisClub() {
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     let navigate = useNavigate();
+    const [succ, setSucc] = useState(false);
     const onClubChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setClubname(e.target.value);
     };
@@ -40,7 +41,7 @@ function RegisClub() {
                 if(response.data.clubName == clubname){
                     console.log(response.data.message);
                     console.log(document.cookie);
-                    navigate("/loginclub");
+                    regissucc();
                 }
             } catch (error) {
                 setClubname('');
@@ -57,6 +58,13 @@ function RegisClub() {
     const back = () => {
         navigate("/loginclub");
     };
+    const regissucc = () => {
+        setSucc(true);
+        setTimeout(() => {
+            setSucc(false);
+            navigate('/loginclub');
+        },3000)
+    }
   return (
     <div>
         <nav className="flex justify-center min-h-screen bg-gray-300 max-sm:bg-gray-50 relative">
@@ -82,10 +90,14 @@ function RegisClub() {
                             <div className="flex justify-between p-1">
                                 <button className="hover:cursor-pointer p-2 rounded-xl text-red-600 hover:text-red-400" onClick={back}>Back</button>
                                 <button className="hover:cursor-pointer bg-green-500 p-2 rounded-xl text-slate-50 hover:bg-stone-300 hover:text-green-500" onClick={Clicky}>Register</button>
-                                </div>
                             </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div className= {`flex flex-col absolute bg-gray-50 shadow-xl backdrop:opacity-20 p-15 top-35 rounded-xl ${succ? '' : 'hidden'}`}>
+                <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
+               <div className="flex justify-center">Already sent</div>
             </div>
         </nav>
     </div>

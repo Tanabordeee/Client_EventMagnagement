@@ -62,7 +62,7 @@ function LoginClub() {
                 <br />
                 <div className="grid p-4">
                     {/* username */}
-                    <input type="text" placeholder="username" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onClubChange}/>
+                    <input type="text" placeholder="clubname" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onClubChange}/>
                     {/* email */}
                     <input type="text" placeholder="email" className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110" onChange={onEmailChange}/>
                     {/* password */}

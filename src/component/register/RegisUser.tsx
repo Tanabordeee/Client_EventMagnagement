@@ -7,6 +7,7 @@ function RegisUser() {
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     let navigate = useNavigate();
+    const [succ, setSucc] = useState(false);
     const onUserChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setUsername(e.target.value);
     };
@@ -35,7 +36,7 @@ function RegisUser() {
                 if(response.data.username == username){
                     console.log(response.data.message);
                     console.log(document.cookie);
-                    navigate("/loginuser");
+                    regissucc();
                 }
             } catch (error) {
                 console.log("fail");
@@ -52,6 +53,13 @@ function RegisUser() {
     };
     const back = () => {
         navigate("/loginuser");
+    }
+    const regissucc = () => {
+        setSucc(true);
+        setTimeout(() => {
+            setSucc(false);
+            navigate('/loginuser');
+        },3000)
     }
   return (
     <div>
@@ -81,6 +89,10 @@ function RegisUser() {
                             </div>
                     </div>
                 </div>
+            </div>
+            <div className= {`flex flex-col absolute bg-gray-50 shadow-xl backdrop:opacity-20 p-15 top-35 rounded-xl ${succ? '' : 'hidden'}`}>
+                <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
+               <div className="flex justify-center">Already sent</div>
             </div>
         </nav>
     </div>
