@@ -8,9 +8,9 @@ function ClubMenu() {
     "List",
   ]
   const logo: string[] = [
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587598545191023/homee.png?ex=67cc5e40&is=67cb0cc0&hm=ca20d63cf2ea6817c81df8ed7a8c92a33e026cb65fa3591406a8c6d8bb54a50c&=&format=webp&quality=lossless",
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless",
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587598796984342/list.png?ex=67cc5e40&is=67cb0cc0&hm=9f732c5dcb83da629f0b3feaead209c18e33054c83b139873af1961a46acdd0a&=&format=webp&quality=lossless",
+    "https://img.icons8.com/windows/32/today.png",
+    "https://img.icons8.com/material-rounded/24/time-machine.png",
+    "https://img.icons8.com/windows/32/clipboard-list.png",
   ]
   const path: string[] = [
     "addevent",
@@ -46,7 +46,7 @@ function ClubMenu() {
                 key = {index}
                 onClick={() => Clicky(index)} 
                 className= {`text-xl p-2 ${isSelect ? 'text-red-500' : 'text-gray-900'}`}>
-                <Link to = {path[index]}> <div className="flex transition-transform transform hover:scale-110"><img src= {logo[index]} className="w-5 h-5 mt-2 mx-2 object-cover" /><div className="flex justify-start h-10 w-30 mt-1">{text[index]}</div></div> </Link>
+                <Link to = {path[index]}> <div className="flex transition-transform transform hover:scale-110"><img src= {logo[index]} className="w-6 h-6 mt-2 mx-2 object-cover" /><div className="flex justify-start h-10 w-30 mt-1">{text[index]}</div></div> </Link>
               </button>
             ))}
           </div>

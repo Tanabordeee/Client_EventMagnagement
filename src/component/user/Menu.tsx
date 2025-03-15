@@ -9,10 +9,10 @@ function Menu() {
     "Setting",
   ]
   const logo: string[] = [
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587598545191023/homee.png?ex=67cc5e40&is=67cb0cc0&hm=ca20d63cf2ea6817c81df8ed7a8c92a33e026cb65fa3591406a8c6d8bb54a50c&=&format=webp&quality=lossless",
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587598092341340/fav.png?ex=67cc5e40&is=67cb0cc0&hm=02349ac173c77abd8a30a02bed92545c141a39c79dcee54eb54962f0b53229d7&=&format=webp&quality=lossless",
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless",
-    "https://media.discordapp.net/attachments/1344393907634573434/1347587599870595257/setting.png?ex=67cc5e40&is=67cb0cc0&hm=1cd7dd212e17456eb8a7b628643ee7e98615e77735611083e6883b2a961b3e99&=&format=webp&quality=lossless",
+    "https://img.icons8.com/windows/32/home.png",
+    "https://img.icons8.com/windows/32/like--v1.png",
+    "https://img.icons8.com/windows/32/appointment-reminders--v1.png",
+    "https://img.icons8.com/windows/32/settings--v1.png",
   ]
   const path: string[] = [
     "calender",
