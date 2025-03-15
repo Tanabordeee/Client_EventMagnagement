@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState  } from "react";
 import { useOutletContext } from "react-router-dom";
 import AdminCol from "./AdminCol";
-import { useNavigate } from "react-router-dom";
 interface Event{
     eventID : string;
     eventName : string;
@@ -13,7 +12,6 @@ interface Event{
     details :string;
 };
 function Manage() {
-    const navigate = useNavigate();
     const [histevent, setHistevent] = useState<Event[]>([]);
     const search = useOutletContext();
     let url = `${import.meta.env.VITE_REACT_API_URL}event/getallbyadmin`;
