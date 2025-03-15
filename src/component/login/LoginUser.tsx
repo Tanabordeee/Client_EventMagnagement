@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState, } from 'react'; // เพิ่ม useEffect
+import { useEffect, useState, } from 'react'; // เพิ่ม useEffect
 import { useNavigate } from 'react-router-dom';
 
 function LoginUser() {
@@ -7,7 +7,28 @@ function LoginUser() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState(''); 
   const navigate = useNavigate();
+  useEffect(() => {
+    const user = localStorage.getItem('user')
+    if(!user){
+      navigate("/");
+      return;
+    }
+    const verifyUser = async () => {
+      try {
+        const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verify`, { userId : user });
 
+        if (!response.data.isValid) {
+          navigate("/"); 
+        }else{
+          navigate("/user")
+        }
+      } catch (error) {
+        console.error("Error verifying user:", error);
+        navigate("/");
+      }
+    };
+    verifyUser();
+  }, []);
   const onUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
