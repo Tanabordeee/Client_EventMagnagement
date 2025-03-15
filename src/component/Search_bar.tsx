@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react"
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useAuth } from "../AuthContext";
 import Menu from "./user/Menu";
 import { Search } from "lucide-react";
+import axios from "axios";
 
 type Props = {
   clicker : boolean;
 }
 function Search_bar ({clicker} : Props) {
   const [search, setSearch] = useState('');
-  const {user} = useAuth();
   const [isclick , setIsclick] = useState(clicker)
   const navigate = useNavigate();
   const [gosearch, setGosearch] = useState('')
@@ -17,10 +16,25 @@ function Search_bar ({clicker} : Props) {
   const history_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless'
   const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
   useEffect(() => {
+    const user = localStorage.getItem('user')
     if(!user){
       navigate("/");
+      return;
     }
-  }, [])
+    const verifyUser = async () => {
+      try {
+        const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verify`, { userId : user });
+
+        if (!response.data.isValid) {
+          navigate("/"); 
+        }
+      } catch (error) {
+        console.error("Error verifying user:", error);
+        navigate("/");
+      }
+    };
+    verifyUser();
+  }, []);
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
     setSearch(e.target.value);
   };

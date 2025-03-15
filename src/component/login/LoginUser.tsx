@@ -1,20 +1,12 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react'; // เพิ่ม useEffect
+import { useState, } from 'react'; // เพิ่ม useEffect
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../AuthContext'; // ใช้ useAuth
 
 function LoginUser() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const { user, setUser } = useAuth(); 
+  const [password, setPassword] = useState(''); 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      // navigate('/user');
-    }
-  }, [user]);
 
   const onUserChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
@@ -37,9 +29,8 @@ function LoginUser() {
         },
         { withCredentials: true }
       );
-      setUser(response.data.user);
+      localStorage.setItem('user' , response.data.user.userId);
       if(response.data.message == 'Login Successfully'){
-          console.log(response.data.message);
           console.log(document.cookie);
           navigate("/user");
       }

@@ -1,13 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../AuthContext";
 
 function LoginClub() {
     const [club, setClub] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { user, setUser } = useAuth(); 
     let navigate = useNavigate();
     const onClubChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setClub(e.target.value);
@@ -18,11 +16,7 @@ function LoginClub() {
     const onPassChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setPassword(e.target.value);
     };
-    useEffect(() => {
-        if (user) {
-            // navigate('/club');
-        }
-        }, [user, navigate]);
+
     const Clicky = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}auth/clublogin`;
         try{
@@ -32,7 +26,7 @@ function LoginClub() {
                 password
             }, {withCredentials : true,}
             );
-            setUser(response.data.user);
+            localStorage.setItem('club' , response.data.user);
             if(response.data.message == 'Login Successfully'){
                 console.log(response.data.message);
                 console.log(document.cookie);

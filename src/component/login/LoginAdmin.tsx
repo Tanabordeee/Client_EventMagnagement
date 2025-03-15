@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useAuth } from "../../AuthContext";
 
 function LoginAdmin() {
     const [adminname, setAdminname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { user, setUser } = useAuth(); 
     let navigate = useNavigate();
     const onAdminChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setAdminname(e.target.value);
@@ -18,11 +16,6 @@ function LoginAdmin() {
     const onPassChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setPassword(e.target.value);
     };
-    useEffect(() => {
-        if (user) {
-        //   navigate('/admin');
-        }
-      }, [user, navigate]);
     const url = `${import.meta.env.VITE_REACT_API_URL}auth/adminlogin`
     const Clicky = async () => {
         try{
@@ -32,7 +25,6 @@ function LoginAdmin() {
                 password: password
             }, {withCredentials : true,}
             );
-            setUser(response.data.user);
             if(response.data.message == 'Login Successfully'){
                 console.log(response.data.message);
                 console.log(document.cookie);
