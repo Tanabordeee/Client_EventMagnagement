@@ -5,7 +5,6 @@ type Searching = {
     search : string;
 }
 function Filter({search}: Searching) {
-    // console.log(search);
     const option : string[] = [
         "consert",
         "event",

@@ -23,7 +23,6 @@ function Notification() {
     const getData = async() => {
       try{
         const respon = await axios.get(url, {withCredentials : true});
-        console.log(respon.data)
         if(respon.data.events.length > 0){
           if(search){
             const searcher = respon.data.events.filter((item :dataEvent) => item.eventName === search)

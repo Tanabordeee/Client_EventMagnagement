@@ -29,7 +29,6 @@ const EventDetail: React.FC<Listevent> = ({Eventprop}) => {
         const fetchstatus = async() => {
           try{
             const response = await axios.get(url, {withCredentials :true})
-            console.log(response.data.events);
             setEvents(response.data.events);
           }catch(error){
             console.log("error : " , error);
@@ -44,11 +43,8 @@ const EventDetail: React.FC<Listevent> = ({Eventprop}) => {
       }, [events]);
     
       const mapstatus = () => {
-        console.log("run");
-        console.log(events);
         const isadd = events.some(event => event.eventID === Eventprop.eventID)
         setStatus(isadd);
-        console.log(isadd);
       }
       const changestatus = async () => {
         const url_fav = status? `${import.meta.env.VITE_REACT_API_URL}event/unfavorite/${Eventprop.eventID}`:

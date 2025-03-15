@@ -15,7 +15,6 @@ interface dataEvent{
 function Favorite() {
   const search = useOutletContext();
   const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
-  console.log(url);
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
   useEffect(() => {
     const fetchData = async() => {
@@ -36,7 +35,6 @@ function Favorite() {
     };
     fetchData();
   }, [search]);
-  console.log(dataevent);
   if(dataevent.length == 0){
     return (
       <>

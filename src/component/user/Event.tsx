@@ -45,11 +45,8 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
   }, [events]);
 
   const mapstatus = () => {
-    console.log("run");
-    console.log(events);
     const isadd = events.some(event => event.eventID === Eventprop.eventID)
     setStatus(isadd);
-    console.log(isadd);
   }
   const changestatus = async () => {
     const url_fav = status? `${import.meta.env.VITE_REACT_API_URL}event/unfavorite/${Eventprop.eventID}`:

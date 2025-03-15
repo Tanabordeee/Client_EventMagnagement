@@ -24,7 +24,6 @@ function Calender() {
   const search = useOutletContext();
   let url = search? `${import.meta.env.VITE_REACT_API_URL}event/namebyuser?eventName=${search}`:
     `${import.meta.env.VITE_REACT_API_URL}event/byuser`
-  console.log(url);
   useEffect(() => {
     
     const fetchData = async() => {
@@ -34,7 +33,6 @@ function Calender() {
           ...item,
           eventDate: dayjs(item.eventDate).format("YYYY-MM-DD")
         }));
-        console.log("Fetched Events (Formatted):", extractedEvents);
         setApiEvents(extractedEvents);
       }catch(error){
         // navigate('/')
@@ -43,7 +41,6 @@ function Calender() {
     fetchData();
   }, [url]);
   
-  console.log(apiEvents)
   const startOfMonth = currentDate.startOf("month");
   const daysInMonth = currentDate.daysInMonth();
   const firstDayOfWeek = startOfMonth.day();
