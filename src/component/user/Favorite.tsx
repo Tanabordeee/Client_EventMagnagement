@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Event from "./Event"
 import axios from "axios"
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 interface dataEvent{
   eventName : string,
@@ -16,7 +16,6 @@ function Favorite() {
   const search = useOutletContext();
   const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   console.log(url);
-  const navigate = useNavigate();
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
   useEffect(() => {
     const fetchData = async() => {

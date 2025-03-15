@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 interface User {
     username : string;
@@ -15,7 +14,6 @@ const Setting = () => {
         username : '',
         userId : ''
     });
-    const navigator = useNavigate();
     const onChangeNewname = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNew_name(e.target.value);
     };

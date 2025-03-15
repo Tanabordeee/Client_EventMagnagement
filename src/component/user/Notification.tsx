@@ -1,4 +1,4 @@
-import { useNavigate, useOutletContext } from "react-router-dom";
+import {  useOutletContext } from "react-router-dom";
 import EventDetail from "./noti_com/EventDetail"
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -16,7 +16,6 @@ interface dataEvent{
 function Notification() {
   const search = useOutletContext();
   let url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
-  const navigate = useNavigate();
   const [listevent, setListevent] = useState<dataEvent[]>([]);
   const [event, setEvent] = useState<dataEvent | null>(null);
   const [select, setSelct] = useState<Boolean[]>([]);

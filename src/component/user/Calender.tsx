@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import Event from './Event'
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import {useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import dayjs, {Dayjs} from "dayjs";
@@ -22,7 +22,6 @@ function Calender() {
   const [apiEvents, setApiEvents] = useState<dataEvent[]>([]);
   const [selectedEvents, setSelectedEvents] = useState<dataEvent[]>([]);
   const search = useOutletContext();
-  const navigate = useNavigate()
   let url = search? `${import.meta.env.VITE_REACT_API_URL}event/namebyuser?eventName=${search}`:
     `${import.meta.env.VITE_REACT_API_URL}event/byuser`
   console.log(url);

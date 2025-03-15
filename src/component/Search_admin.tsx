@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import AdminMenu from "./admin/AdminMenu";
 import { Search } from "lucide-react";
-import axios from "axios";
 
 type Props = {
   clicker : boolean;
@@ -13,7 +12,6 @@ function Search_admin
     const [search, setSearch] = useState('');
     const {user} = useAuth();
     const [isclick , setIsclick] = useState(clicker)
-    const navigate = useNavigate();
     const [gosearch, setGosearch] = useState('')
     const profil_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587600101277696/username.png?ex=67cc5e40&is=67cb0cc0&hm=91754899ada0764339793ae27f1c7399085a8b180a3fc8f64f2b59e524e0c953&=&format=webp&quality=lossless'
   const history_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless'
