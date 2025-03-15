@@ -95,7 +95,7 @@ const Setting = () => {
             <div className="flex flex-1 justify-center p-6">
                 <div className="bg-gray-200 rounded-lg shadow-lg flex max-sm:flex-col max-sm:bg-inherit">
                     <div className='flex flex-col justify-center items-center p-5'>
-                        <img src="https://i.pravatar.cc/150" className="w-50 h-60 object-cover"/>
+                        <img src="https://img2.pic.in.th/pic/human-icon-symbol-design-illustration-vector.jpg" className="w-50 h-60 object-cover"/>
                         <h1 className="flex justify-center text-lg font-bold">{user.username}</h1>
                         <h1 className="flex justify-center">{user.userId}</h1>
                     </div>
