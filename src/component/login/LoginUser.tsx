@@ -10,7 +10,6 @@ function LoginUser() {
   useEffect(() => {
     const user = localStorage.getItem('user')
     if(!user){
-      navigate("/");
       return;
     }
     const verifyUser = async () => {
