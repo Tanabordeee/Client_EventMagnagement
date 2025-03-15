@@ -11,9 +11,9 @@ function Search_club({clicker}: Props) {
     // const {user} = useAuth();
     const [isclick , setIsclick] = useState(clicker)
     const [gosearch, setGosearch] = useState('')
-    const profil_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587600101277696/username.png?ex=67cc5e40&is=67cb0cc0&hm=91754899ada0764339793ae27f1c7399085a8b180a3fc8f64f2b59e524e0c953&=&format=webp&quality=lossless'
-  const history_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587598314508428/history.png?ex=67cc5e40&is=67cb0cc0&hm=7f4b89d45738ebbc8b2b075734e7838359762ba4f581a34f32eecc372fb8d0bb&=&format=webp&quality=lossless'
-  const noti_icon = 'https://media.discordapp.net/attachments/1344393907634573434/1347587599279194264/noti.png?ex=67cc5e40&is=67cb0cc0&hm=5bbf70f05d48995765a4186c4072c9c4f4d21ac5006a366c2cd50ca11fca71b8&=&format=webp&quality=lossless'
+    const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
+    const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
+    const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
     const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
       setSearch(e.target.value);
     };
