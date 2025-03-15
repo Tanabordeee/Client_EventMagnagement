@@ -45,6 +45,10 @@ function Search_bar ({clicker} : Props) {
     setGosearch(search);
     setSearch('');
   }
+  const logout = ()=>{
+    localStorage.removeItem("user");
+    navigate("/");
+  }
   return (
     <div className="flex">
       <div className={`${isclick ? "" : "hidden"}`}>
@@ -90,6 +94,7 @@ function Search_bar ({clicker} : Props) {
                   <p className="p-2 transition-transform transform hover:scale-125">
                     <Link to="setting" ><img src={profil_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
+                  <button className="p-2 border rounded-xl text-sm pointer-events-auto hover:bg-red-200" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
