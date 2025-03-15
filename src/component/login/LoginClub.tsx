@@ -70,7 +70,7 @@ function LoginClub() {
       ) : (
         <nav className="flex justify-center min-h-screen bg-gray-300 max-sm:bg-gray-50 relative">
           <div className="flex flex-1 justify-center items-center bg-gray-50 shasow-xl rounded-xl m-4 ">
-            <div className="items-center rounded-xl p-6  rounded-xl p-20 shadow-xl border-gray-100   max-sm:bg-gray-200">
+            <div className="items-center rounded-xl p-10 md:p-20  rounded-xl shadow-xl border-gray-100   max-sm:bg-gray-200">
               <div className="text-lg justify-center flex items-center flex-col">
                 <img
                   src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0"
