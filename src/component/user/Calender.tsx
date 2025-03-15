@@ -70,7 +70,7 @@ function Calender() {
       days.push(
         <div
           key={i}
-          className={`p-2 flex  transition-transform transform hover:scale-110 justify-center items-center rounded-xl w-10 h-10 cursor-pointer transition border border-black 
+          className={`p-2 flex md:w-full h-[80%] p-5 transition-transform transform hover:scale-110 justify-center items-center rounded-xl cursor-pointer transition border border-black 
             ${isHighlighted ? "bg-yellow-300" : ""} 
             ${isSelected ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
           onClick={() => handleDateClick(date)}
@@ -85,12 +85,12 @@ function Calender() {
 
   // console.log(dataevent);
   return (
-    <div className="flex-1 p-3">
-        <h2 className='py-3 px-7 text-2xl font-bold'>Calender</h2>
+    <div className="flex-1 p-3 ">
+        <h2 className='py-10 px-7 text-2xl font-bold'>Calender</h2>
         <div className="flex flex-1 max-sm:flex-col justify-center">
-          <div className="flex max-sm:flex-col justify-between">
-            <div className="flex-1 p-2 flex justify-center">
-              <div className="w-80 bg-white shadow-lg rounded-lg p-4">
+          <div className="flex max-sm:flex-col justify-between w-full">
+            <div className="flex-1 p- flex justify-center">
+              <div className="w-full h-[100%] bg-white shadow-lg rounded-lg p-5">
                 <div className="bg-green-400 rounded-xl p-2">
                   <div className="flex justify-between items-center">
                     <button onClick={prevMonth} className="p-2">
@@ -115,10 +115,10 @@ function Calender() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className={`justify-center flex flex-col ${selectedEvents.length >0? '' : 'hidden'}`}> 
+          <div className="flex justify-center w-full">
+            <div className={`w-full md:h-[100%] justify-center flex flex-col ${selectedEvents.length >0? '' : 'hidden'}`}> 
               {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-                 <div className="m-2 bg-gray-200 rounded-lg shadow-lg p-4"><Event key={index} Eventprop={event}/></div> 
+                 <div className="m-2 w-full md:h-[100%] flex justify-center item-center bg-gray-200 rounded-lg shadow-lg p-3"><Event key={index} Eventprop={event}/></div> 
               ))}
             </div>
           </div>
@@ -127,5 +127,4 @@ function Calender() {
     </div>
   )
 }
-
 export default Calender

@@ -59,16 +59,16 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
     }
   }
   return (
-    <div className="grid m-2 max-sm:flex justify-center">
+    <div className="grid m-2 max-sm:flex justify-center gap-1">
       <div>
-        <h2 className='p-2 text-lg font-bold'>{Eventprop.eventName}</h2>
-        <img src={Eventprop.image} className="w-50" />
+        <h2 className='p-5 text-lg md:text-5xl text-center font-bold'>{Eventprop.eventName}</h2>
+        <img src={Eventprop.image} className="max-w-full rounded-lg" />
       </div>
       <div className="flex flex-col justify-center">
-        <button className={`text-xl hover:cursor-pointer ${status? 'text-red-500': 'text-green-500'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
-        <p className='p-2 flex justify-center'>เงื่อนไข :{Eventprop.detail}</p>
-        <p className='p-2 flex justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
-        <h2 className='p-2 flex justify-center'>เวลา :{Eventprop.time}</h2>
+        <button className={`text-xl md:text-2xl border rounded-xl p-5 bg-green-200 hover:cursor-pointer ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
+        <p className='p-2 flex md:text-xl justify-center'>เงื่อนไข :{Eventprop.detail}</p>
+        <p className='p-2 flex md:text-xl justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
+        <h2 className='p-2 flex md:text-xl justify-center'>เวลา :{Eventprop.time}</h2>
       </div>
     </div>
   )
