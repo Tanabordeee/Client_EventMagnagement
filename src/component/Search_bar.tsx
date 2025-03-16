@@ -23,7 +23,7 @@ function Search_bar ({clicker} : Props) {
     }
     const verifyUser = async () => {
       try {
-        const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verify`, { userId : user });
+        const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verifyuser`, { userId : user });
 
         if (!response.data.isValid) {
           navigate("/"); 

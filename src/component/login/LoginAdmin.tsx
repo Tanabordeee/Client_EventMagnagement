@@ -33,6 +33,7 @@ function LoginAdmin() {
       );
       setload(false);
       if (response.data.message == "Login Successfully") {
+        localStorage.setItem("admin", response.data.user.adminID)
         navigate("/admin");
       } else {
         Swal.fire({

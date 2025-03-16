@@ -1,14 +1,34 @@
-import {useState } from "react"
-import { Link, Outlet} from "react-router-dom";
+import {useEffect, useState } from "react"
+import { Link, Outlet, useNavigate} from "react-router-dom";
 import ClubMenu from "./club/ClubMenu";
 import { Search } from "lucide-react";
-
+import axios from "axios";
 type Props = {
   clicker : boolean;
 }
 function Search_club({clicker}: Props) {
     const [search, setSearch] = useState('');
     // const {user} = useAuth();
+    useEffect(() => {
+      const user = localStorage.getItem('club')
+      if(!user){
+        navigate("/");
+        return;
+      }
+      const verifyUser = async () => {
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verifyclub`, { clubId : user });
+          if (!response.data.isValid) {
+            navigate("/"); 
+          }
+        } catch (error) {
+          console.error("Error verifying club:", error);
+          navigate("/");
+        }
+      };
+      verifyUser();
+    }, []);
+    const navigate = useNavigate();
     const [isclick , setIsclick] = useState(clicker)
     const [gosearch, setGosearch] = useState('')
     const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
@@ -23,6 +43,10 @@ function Search_club({clicker}: Props) {
     const searching = () => {
       setGosearch(search);
       setSearch('');
+    }
+    const logout = ()=>{
+      localStorage.removeItem("club");
+      navigate("/");
     }
   return (
     <div className="flex">
@@ -67,6 +91,7 @@ function Search_club({clicker}: Props) {
                   <p className="p-2 ">
                     <img src={profil_icon} className="w-6 mt-2 object-cover"/>
                   </p>
+                  <button className="p-2 border rounded-xl text-sm pointer-events-auto hover:bg-red-200" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>

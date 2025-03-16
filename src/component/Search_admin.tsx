@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import AdminMenu from "./admin/AdminMenu";
 import { Search } from "lucide-react";
+import axios from "axios";
 
 type Props = {
   clicker : boolean;
@@ -9,17 +10,32 @@ type Props = {
 function Search_admin
 ({clicker} : Props) {
     const [search, setSearch] = useState('');
+    const navigate = useNavigate();
     const [isclick , setIsclick] = useState(clicker)
     const [gosearch, setGosearch] = useState('')
     const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
     const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
     const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
     useEffect(() => {
-
-      // if(!user){
-      //   // navigate("/");
-      // }
-    }, [])
+      const user = localStorage.getItem('admin')
+      if(!user){
+        navigate("/");
+        return;
+      }
+      const verifyUser = async () => {
+        try {
+          const response = await axios.post(`${import.meta.env.VITE_REACT_API_URL}auth/verifyadmin`, { adminID : user });
+  
+          if (!response.data.isValid) {
+            navigate("/"); 
+          }
+        } catch (error) {
+          console.error("Error verifying admin:", error);
+          navigate("/");
+        }
+      };
+      verifyUser();
+    }, []);
     const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
       setSearch(e.target.value);
     };
@@ -29,6 +45,10 @@ function Search_admin
     const searching = () => {
       setGosearch(search);
       setSearch('');
+    }
+    const logout = ()=>{
+      localStorage.removeItem("admin");
+      navigate("/");
     }
     return (
       <div className="flex">
@@ -75,6 +95,7 @@ function Search_admin
                   <p className="p-2">
                     <img src={profil_icon} className="w-6 mt-2 object-cover"/>
                   </p>
+                  <button className="p-2 border rounded-xl text-sm pointer-events-auto hover:bg-red-200" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>

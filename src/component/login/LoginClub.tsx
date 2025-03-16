@@ -33,8 +33,9 @@ function LoginClub() {
         { withCredentials: true }
       );
       setload(false);
-      localStorage.setItem("club", response.data.user);
+      console.log(response);
       if (response.data.message == "Login Successfully") {
+        localStorage.setItem("club", response.data.user.clubID);
         console.log(response.data.message);
         console.log(document.cookie);
         navigate("/club");
