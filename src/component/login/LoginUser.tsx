@@ -18,7 +18,7 @@ function LoginUser() {
       try {
         setload(true);
         const response = await axios.post(
-          `${import.meta.env.VITE_REACT_API_URL}auth/verify`,
+          `${import.meta.env.VITE_REACT_API_URL}auth/verifyuser`,
           { userId: user }
         );
         setload(false);
