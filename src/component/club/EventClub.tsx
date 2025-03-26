@@ -18,11 +18,11 @@ const  EventClub : React.FC<event> = ({Event}) => {
         setIsclick(!isclick);
     }
   return (
-    <div className={`grid p-2 justify-center m-3 bg-gray-300 rounded-xl shadow-lg ${isclick? 'transition-transform transform scale-125' : ''}`}>
+    <div className={`grid p-2 justify-center m-3 bg-[#E7E9EC] rounded-xl shadow-lg ${isclick? 'transition-transform transform scale-125' : ''}`}>
         <h2 className='p-2 text-lg font-bold justify-center flex'>{Event.eventName}</h2>
-        <div className="flex justify-between w-80 max-md:50 relative">
+        <div className="flex justify-between w-90 px-3 max-md:50 relative">
             <div className="flex-col  py-2">
-                <img src={Event.image} className='w-50' />
+                <img src={Event.image} className='w-50 h-40 rounded-xl object-cover' />
                 <div className= {`p-2 flex justify-center`}>
                     สถานะ : <div className={`${Event.status == 'not approve'? 'text-red-500' : 'text-green-500'}`}>{Event.status == 'not approve'? '' : 'อนุมัติแล้ว'}</div> 
                 </div>

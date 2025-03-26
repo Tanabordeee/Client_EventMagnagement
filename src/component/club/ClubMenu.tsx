@@ -39,7 +39,7 @@ function ClubMenu() {
         <div className="shadow-lg justify-center  items-center flex pb-4 pt-3">
         <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className="w-40 m-2" onClick={logout}/>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 w-50">
           <div className="flex-col flex py-5">
             {isSelect.map((isSelect , index) => (
               <button

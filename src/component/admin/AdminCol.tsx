@@ -30,7 +30,7 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
     if (targetDate.getTime() === today.getTime()) {
       setRunning('https://img.icons8.com/material-sharp/24/clock.png')
     } else if (targetDate < today) {
-      setRunning('https://img.icons8.com/scribby/100/delete-sign.png')
+      setRunning('https://img.icons8.com/?size=100&id=59754&format=png&color=D32727')
     } else {
       setRunning('https://img.icons8.com/color/48/checked--v1.png')
     }
@@ -67,10 +67,18 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
           <img src={running} className=" w-auto break-words text-center w-8 h-8"></img>
         </div>
         <div className=" border w-auto break-words text-center">-</div>
-        <div className={`border w-auto break-words text-center hover:cursor-pointer `}
-          onClick={change}>
-            <div className={`${Status? 'text-green-500': 'text-red-500'}`}>{Status? "Approve" : "Not Approve"}</div> 
+        <div className="border w-auto break-words text-center">
+          <div className="flex max-md:flex-col text-center justify-center">
+            <div className={`${Status? 'text-green-500': 'text-red-500'}`}>{Status? "Approve" : "Not Approve"}</div>
+            <div className={`w-auto break-words text-center hover:cursor-pointer px-2 `}
+              onClick={change}>
+                 <button className= {`text-sm border px-2 rounded-xl text-white ${Status? 'bg-red-400': 'bg-green-400'}`}>{Status? "ยกเลิก" : "ตกลง"}</button>
+            </div>
+            
+          </div>
+          
         </div>
+        
     </div>
   )
 }

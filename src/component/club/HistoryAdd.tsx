@@ -38,11 +38,11 @@ function HistoryAdd() {
   return (
     <div>
         <div className="m-4">
-            <div className="flex text-xl font-bold p-4">History</div>
+            <div className="flex text-3xl font-bold p-4 pt-10">History</div>
             <div className="flex flex-wrap p-3">
                 {histevent.map(value => {
                     return(
-                        <div className="xl:w-1/3 w-1/2 max-sm:w-1/1 flex justify-center items-center pt-10">
+                        <div className="2xl:w-1/3 w-1/2 max-lg:w-1/1 flex justify-center items-center pt-10">
                             <div className=" mx-3 my-2 rounded-xl"><EventClub Event = {value}/></div>
                         </div>
                     )
