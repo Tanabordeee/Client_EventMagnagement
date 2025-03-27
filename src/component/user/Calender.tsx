@@ -70,7 +70,7 @@ function Calender() {
       days.push(
         <div
           key={i}
-          className={`p-2 flex md:w-full h-[80%] p-5 transition-transform transform hover:scale-110 justify-center items-center rounded-xl cursor-pointer transition border border-black 
+          className={`p-3 md:p-5 flex md:w-full h-[80%] transition-transform transform hover:scale-110 justify-center items-center rounded-xl cursor-pointer transition border border-black 
             ${isHighlighted ? "bg-yellow-300" : ""} 
             ${isSelected ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
           onClick={() => handleDateClick(date)}
