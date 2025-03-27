@@ -52,7 +52,7 @@ function Search_admin
     }
     return (
       <div className="flex">
-      <div className={`${isclick ? "" : "hidden"}`}>
+      <div className={`sm:hidden ${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
           <AdminMenu />
         </div>
@@ -101,7 +101,7 @@ function Search_admin
             </div>
           </div>
 
-          <div className={`min-h-screen bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8${isclick ? "opacity-20 pointer-events-none" : ""}`}>
+          <div className={` bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8 ${isclick ? "max-sm:opacity-20" : ""}`}>
             <Outlet context={gosearch}/>
           </div>
         </div>

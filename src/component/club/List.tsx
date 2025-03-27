@@ -35,9 +35,7 @@ function List() {
         }
         };
         getData();
-        console.log(histevent);
     }, [search]);
-    console.log(histevent);
     return (
         <div className="p-4 ">
             <div className ="flex-col overflow-x-auto">
@@ -51,9 +49,6 @@ function List() {
                     <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">ID</div>
                 </div>
                     {(histevent).map((value, index) => {
-                        console.log("value : ",value);
-                        console.log("value user :", value.users);
-                        // const userCount = value.users ? value.users.length : 0;
                         return(
                             <div key={index}>
                                 {(value.users).map((users, userindex) => {

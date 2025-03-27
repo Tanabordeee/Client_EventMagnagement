@@ -59,7 +59,6 @@ function LoginUser() {
       setload(false);
       localStorage.setItem("user", response.data.user.userId);
       if (response.data.message == "Login Successfully") {
-        console.log(document.cookie);
         navigate("/user");
       }else{
         Swal.fire({

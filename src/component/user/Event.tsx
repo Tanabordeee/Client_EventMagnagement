@@ -29,7 +29,6 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
     const fetchstatus = async() => {
       try{
         const response = await axios.get(url_getprofile, {withCredentials :true})
-        console.log(response.data.events);
         setEvents(response.data.events);
       }catch(error){
         console.log("error : " , error);
@@ -60,12 +59,13 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
   }
   return (
     <div className="grid m-2 max-sm:flex justify-center gap-1">
-      <div>
-        <h2 className='p-5 text-lg md:text-5xl text-center font-bold'>{Eventprop.eventName}</h2>
-        <img src={Eventprop.image} className="w-80 h-60 rounded-xl object-cover" />
+      <div className="flex flex-col items-center">
+        <h2 className='p-5 text-lg md:text-3xl text-center font-bold'>{Eventprop.eventName}</h2>
+        <img src={Eventprop.image} className="max-lg:w-50 max-lg:h-30 w-80 h-60 rounded-xl object-cover" />
       </div>
       <div className="flex flex-col justify-center">
-        <button className={`text-xl md:text-2xl border rounded-xl p-5 bg-green-200 hover:cursor-pointer ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>
+        <button className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 bg-green-200 hover:cursor-pointer 
+          hover:bg-stone-300  ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={changestatus}>{status? 'Cancel' : 'Apply'}</button>
         <p className='p-2 flex md:text-xl justify-center'>เงื่อนไข :{Eventprop.detail}</p>
         <p className='p-2 flex md:text-xl justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
         <h2 className='p-2 flex md:text-xl justify-center'>เวลา :{Eventprop.time}</h2>

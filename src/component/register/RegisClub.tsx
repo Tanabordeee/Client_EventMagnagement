@@ -42,10 +42,7 @@ function RegisClub() {
           { withCredentials: true }
         );
         setload(false);
-        console.log(response.data);
         if (response.data.clubName == clubname) {
-          console.log(response.data.message);
-          console.log(document.cookie);
           regissucc();
         }
       } catch (error) {

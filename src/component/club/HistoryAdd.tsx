@@ -33,7 +33,6 @@ function HistoryAdd() {
         }
         };
         getData();
-        console.log(histevent);
     }, [search]);
   return (
     <div>

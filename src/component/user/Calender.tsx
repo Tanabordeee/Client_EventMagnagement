@@ -70,7 +70,7 @@ function Calender() {
       days.push(
         <div
           key={i}
-          className={`p-3 md:p-5 flex md:w-full h-[80%] transition-transform transform hover:scale-110 justify-center items-center rounded-xl cursor-pointer transition border border-black 
+          className={`p-3 lg:p-5 flex md:w-full lg:h-20 h-10 transition-transform transform hover:scale-110 justify-center items-center rounded-xl cursor-pointer transition border border-black 
             ${isHighlighted ? "bg-yellow-300" : ""} 
             ${isSelected ? "bg-blue-500 text-white" : "hover:bg-blue-500 hover:text-white"}`}
           onClick={() => handleDateClick(date)}
@@ -84,25 +84,25 @@ function Calender() {
 
 
   return (
-    <div className="flex-1 m-3 mx-8 ">
-        <h1 className='py-10 px-7 text-3xl font-bold'>Calender</h1>
+    <div className="flex-1 p-3 mx-8 ">
+        <h1 className='py-10 px-7 text-4xl font-bold'>Calender</h1>
         <div className="flex flex-1 max-md:m-1 m-4 max-sm:flex-col justify-center">
           <div className={`flex justify-center w-full ${selectedEvents.length >0? '' : 'max-w-250'}`}>
-            <div className="flex-1  flex justify-center">
-              <div className="w-full  h-[100%] bg-white shadow-lg rounded-2xl p-5">
+            <div className="flex-1 flex justify-center">
+              <div className="w-full bg-white shadow-lg rounded-2xl p-5">
                 <div className="bg-green-400 rounded-xl p-2">
                   <div className="flex justify-between items-center">
                     <button onClick={prevMonth} className="p-2">
                       <ChevronLeft size={20} className='transition-transform transform hover:scale-150'/>
                     </button>
-                    <h2 className="text-lg font-semibold">
+                    <h2 className="lg:text-2xl text-lg font-semibold">
                       {currentDate.format("MMMM YYYY")}
                     </h2>
                     <button onClick={nextMonth} className="p-2">
                       <ChevronRight size={20} className='transition-transform transform hover:scale-150'/>
                     </button>
                   </div>
-                  <div className="grid grid-cols-7 gap-5 text-center font-semibold">
+                  <div className="grid grid-cols-7 gap-5 text-center text-md lg:text-xl font-semibold">
                     {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
                       <div key={day} className="text-gray-600">
                         {day}
@@ -115,9 +115,9 @@ function Calender() {
             </div>
           </div>
           <div className={`flex justify-center w-full ${selectedEvents.length >0? '' : 'hidden'}`}>
-            <div className={`md:h-[100%] justify-center flex flex-col `}> 
+            <div className={`justify-center flex flex-col `}> 
               {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-                 <div className="md:px-3 lg:px-5 my-3 md:h-[100%] flex lg:justify-center item-center bg-[#E7E9EC] rounded-3xl shadow-lg p-3">
+                 <div className="md:px-3 lg:px-5 my-3 md:h-[100%] flex md:justify-center item-center bg-[#E7E9EC] rounded-3xl shadow-lg p-3">
                   <Event key={index} Eventprop={event}/>
                   </div> 
               ))}

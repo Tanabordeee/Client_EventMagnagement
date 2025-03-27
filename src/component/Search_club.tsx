@@ -49,8 +49,8 @@ function Search_club({clicker}: Props) {
       navigate("/");
     }
   return (
-    <div className="flex-1">
-      <div className={`${isclick ? "" : "hidden"}`}>
+    <div className="flex flex-1">
+      <div className={`sm:hidden ${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
           <ClubMenu />
         </div>
@@ -97,7 +97,7 @@ function Search_club({clicker}: Props) {
             </div>
           </div>
 
-          <div className={`min-h-screen bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8 ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
+          <div className={` bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8 ${isclick ? "max-sm:opacity-20" : ""}`}>
             <Outlet context={gosearch}/>
           </div>
         </div>

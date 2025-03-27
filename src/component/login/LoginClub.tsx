@@ -33,11 +33,8 @@ function LoginClub() {
         { withCredentials: true }
       );
       setload(false);
-      console.log(response);
       if (response.data.message == "Login Successfully") {
         localStorage.setItem("club", response.data.user.clubID);
-        console.log(response.data.message);
-        console.log(document.cookie);
         navigate("/club");
       } else {
         Swal.fire({

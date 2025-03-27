@@ -37,10 +37,7 @@ function RegisUser() {
           { withCredentials: true }
         );
         setload(false);
-        console.log(response.data.message);
         if (response.data.username == username) {
-          console.log(response.data.message);
-          console.log(document.cookie);
           regissucc();
         }
       } catch (error) {
@@ -50,7 +47,6 @@ function RegisUser() {
           text: "Register didn't Success!",
         });
         setload(false);
-        console.log("fail");
         setUsername("");
         setEmail("");
         setPassword("");

@@ -59,7 +59,6 @@ const Setting = () => {
                     setRe_pass('');
                 } 
             }else{
-                console.log("wrong pass");
                 setNew_pass('');
                 setRe_pass('');
             }
@@ -87,14 +86,14 @@ const Setting = () => {
     }, []);
   return (
     <div className='flex-1 relative'>
-        <div className="flex flex-1 justify-center text-2xl font-bold p-5">
+        <div className="flex flex-1 justify-center text-4xl font-bold p-5">
             <h1>Setting</h1>
         </div>
             <div className="flex flex-1 justify-center p-6">
                 <div className=" flex max-sm:flex-col">
                     <div className='flex flex-col justify-center items-center p-5 lg:px-18'>
                         <img src="https://img2.pic.in.th/pic/human-icon-symbol-design-illustration-vector.jpg" className="w-50 h-60 rounded-xl object-cover"/>
-                        <h1 className="flex justify-center text-lg font-bold">{user.username}</h1>
+                        <h1 className="flex justify-center text-2xl font-bold">{user.username}</h1>
                     </div>
                     <div className="flex flex-col p-5 lg:px-18">
                         <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>

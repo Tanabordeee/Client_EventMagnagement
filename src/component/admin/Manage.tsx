@@ -2,6 +2,9 @@ import axios from "axios";
 import { useEffect, useState  } from "react";
 import { useOutletContext } from "react-router-dom";
 import AdminCol from "./AdminCol";
+interface club {
+    clubName : string
+  }
 interface Event{
     eventID : string;
     eventName : string;
@@ -10,6 +13,7 @@ interface Event{
     image : string;
     status : string;
     details :string;
+    club : club;
 };
 function Manage() {
     const [histevent, setHistevent] = useState<Event[]>([]);
@@ -31,17 +35,16 @@ function Manage() {
         }
         };
         getData();
-        // console.log(histevent);
     }, [search]);
     return (
         <div className="p-4 ">
             <div className ="flex-col overflow-x-auto">
-                <div className="grid grid-cols-6">
+                <div className="grid grid-cols-5">
                     <div className=" border w-auto break-words text-center">Time</div>
                     <div className=" border w-auto break-words text-center">Title</div>
                     <div className=" border w-auto break-words text-center">Faculty</div>
                     <div className=" border w-auto break-words text-center">Status</div>
-                    <div className=" border w-auto break-words text-center">Requestor</div>
+                    {/* <div className=" border w-auto break-words text-center">Requestor</div> */}
                     <div className=" border w-auto break-words text-center">Action</div>
                 </div>
                     {histevent.length > 0 ? histevent.map((value, index) => {

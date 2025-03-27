@@ -36,7 +36,6 @@ function AddEvent() {
                         const base64 = reader.result;
                         if (typeof base64 === 'string') {
                             setFiles(base64);
-                            console.log(base64);
                         }
                     };
                 }
@@ -55,7 +54,6 @@ function AddEvent() {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         const eventDate = new Date(date);
         const formattedDate = `${eventDate.toISOString().split('T')[0]}T${time}:00.000Z`; 
-        console.log(formattedDate);
         try {
             await axios.post(url, {
                 eventName: name,
@@ -92,20 +90,24 @@ function AddEvent() {
 
     return (
         <div className='flex flex-1 justify-center relative'>
-            <div className="flex max-sm:flex-col max-xl:px-10 justify-between w-full px-30 mt-4 max-sm:bg-gray-50 m-2 rounded-xl p-2">
-                <div className="flex-col p-3">
-                    <div className="text-3xl font-bold py-5">Event</div>
-                    <div className="flex justify-end text-xl py-2">Edit</div>
+            <div className="flex max-sm:flex-col max-xl:px-10 justify-between items-center w-full px-30 mt-4 max-sm:bg-gray-50 m-2 rounded-xl p-2">
+                <div className="flex-col flex justify-center p-3">
+                    <div className="text-3xl flex w-full justify-start font-bold py-5">Event</div>
+                    <div className="flex w-full justify-end text-xl py-2">Edit</div>
                     {!imagePreview ? (
                         <input
                             type="file"
                             accept='image/*'
                             onChange={selected}
-                            className='max-sm:w-83 max-sm:h-50 max-sm:file:w-83 max-sm:file:h-50 w-120 h-100 file:flex-1 file:w-120 file:h-100 file:py-2 file:px-6 file:rounded-lg file:border-2 file:border-black file:max-sm:text-gray-50 file:text-gray-100 cursor-pointer mb-4 transition-transform transform hover:scale-105'
+                            className='max-lg:w-53 max-lg:h-50 max-lg:file:w-53 max-lg:file:h-50 w-120 h-100 file:flex-1 file:w-120 file:h-100 
+                            max-xl:w-73 max-xl:h-70 max-xl:file:w-73 max-xl:file:h-70 
+                            file:py-2 file:px-6 file:rounded-lg file:border-2 file:border-black file:max-sm:text-gray-50 file:text-gray-100 cursor-pointer 
+                            mb-4 transition-transform transform hover:scale-105'
                         />
                     ) : (
                         <div className="flex-col">
-                            <div className="flex justify-center max-sm:h-50 max-sm:w-83 h-100 w-120 rounded-lg border-2 border-black">
+                            <div className="flex justify-center max-lg:w-53 max-lg:h-50 max-xl:w-73 max-xl:h-70 
+                                h-100 w-120 rounded-lg border-2 border-black">
                                 <img src={imagePreview} alt="Preview" />
                             </div>
                             <div className="relative p-2">
@@ -115,7 +117,7 @@ function AddEvent() {
                         </div>
                     )}
                 </div>
-                <div className="flex-col flex justify-center w-90 ">
+                <div className="flex-col flex justify-center w-90 max-sm:w-60 max-xl:w-70">
                     <div className="flex justify-center text-lg mb-3">รายละเอียด</div>
                     <div className="flex justify-center text-sm my-2">ชื่อกิจกรรม</div>
                     <input
