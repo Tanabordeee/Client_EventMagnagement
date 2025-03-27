@@ -50,7 +50,7 @@ function Search_bar ({clicker} : Props) {
     navigate("/");
   }
   return (
-    <div className="flex">
+    <div className="flex flex-1">
       <div className={`${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
           <Menu />
@@ -75,7 +75,7 @@ function Search_bar ({clicker} : Props) {
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
-                      className="absolute left-2 top-0 mx-1 rounded-xl bg-gray-200 pl-8 py-1 shadow-lg w-50"
+                      className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-80 max-sm:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
                       <Search size={20} className="text-gray-500 mt-1 transition-transform transform hover:scale-125 hover:text-black hover:cursor-pointer" />
@@ -85,23 +85,22 @@ function Search_bar ({clicker} : Props) {
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="p-2 transition-transform transform hover:scale-125">
+                  <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="notification" ><img src={noti_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
-                  <p className="p-2">
+                  <p className="max-md:hidden p-2">
                     <img src={history_icon} className="w-6 mt-2 object-cover"/>
                   </p>
-                  <p className="p-2 transition-transform transform hover:scale-125">
+                  <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="setting" ><img src={profil_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
-                  <button className="p-2 border rounded-xl text-sm pointer-events-auto hover:bg-red-200" onClick={logout}>LOG OUT</button>
+                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={`min-h-full  bg-gray-50 m-2 rounded-xl shadow-xl ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
-            {/* <Filter search = {gosearch}/> */}
+          <div className={`min-h-screen bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8 ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
             <Outlet context={gosearch}/>
           </div>
         </div>

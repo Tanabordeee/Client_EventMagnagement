@@ -49,7 +49,7 @@ function Search_club({clicker}: Props) {
       navigate("/");
     }
   return (
-    <div className="flex">
+    <div className="flex-1">
       <div className={`${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
           <ClubMenu />
@@ -74,7 +74,7 @@ function Search_club({clicker}: Props) {
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
-                      className="absolute left-2 top-0 mx-1 rounded-xl bg-gray-50 pl-8 py-1 shadow-lg w-80 max-sm:w-40"
+                      className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-80 max-sm:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
                       <Search size={20} className="text-gray-500 mt-1 transition-transform transform hover:scale-125 hover:text-black hover:cursor-pointer" />
@@ -84,11 +84,11 @@ function Search_club({clicker}: Props) {
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="p-2 "><img src={noti_icon} className="w-6 mt-2 object-cover"/></p>
-                  <p className="p-2 transition-transform transform hover:scale-125">
+                  <p className="max-md:hidden p-2 "><img src={noti_icon} className="w-6 mt-2 object-cover"/></p>
+                  <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="historyadd"><img src={history_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
-                  <p className="p-2 ">
+                  <p className="max-md:hidden p-2 ">
                     <img src={profil_icon} className="w-6 mt-2 object-cover"/>
                   </p>
                   <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>

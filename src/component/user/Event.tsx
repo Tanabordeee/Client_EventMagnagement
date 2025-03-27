@@ -62,7 +62,7 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
     <div className="grid m-2 max-sm:flex justify-center gap-1">
       <div>
         <h2 className='p-5 text-lg md:text-5xl text-center font-bold'>{Eventprop.eventName}</h2>
-        <img src={Eventprop.image} className="max-w-full rounded-lg" />
+        <img src={Eventprop.image} className="w-80 h-60 rounded-xl object-cover" />
       </div>
       <div className="flex flex-col justify-center">
         <button className={`text-xl md:text-2xl border rounded-xl p-5 bg-green-200 hover:cursor-pointer ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={changestatus}>{status? 'Cancle' : 'Apply'}</button>

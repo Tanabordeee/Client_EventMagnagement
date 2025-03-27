@@ -58,23 +58,23 @@ const EventDetail: React.FC<Listevent> = ({Eventprop}) => {
       }
     return (
       <div>
-          <div className="flex justify-center text-lg font-bold">{Eventprop.eventName}</div>
+          <div className="flex justify-center text-2xl font-bold">{Eventprop.eventName}</div>
           <div className="flex justify-center">
-              <div className="flex max-sm:grid">
-                  <div className="flex justify-center p-5  flex-col">
-                        <img src={Eventprop.image} className="w-50" />
+              <div className="flex max-sm:grid p-5 max-sm:p-2">
+                  <div className="flex justify-center flex-col">
+                        <img src={Eventprop.image} className="max-sm:h-40 max-sm:w-full w-80 h-60 rounded-xl object-cover" />
                         <button className={`text-xl hover:cursor-pointer ${status? 'text-red-500': 'text-green-500'}`} 
                             onClick={changestatus}>
                                 {status? 'Cancle' : 'Apply'}
                         </button>
                   </div>
-                  <div className="justify-center p-5">
-                      <p className="p-1 pr-5 pl-5 flex justify-center">{Eventprop.eventName}</p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">เงื่อนไข : {Eventprop.detail}</p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")} </p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">เวลา :{Eventprop.time}</p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">contact</p>
-                      <p className="p-1 pr-5 pl-5 flex justify-center">
+                  <div className="justify-center">
+                      <p className="p-1 px-5 flex justify-center">{Eventprop.eventName}</p>
+                      <p className="p-1 px-5 flex justify-center">เงื่อนไข : {Eventprop.detail}</p>
+                      <p className="p-1 px-5 flex justify-center">วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")} </p>
+                      <p className="p-1 px-5 flex justify-center">เวลา :{Eventprop.time}</p>
+                      <p className="p-1 px-5 flex justify-center">contact</p>
+                      <p className="p-1 px-5 flex justify-center">
                         สถานะ : <div className= {status? 'text-green-500' : 'text-red-500'}>{status? 'สมัครแล้ว' : 'ยังไม่สมัคร'}</div> 
                     </p>
                   </div>

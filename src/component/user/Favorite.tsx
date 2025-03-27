@@ -39,9 +39,9 @@ function Favorite() {
     return (
       <>
           <div className="flex-1 m-3 min-h-full">
-              <h2 className='pb-2 pt-1 pl-3 text-2xl font-bold justify-center flex'>Favorite</h2>
+              <h2 className='pb-2 pt-1 pl-3 text-3xl font-bold justify-center flex'>Favorite</h2>
               <div className="flex justify-center  min-h-105 items-center">
-                  <div className="flex flex-col justify-center items-center bg-gray-300 p-10 rounded-xl">
+                  <div className="flex flex-col justify-center items-center bg-[#E7E9EC] p-10 rounded-xl lg:px-60">
                     <img width="188" height="188" src="https://img.icons8.com/3d-fluency/188/delete-sign.png" alt="delete-sign"/>
                     <div className="bg-red-300 flex px-15 justify-center rounded-xl py-2">ไม่มีการสมัคร</div>
                   </div>

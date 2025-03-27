@@ -83,14 +83,13 @@ function Calender() {
   };
 
 
-  // console.log(dataevent);
   return (
-    <div className="flex-1 p-3 ">
-        <h2 className='py-10 px-7 text-2xl font-bold'>Calender</h2>
-        <div className="flex flex-1 max-sm:flex-col justify-center">
-          <div className="flex max-sm:flex-col justify-between w-full">
-            <div className="flex-1 p- flex justify-center">
-              <div className="w-full h-[100%] bg-white shadow-lg rounded-lg p-5">
+    <div className="flex-1 m-3 mx-8 ">
+        <h1 className='py-10 px-7 text-3xl font-bold'>Calender</h1>
+        <div className="flex flex-1 max-md:m-1 m-4 max-sm:flex-col justify-center">
+          <div className={`flex justify-center w-full ${selectedEvents.length >0? '' : 'max-w-250'}`}>
+            <div className="flex-1  flex justify-center">
+              <div className="w-full  h-[100%] bg-white shadow-lg rounded-2xl p-5">
                 <div className="bg-green-400 rounded-xl p-2">
                   <div className="flex justify-between items-center">
                     <button onClick={prevMonth} className="p-2">
@@ -115,10 +114,12 @@ function Calender() {
               </div>
             </div>
           </div>
-          <div className="flex justify-center w-full">
-            <div className={`w-full md:h-[100%] justify-center flex flex-col ${selectedEvents.length >0? '' : 'hidden'}`}> 
+          <div className={`flex justify-center w-full ${selectedEvents.length >0? '' : 'hidden'}`}>
+            <div className={`md:h-[100%] justify-center flex flex-col `}> 
               {selectedEvents.length > 0 && selectedEvents.map((event, index) => (
-                 <div className="m-2 w-full md:h-[100%] flex justify-center item-center bg-gray-200 rounded-lg shadow-lg p-3"><Event key={index} Eventprop={event}/></div> 
+                 <div className="md:px-3 lg:px-5 my-3 md:h-[100%] flex lg:justify-center item-center bg-[#E7E9EC] rounded-3xl shadow-lg p-3">
+                  <Event key={index} Eventprop={event}/>
+                  </div> 
               ))}
             </div>
           </div>

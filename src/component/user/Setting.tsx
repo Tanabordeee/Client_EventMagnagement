@@ -91,18 +91,18 @@ const Setting = () => {
             <h1>Setting</h1>
         </div>
             <div className="flex flex-1 justify-center p-6">
-                <div className="bg-gray-200 rounded-lg shadow-lg flex max-sm:flex-col max-sm:bg-inherit">
-                    <div className='flex flex-col justify-center items-center p-5'>
+                <div className=" flex max-sm:flex-col">
+                    <div className='flex flex-col justify-center items-center p-5 lg:px-18'>
                         <img src="https://img2.pic.in.th/pic/human-icon-symbol-design-illustration-vector.jpg" className="w-50 h-60 rounded-xl object-cover"/>
                         <h1 className="flex justify-center text-lg font-bold">{user.username}</h1>
                     </div>
-                    <div className="flex flex-col p-5">
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="text" placeholder="new-email" value={new_email} onChange={onChangeNewemail}/></div>
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="password" placeholder="new-password" value={new_pass} onChange={onChangeNewpass}/></div>
-                        <div className="max-sm:bg-gray-200 bg-white m-1 rounded-xl px-2 py-1"><input type="password" placeholder="re-password" value={re_pass} onChange={onChangeRepass}/></div>
+                    <div className="flex flex-col p-5 lg:px-18">
+                        <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>
+                        <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="text" placeholder="new-email" value={new_email} onChange={onChangeNewemail}/></div>
+                        <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="password" placeholder="new-password" value={new_pass} onChange={onChangeNewpass}/></div>
+                        <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="password" placeholder="re-password" value={re_pass} onChange={onChangeRepass}/></div>
                         <div className="flex">
-                            <button className="flex justify-center items-center ml-auto bg-green-500 m-2 rounded-xl px-2 text-gray-50 hover:bg-green-300" onClick={Clicky}>save</button>
+                            <button className="flex justify-center items-center ml-auto bg-green-500 m-2 rounded-xl px-4 py-2 text-gray-50 hover:bg-green-300" onClick={Clicky}>save</button>
                         </div>
                     </div>
                 </div>

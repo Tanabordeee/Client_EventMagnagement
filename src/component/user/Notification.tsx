@@ -54,9 +54,9 @@ function Notification() {
     return (
       <>
           <div className="flex-1 m-3">
-              <h2 className='pb-2 pt-1 pl-3 text-2xl font-bold justify-center flex'>Notification</h2>
+              <h2 className='pb-2 pt-1 pl-3 text-3xl font-bold justify-center flex'>Notification</h2>
               <div className="flex justify-center min-h-105 items-center">
-                  <div className="flex flex-col justify-center items-center bg-gray-300 p-10 rounded-xl">
+                  <div className="flex flex-col justify-center items-center bg-[#E7E9EC] p-10 rounded-xl lg:px-60">
                     <img width="188" height="188" src="https://img.icons8.com/3d-fluency/188/delete-sign.png" alt="delete-sign"/>
                     <div className="bg-red-300 flex justify-center px-15 rounded-xl py-2">ไม่มีการสมัคร</div>
                   </div>
@@ -66,30 +66,32 @@ function Notification() {
     )
   }else{
     return (
-        <div className=" flex-1">
-            <div className="flex justify-center p-4 text-2xl font-bold">Notification</div>
-            <div className="flex flex-2 justify-between p-6">
-                <div className="flex flex-col mx-6 max-sm:p-4 p-6 bg-gray-200 rounded-xl shadow-lg">
-                    <div className="text-lg font-bold pb-2">My Event</div>
-                    {listevent.map((value,index) => {
-                      return(
-                        <div onClick={() => changeEvent(index)} key={index}>
-                          <button 
-                          className={`p-1 ${select[index]? 'text-red-500 bg-gray-200' : 'text-black'}`} 
-                          onClick={() => selected(index)}>
-                            {value.eventName}
-                          </button>
-                        </div>
-                      )
-                    })}
+      <div className=" flex-1">
+          <div className="flex justify-center p-4 text-3xl font-bold">Notification</div>
+          <div className="flex flex-2 justify-between p-6">
+              <div className="flex flex-col mx-6 max-sm:p-4 p-6 bg-[#E7E9EC] rounded-xl shadow-lg">
+                  <div className="text-2xl font-bold pb-2">My Event</div>
+                  {listevent.map((value,index) => {
+                    return(
+                      <div onClick={() => changeEvent(index)} key={index}>
+                        <button 
+                        className={`p-1 text-lg transition-transform transform hover:scale-125 ${select[index]? 'text-red-500 bg-gray-200' : 'text-black'}`} 
+                        onClick={() => selected(index)}>
+                          {value.eventName}
+                        </button>
+                      </div>
+                    )
+                  })}
+              </div>
+              <div className="flex-1 flex justify-center">
+                <div className= {`bg-gray-200 rounded-lg shadow-lg p-10 max-sm:p-5 ${event == null? 'hidden' : ''}`}>
+                  {event == null? null : <EventDetail Eventprop = {event}/>}
                 </div>
-                <div className="flex-1 flex justify-center">
-                  <div className= {` bg-gray-200 rounded-lg shadow-lg p-10 ${event == null? 'hidden' : ''}`}>{event == null? null : <EventDetail Eventprop = {event}/>}</div>
-                </div>
-                
-            </div>
-        </div>
-      )
+              </div>
+              
+          </div>
+      </div>
+    )
   }
 }
 
