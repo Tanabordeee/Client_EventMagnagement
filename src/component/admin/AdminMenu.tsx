@@ -11,7 +11,7 @@ function AdminMenu() {
     "https://img.icons8.com/windows/32/users-settings.png",
   ]
   const path: string[] = [
-    "manage", //รอเปลี่ยน
+    "adminhome", 
     "manage",
   ]
   const [isSelect, setIsSelect] = useState([true, false]);

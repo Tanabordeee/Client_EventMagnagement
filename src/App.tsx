@@ -18,6 +18,7 @@ import Manage from "./component/admin/Manage.tsx";
 import Admin from "./Admin.tsx";
 import RegisUser from "./component/register/RegisUser.tsx";
 import RegisClub from "./component/register/RegisClub.tsx";
+import HomeAdmin from "./component/admin/HomeAdmin.tsx";
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -52,6 +53,7 @@ function App() {
         <Route path="/admin" element={<Admin />}>
           <Route index element={<Manage />} />
           <Route path="manage" element={<Manage />} />
+          <Route path="adminhome" element={<HomeAdmin/>} />
         </Route>
       </Routes>
     </>
