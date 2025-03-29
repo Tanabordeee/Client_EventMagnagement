@@ -1,6 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import LoadingComponent from "../loadingComponent";
 interface club {
     clubName :string,
 }
@@ -20,6 +21,7 @@ interface Listevent {
 
 const EventAdmin: React.FC<Listevent> = ({Eventprop}) => {
     const [status, setStatus] = useState<boolean | null>(null);
+    const [load, setLoad] = useState(false);
     useEffect(() => {
         if(Eventprop.status == 'not approve'){
             setStatus(false);
@@ -34,6 +36,7 @@ const EventAdmin: React.FC<Listevent> = ({Eventprop}) => {
         }else {
           send = 'approve'
         }
+        setLoad(true);
         const url = `${import.meta.env.VITE_REACT_API_URL}event/approvebyadmin/${Eventprop.eventID}`;
         try{
           await axios.put(url, {
@@ -43,6 +46,7 @@ const EventAdmin: React.FC<Listevent> = ({Eventprop}) => {
         }catch(error){
           console.log(error)
         }
+        setLoad(false);
       }
     return (
       <div className="grid m-2 max-sm:flex justify-center gap-1">
@@ -51,8 +55,9 @@ const EventAdmin: React.FC<Listevent> = ({Eventprop}) => {
           <img src={Eventprop.image} className="max-lg:w-50 max-lg:h-30 w-80 h-60 rounded-xl object-cover" />
         </div>
         <div className="flex flex-col justify-center">
-          <button className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 bg-green-200 hover:cursor-pointer 
+          {load ? <div className="w-full h-20 flex items-center justify-center"><LoadingComponent/></div> : ( <button className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 bg-green-200 hover:cursor-pointer 
             hover:bg-stone-300  ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={change}>{status? 'Not approve' : 'Approve'}</button>
+          )}
           <p className='p-2 flex md:text-xl justify-center'>คณะ :{Eventprop.club.clubName}</p>
           <p className='p-2 flex md:text-xl justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
           <h2 className='p-2 flex md:text-xl justify-center'>เวลา :{Eventprop.time}</h2>

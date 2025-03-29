@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import LoadingComponent from '../loadingComponent';
 interface club {
   clubName : string
 }
@@ -18,6 +19,7 @@ interface Listevent {
 const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
   const [Status, setStatus] = useState<boolean | null>(null)
   const [running, setRunning] = useState('')
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     if(Eventprop.status == 'not approve'){
       setStatus(false);
@@ -47,6 +49,7 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
     }else {
       send = 'approve'
     }
+    setLoad(true);
     const url = `${import.meta.env.VITE_REACT_API_URL}event/approvebyadmin/${Eventprop.eventID}`;
     try{
       await axios.put(url, {
@@ -56,6 +59,7 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
     }catch(error){
       console.log(error)
     }
+    setLoad(false);
   }
   return (
     <div className="grid grid-cols-5">
@@ -72,11 +76,11 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
         {/* <div className=" border w-auto break-words text-center">-</div> */}
         <div className="border w-auto break-words text-center">
           <div className="flex max-md:flex-col text-center justify-center">
-            <div className={`w-auto break-words text-center hover:cursor-pointer p-2`}
+            {load ? <div className='w-full h-20 flex items-center justify-center'><LoadingComponent/></div> : (<div className={`w-auto break-words text-center hover:cursor-pointer p-2`}
               onClick={change}>
                  <button className= {`text-sm border px-8 h-8 rounded-xl text-white cursor-pointer ${Status? 'bg-red-400': 'bg-green-400'}`}>{Status? "Reject" : "Approve"}</button>
             </div>
-            
+            )}
           </div>
           
         </div>
