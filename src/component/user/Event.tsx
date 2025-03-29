@@ -67,7 +67,7 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
         <img src={Eventprop.image} className="max-lg:w-50 max-lg:h-30 w-80 h-60 rounded-xl object-cover" />
       </div>
       <div className="flex flex-col justify-center">
-        { load ? <LoadingComponent/> : (
+        { load ? <div className="w-full h-20 flex items-center justify-center"><LoadingComponent/></div> : (
           <button 
             className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 hover:cursor-pointer hover:bg-stone-300 ${status ? 'text-black-200 bg-red-200' : 'text-black-200 bg-green-200'}`} 
             onClick={changestatus}

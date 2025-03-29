@@ -38,7 +38,7 @@ function Favorite() {
     };
     fetchData();
   }, [search]);
-  if(dataevent.length == 0 && load){
+  if(dataevent.length == 0 && load == false){
     return (
       <>
           <div className="flex-1 p-3 min-h-full py-6">
@@ -56,7 +56,7 @@ function Favorite() {
 
   return (
       <>
-          {load ? <LoadingComponent/> : 
+          {load ? <div className="w-full h-100 flex items-center justify-center"><LoadingComponent/></div> : 
           <div className="flex-1 p-3 min-h-full py-6">
               <h2 className='pb-2 pt-1 pl-3 text-4xl font-bold justify-center flex'>Favorite</h2>
               <div className="flex flex-wrap p-3">

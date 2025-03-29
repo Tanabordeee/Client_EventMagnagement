@@ -70,7 +70,7 @@ function Notification() {
   }else{
     return (
       <>
-        {load ? <LoadingComponent/> : (
+        {load ? <div className="w-full h-100 flex items-center justify-center"><LoadingComponent/></div> : (
           <div className="flex-1 p-3 min-h-full py-6">
               <div className="flex justify-center p-4 text-4xl font-bold">Notification</div>
               <div className="flex flex-2 justify-between lg:p-6">
