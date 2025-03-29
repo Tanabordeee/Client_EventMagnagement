@@ -72,7 +72,7 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
             className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 hover:cursor-pointer hover:bg-stone-300 ${status ? 'text-black-200 bg-red-200' : 'text-black-200 bg-green-200'}`} 
             onClick={changestatus}
           >
-            {status ? 'Cancel' : 'Apply'}
+            {status ? 'Unfavorite' : 'Favorite'}
           </button>
         )}
         <p className='p-2 flex md:text-xl justify-center'>เงื่อนไข :{Eventprop.detail}</p>
