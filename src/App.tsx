@@ -19,6 +19,7 @@ import Admin from "./Admin.tsx";
 import RegisUser from "./component/register/RegisUser.tsx";
 import RegisClub from "./component/register/RegisClub.tsx";
 import HomeAdmin from "./component/admin/HomeAdmin.tsx";
+import ProfileClub from "./component/club/ProfileClub.tsx";
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -48,6 +49,7 @@ function App() {
           <Route path="addevent" element={<AddEvent />} />
           <Route path="historyadd" element={<HistoryAdd />} />
           <Route path="list" element={<List />} />
+          <Route path="clubprofile" element={<ProfileClub />} />
         </Route>
 
         <Route path="/admin" element={<Admin />}>

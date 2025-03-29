@@ -6,18 +6,21 @@ function ClubMenu() {
     "Event",
     "History",
     "List",
+    "Profile",
   ]
   const logo: string[] = [
     "https://img.icons8.com/windows/32/today.png",
     "https://img.icons8.com/material-rounded/24/time-machine.png",
     "https://img.icons8.com/windows/32/clipboard-list.png",
+    "https://img.icons8.com/windows/32/settings--v1.png",
   ]
   const path: string[] = [
     "addevent",
     "historyadd",
     "list",
+    "clubprofile",
   ]
-  const [isSelect, setIsSelect] = useState([true, false, false]);
+  const [isSelect, setIsSelect] = useState([true, false, false, false]);
   const Clicky = (index: number) => {
     const newStates = isSelect.map((_, idx) =>
       idx === index ? true : false
