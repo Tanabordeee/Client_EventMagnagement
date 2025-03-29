@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import Compressor from 'compressorjs';
-
+import Swal from 'sweetalert2';
 function AddEvent() {
     const [name, setName] = useState<string>('');
     const [detail, setDetail] = useState<string>('');
@@ -48,8 +48,6 @@ function AddEvent() {
         }
     };
 
-    const [showsuccess, setShowsuccess] = useState(false);
-
     const send = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}event/create`;
         const eventDate = new Date(date);
@@ -67,8 +65,17 @@ function AddEvent() {
             setDate('');
             setTime('');
             setImagePreview('');
-            changeSuccess();
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Event created successfully',
+            });
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Event creation failed',
+            });
             console.log(error);
         }
     }
@@ -81,16 +88,33 @@ function AddEvent() {
         setImagePreview('');
     }
 
-    const changeSuccess = () => {
-        setShowsuccess(true);
-        setTimeout(() => {
-            setShowsuccess(false);
-        }, 3000);
-    }
+    const handleChangeImage = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = (e) => {
+            const event = e as unknown as React.ChangeEvent<HTMLInputElement>;
+            selected(event);
+        };
+        input.click();
+    };
 
     return (
         <div className='flex flex-1 justify-center relative'>
-            <div className="flex max-sm:flex-col max-xl:px-10 justify-between items-center w-full px-30 mt-4 max-sm:bg-gray-50 m-2 rounded-xl p-2">
+            <div className="
+                flex 
+                max-sm:flex-col 
+                max-xl:px-10 
+                justify-between 
+                items-center 
+                w-full 
+                px-30 
+                mt-4 
+                max-sm:bg-gray-50 
+                m-2 
+                rounded-xl 
+                p-2
+            ">
                 <div className="flex-col flex justify-center p-3">
                     <div className="text-3xl flex w-full justify-start font-bold py-5">Event</div>
                     <div className="flex w-full justify-end text-xl py-2">Edit</div>
@@ -106,13 +130,26 @@ function AddEvent() {
                         />
                     ) : (
                         <div className="flex-col">
-                            <div className="flex justify-center max-lg:w-53 max-lg:h-50 max-xl:w-73 max-xl:h-70 
+                            <div className="relative flex justify-center max-lg:w-53 max-lg:h-60 max-xl:w-73 max-xl:h-70 
                                 h-100 w-120 rounded-lg border-2 border-black">
                                 <img src={imagePreview} alt="Preview" />
-                            </div>
-                            <div className="relative p-2">
-                                <button className='absolute px-2 rounded-xl p-1' onClick={delet}>change</button>
-                                <input type="file" accept='image/*' onChange={selected} className='file:bg-green-500 bg-red-500 grid opacity-0 w-17'/>
+                                <button 
+                                    className='
+                                        absolute 
+                                        inset-0 
+                                        opacity-0 
+                                        hover:opacity-100 
+                                        transition-all 
+                                        duration-300 
+                                        cursor-pointer 
+                                        rounded-lg
+                                        flex 
+                                        items-center 
+                                        justify-center
+                                    ' 
+                                    onClick={handleChangeImage}
+                                >
+                                </button>
                             </div>
                         </div>
                     )}
@@ -151,23 +188,19 @@ function AddEvent() {
                     />
                     <div className="flex justify-between p-2">
                         <button
-                            className='bg-red-500 hover:bg-red-300 px-3 p-2  mt-3 rounded-xl shadow-xl text-white text-lg p-1'
+                            className='bg-red-500 hover:bg-red-300 px-3 p-2 cursor-pointer mt-3 rounded-xl shadow-xl text-white text-lg p-1'
                             onClick={delet}
                         >
                             cancel
                         </button>
                         <button
-                            className='bg-green-500 hover:bg-green-300 px-4 p-2  mt-3 rounded-xl shadow-xl text-white text-lg p-1'
+                            className='bg-green-500 hover:bg-green-300 px-4 p-2 cursor-pointer mt-3 rounded-xl shadow-xl text-white text-lg p-1'
                             onClick={send}
                         >
                             send
                         </button>
                     </div>
                 </div>
-            </div>
-            <div className={`flex flex-col absolute bg-gray-50 shadow-xl backdrop:opacity-20 p-15 top-15 rounded-xl ${showsuccess ? '' : 'hidden'}`}>
-                <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
-                <div className="flex justify-center">Already sent</div>
             </div>
         </div>
     );
