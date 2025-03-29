@@ -2,17 +2,17 @@ import { useEffect, useState } from "react"
 import axios from "axios";
 import Swal from 'sweetalert2';
 interface User {
-    username : string;
-    userId : string;
+    clubName : string;
+    clubID : string;
 }
-const Setting = () => {
+function ProfileClub() {
     const [new_name, setNew_name] = useState('');
     const [new_email, setNew_email] = useState('');
     const [new_pass, setNew_pass] = useState('');
     const [re_pass, setRe_pass] = useState('');
     const [user, setUser] = useState<User>({
-        username : '',
-        userId : ''
+        clubName : '',
+        clubID : ''
     });
     const onChangeNewname = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNew_name(e.target.value);
@@ -27,12 +27,12 @@ const Setting = () => {
         setRe_pass(e.target.value);
     };
     const Clicky = async () => {
-        const url = `${import.meta.env.VITE_REACT_API_URL}users/update`;
+        const url = `${import.meta.env.VITE_REACT_API_URL}club/update`;
         if(new_name != "" || new_email != "" || new_pass != "" || re_pass != ""){
             if(new_pass == re_pass){
                 try{
                     const updateData: any = {};
-                    if(new_name) updateData.username = new_name;
+                    if(new_name) updateData.clubName = new_name;
                     if(new_email) updateData.email = new_email; 
                     if(new_pass) updateData.password = new_pass;
 
@@ -40,10 +40,10 @@ const Setting = () => {
                         withCredentials: true,
                     });
                     
-                    if(response.data.username == new_name){
+                    if(response.data.clubName == new_name){
                         setUser({
-                            username : response.data.username,
-                            userId : response.data.userId
+                            clubName : response.data.clubName,
+                            clubID : response.data.clubID
                         })
                         setNew_name('');
                         setNew_email('');
@@ -71,7 +71,7 @@ const Setting = () => {
         }
     };
     useEffect(() => {
-        const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`;
+        const url = `${import.meta.env.VITE_REACT_API_URL}club/profile`;
         const fetchuser = async() => {
             try{
                 const respon = await axios.get(url, {withCredentials : true});
@@ -93,7 +93,7 @@ const Setting = () => {
                 <div className=" flex max-sm:flex-col">
                     <div className='flex flex-col justify-center items-center p-5 lg:px-18'>
                         <img src="https://img2.pic.in.th/pic/human-icon-symbol-design-illustration-vector.jpg" className="w-50 h-60 rounded-xl object-cover"/>
-                        <h1 className="flex justify-center text-2xl font-bold">{user.username}</h1>
+                        <h1 className="flex justify-center text-2xl font-bold">{user.clubName}</h1>
                     </div>
                     <div className="flex flex-col p-5 lg:px-18">
                         <div className="bg-[#E7E9EC] m-1 rounded-xl px-3 py-2"><input type="text" placeholder="new-username" value={new_name} onChange={onChangeNewname}/></div>
@@ -110,4 +110,4 @@ const Setting = () => {
   )
 }
 
-export default Setting
+export default ProfileClub

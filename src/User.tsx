@@ -19,9 +19,12 @@ function User() {
               <button className='absolute mx-20 my-10' onClick={click}>cancle</button>
             </div>
         </div>
-        <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen`} >
-          <Search_bar clicker = {isclick}/>
+        <div className="flex-1">
+          <div className= {`flex flex-col flex-1 bg-zinc-200 min-h-screen`} >
+            <Search_bar clicker = {isclick}/>
+          </div>
         </div>
+        
       </div>
   )
 }

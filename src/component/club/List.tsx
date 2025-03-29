@@ -35,39 +35,30 @@ function List() {
         }
         };
         getData();
-        console.log(histevent);
     }, [search]);
-    console.log(histevent);
     return (
         <div className="p-4 ">
             <div className ="flex-col overflow-x-auto">
-            <div className="flex justify-center p-3">จำนวนนักศึกษาที่พบ{(histevent ?? []).reduce((acc, value) => acc + (value.users ? value.users.length : 0), 0)}</div>
-                <div className="grid grid-cols-6">
-                    <div className=" border w-auto break-words text-center">Time</div>
-                    <div className=" border w-auto break-words text-center">Title</div>
-                    <div className=" border w-auto break-words text-center">Faculty</div>
-                    <div className=" border w-auto break-words text-center">Name</div>
-                    <div className=" border w-auto break-words text-center">Major</div>
-                    <div className=" border w-auto break-words text-center">ID</div>
+            <div className="flex justify-center p-3 text-2xl max-lg:text-md font-bold pb-7">จำนวนนักศึกษาที่พบ : {(histevent ?? []).reduce((acc, value) => acc + (value.users ? value.users.length : 0), 0)}</div>
+                <div className="grid grid-cols-4">
+                    <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">Time</div>
+                    <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">Title</div>
+                    <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">Name</div>
+                    <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">ID</div>
                 </div>
                     {(histevent).map((value, index) => {
-                        console.log("value : ",value);
-                        console.log("value user :", value.users);
-                        // const userCount = value.users ? value.users.length : 0;
                         return(
                             <div key={index}>
                                 {(value.users).map((users, userindex) => {
                                     // setStudent(student + 1);
                                     return(
-                                        <div className="grid grid-cols-6" key={userindex}>
-                                            <div className=" border w-auto break-words text-center">
+                                        <div className="grid grid-cols-4" key={userindex}>
+                                            <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">
                                                 {new Date(value.eventDate).toISOString().split('T')[0]}
                                             </div>
-                                            <div className=" border w-auto break-words text-center">{value.eventName}</div>
-                                            <div className=" border w-auto break-words text-center">-</div>
-                                            <div className=" border w-auto break-words text-center">{users.username}</div>
-                                            <div className=" border w-auto break-words text-center">-</div>
-                                            <div className=" border w-auto break-words text-center">{users.userId}</div>
+                                            <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">{value.eventName}</div>
+                                            <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">{users.username}</div>
+                                            <div className=" border w-auto break-words text-center text-xl max-lg:text-sm">{users.userId}</div>
                                         </div>
                                         
                                     )    

@@ -11,7 +11,7 @@ function AdminMenu() {
     "https://img.icons8.com/windows/32/users-settings.png",
   ]
   const path: string[] = [
-    "manage", //รอเปลี่ยน
+    "adminhome", 
     "manage",
   ]
   const [isSelect, setIsSelect] = useState([true, false]);
@@ -37,7 +37,7 @@ function AdminMenu() {
           <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className="w-40 m-2" onClick={logout}/>
         </div>
         <div className="flex-1">
-          <div className="flex-col flex py-5">
+          <div className="flex-col flex py-5 mr-5">
             {isSelect.map((isSelect , index) => (
               <button
                 key = {index}
@@ -48,7 +48,7 @@ function AdminMenu() {
             ))}
           </div>
         </div>
-        <footer className='footer'>
+        <footer className='footer p-5'>
           <p>Contact us</p>
           <p>tell : 099-999-9999</p>
           <p>line : @gm2</p>

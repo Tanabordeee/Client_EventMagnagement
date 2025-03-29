@@ -13,9 +13,6 @@ function Search_admin
     const navigate = useNavigate();
     const [isclick , setIsclick] = useState(clicker)
     const [gosearch, setGosearch] = useState('')
-    const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
-    const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
-    const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
     useEffect(() => {
       const user = localStorage.getItem('admin')
       if(!user){
@@ -50,9 +47,14 @@ function Search_admin
       localStorage.removeItem("admin");
       navigate("/");
     }
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        searching();
+      }
+    };
     return (
       <div className="flex">
-      <div className={`${isclick ? "" : "hidden"}`}>
+      <div className={`sm:hidden ${isclick ? "" : "hidden"}`}>
         <div className="flex min-h-screen h-full">
           <AdminMenu />
         </div>
@@ -60,7 +62,7 @@ function Search_admin
       <div className = "flex flex-1" onClick={isclick? click : undefined}>
         <div className={`flex-1 ${isclick? 'pointer-events-none': ''}`} >
           <div className="flex">
-            <div className="flex flex-1 items-center justify-between p-3 shadow-lg">
+            <div className="flex flex-1 items-center justify-between p-3 shadow-lg bg-[#E7E9EC]">
               <div className="flex items-center">
                 <div className={`sm:hidden ${isclick ? "hidden" : ""}`}>
                   <div className="pt-2 transition-transform transform hover:scale-125" onClick={click}>
@@ -76,7 +78,8 @@ function Search_admin
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
-                      className="absolute left-2 top-0 mx-1 rounded-xl bg-gray-200 pl-8 py-1 shadow-lg w-50"
+                      onKeyPress={handleKeyPress}
+                      className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-90 max-md:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
                       <Search size={20} className="text-gray-500 mt-1 transition-transform transform hover:scale-125 hover:text-black hover:cursor-pointer" />
@@ -86,22 +89,13 @@ function Search_admin
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="p-2">
-                    <img src={noti_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
-                  <p className="p-2">
-                    <img src={history_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
-                  <p className="p-2">
-                    <img src={profil_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
-                  <button className="p-2 border rounded-xl text-sm pointer-events-auto hover:bg-red-200" onClick={logout}>LOG OUT</button>
+                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2 cursor-pointer" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={`min-h-full bg-gray-50 m-2 rounded-xl shadow-xl ${isclick ? "opacity-20 pointer-events-none" : ""}`}>
+          <div className={` bg-gray-50 max-md:m-4 rounded-3xl shadow-xl m-8 ${isclick ? "max-sm:opacity-20" : ""}`}>
             <Outlet context={gosearch}/>
           </div>
         </div>

@@ -62,37 +62,36 @@ function LoginAdmin() {
       {load ? (
         <LoadingComponent />
       ) : (
-        <nav className="flex justify-center min-h-screen bg-gray-300  max-sm:bg-gray-200 relative">
-          <div className="flex flex-1 justify-center items-center bg-gray-50 shasow-xl rounded-xl m-4">
-            <div className="items-center rounded-xl p-10 md:p-20  rounded-xl shadow-xl border-gray-100   max-sm:bg-gray-200">
+        <nav className="flex justify-center min-h-screen bg-[#E7E9EC]  max-sm:bg-gray-50 relative">
+          <div className="flex flex-1 justify-center items-center bg-gray-50 shasow-xl rounded-xl m-10">
+            <div className="items-center rounded-xl p-10 md:p-20  rounded-xl border-gray-100">
               <div className="text-lg justify-center flex items-center flex-col">
                 <img
                   src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0"
-                  className="w-40"
+                  className="w-50"
                 />
                 {/* Login Admin */}
               </div>
-              <br />
               <div className="grid p-4">
                 {/* adminname */}
                 <input
                   type="text"
                   placeholder="adminname"
-                  className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
+                  className="bg-gray-200 rounded-lg p-3 my-2 transition-transform transform hover:scale-110"
                   onChange={onAdminChange}
                 />
                 {/* email */}
                 <input
                   type="text"
                   placeholder="email"
-                  className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
+                  className="bg-gray-200 rounded-lg p-3 my-2 transition-transform transform hover:scale-110"
                   onChange={onEmailChange}
                 />
                 {/* password */}
                 <input
                   type="password"
                   placeholder="password"
-                  className="bg-gray-200 max-sm:bg-gray-50 rounded-lg p-2 my-2 transition-transform transform hover:scale-110"
+                  className="bg-gray-200 rounded-lg p-3 my-2 transition-transform transform hover:scale-110"
                   onChange={onPassChange}
                 />
                 <br />
@@ -105,7 +104,7 @@ function LoginAdmin() {
                     Login
                   </button>
                   <button
-                    className="hover:cursor-pointer absolute bottom-10 left-10 text-xl text-red-500"
+                    className="hover:cursor-pointer absolute bottom-14 left-15 text-xl text-red-500"
                     onClick={selectLogin}
                   >
                     back

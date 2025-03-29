@@ -6,18 +6,21 @@ function ClubMenu() {
     "Event",
     "History",
     "List",
+    "Profile",
   ]
   const logo: string[] = [
     "https://img.icons8.com/windows/32/today.png",
     "https://img.icons8.com/material-rounded/24/time-machine.png",
     "https://img.icons8.com/windows/32/clipboard-list.png",
+    "https://img.icons8.com/windows/32/settings--v1.png",
   ]
   const path: string[] = [
     "addevent",
     "historyadd",
     "list",
+    "clubprofile",
   ]
-  const [isSelect, setIsSelect] = useState([true, false, false]);
+  const [isSelect, setIsSelect] = useState([true, false, false, false]);
   const Clicky = (index: number) => {
     const newStates = isSelect.map((_, idx) =>
       idx === index ? true : false
@@ -35,12 +38,12 @@ function ClubMenu() {
     }
   }
   return (
-    <div className="flex flex-col justify-between flex-1 shadow-[4px_0_6px_rgba(0,0,0,0.1)]">
+    <div className="flex flex-col flex-1 justify-between shadow-[4px_0_6px_rgba(0,0,0,0.1)]">
         <div className="shadow-lg justify-center  items-center flex pb-4 pt-3">
         <img src="https://th.bing.com/th/id/R.42e6ec3449dea58699565dd1ea96b485?rik=jEWzso5OGALO%2fw&pid=ImgRaw&r=0" className="w-40 m-2" onClick={logout}/>
         </div>
         <div className="flex-1">
-          <div className="flex-col flex py-5">
+          <div className="flex-col flex py-5 mr-5">
             {isSelect.map((isSelect , index) => (
               <button
                 key = {index}
@@ -51,7 +54,7 @@ function ClubMenu() {
             ))}
           </div>
         </div>
-        <footer className='footer'>
+        <footer className='footer p-5'>
           <p>Contact us</p>
           <p>tell : 099-999-9999</p>
           <p>line : @gm2</p>
