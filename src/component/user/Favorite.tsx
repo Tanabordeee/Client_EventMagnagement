@@ -46,7 +46,7 @@ function Favorite() {
               <div className="flex justify-center  min-h-60 items-center">
                   <div className="flex flex-col justify-center items-center  lg:px-60">
                     <img width="268" height="268" src="https://img.icons8.com/3d-fluency/188/delete-sign.png" alt="delete-sign"/>
-                    <div className="bg-red-300 flex px-15 text-2xl justify-center rounded-xl py-3">ไม่มีการสมัคร</div>
+                    <div className="bg-red-300 flex px-15 text-2xl justify-center rounded-xl py-3">ไม่มีรายการโปรด</div>
                   </div>
               </div>
           </div>
