@@ -47,6 +47,11 @@ function Search_admin
       localStorage.removeItem("admin");
       navigate("/");
     }
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        searching();
+      }
+    };
     return (
       <div className="flex">
       <div className={`sm:hidden ${isclick ? "" : "hidden"}`}>
@@ -73,6 +78,7 @@ function Search_admin
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
+                      onKeyPress={handleKeyPress}
                       className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-90 max-md:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
@@ -83,7 +89,7 @@ function Search_admin
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>
+                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2 cursor-pointer" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
