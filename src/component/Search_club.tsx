@@ -95,7 +95,7 @@ function Search_club({clicker}: Props) {
                   <p className="max-md:hidden p-2 ">
                     <img src={profil_icon} className="w-6 mt-2 object-cover"/>
                   </p>
-                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>
+                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2 cursor-pointer" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
