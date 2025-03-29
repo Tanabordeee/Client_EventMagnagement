@@ -13,7 +13,6 @@ function Search_bar ({clicker} : Props) {
   const navigate = useNavigate();
   const [gosearch, setGosearch] = useState('')
   const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
-  const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
   const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
   useEffect(() => {
     const user = localStorage.getItem('user')
@@ -96,13 +95,10 @@ function Search_bar ({clicker} : Props) {
                   <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="notification" ><img src={noti_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
-                  <p className="max-md:hidden p-2">
-                    <img src={history_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
                   <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="setting" ><img src={profil_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
-                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>
+                  <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 cursor-pointer mt-2" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
             </div>
