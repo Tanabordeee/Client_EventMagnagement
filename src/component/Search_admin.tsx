@@ -13,9 +13,6 @@ function Search_admin
     const navigate = useNavigate();
     const [isclick , setIsclick] = useState(clicker)
     const [gosearch, setGosearch] = useState('')
-    const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
-    const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
-    const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
     useEffect(() => {
       const user = localStorage.getItem('admin')
       if(!user){
@@ -86,15 +83,6 @@ function Search_admin
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="max-md:hidden p-2">
-                    <img src={noti_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
-                  <p className="max-md:hidden p-2">
-                    <img src={history_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
-                  <p className="max-md:hidden p-2">
-                    <img src={profil_icon} className="w-6 mt-2 object-cover"/>
-                  </p>
                   <button className="p-2 rounded-xl text-sm pointer-events-auto hover:text-red-400 mt-2" onClick={logout}>LOG OUT</button>
                 </div>
               </div>
