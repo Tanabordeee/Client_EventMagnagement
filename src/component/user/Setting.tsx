@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
-
+import Swal from 'sweetalert2';
 interface User {
     username : string;
     userId : string;
@@ -26,18 +26,19 @@ const Setting = () => {
     const onChangeRepass = (e: React.ChangeEvent<HTMLInputElement>) => {
         setRe_pass(e.target.value);
     };
-    const [showsuccess, setShowsuccess] = useState(false);
     const Clicky = async () => {
         const url = `${import.meta.env.VITE_REACT_API_URL}users/update`;
         if(new_name != "" || new_email != "" || new_pass != "" || re_pass != ""){
             if(new_pass == re_pass){
                 try{
-                    const response = await axios.patch(url , {
-                        username: new_name,
-                        email: new_email,
-                        password: new_pass
-                    }, {withCredentials : true,}
-                    );
+                    const updateData: any = {};
+                    if(new_name) updateData.username = new_name;
+                    if(new_email) updateData.email = new_email; 
+                    if(new_pass) updateData.password = new_pass;
+
+                    const response = await axios.patch(url, updateData, {
+                        withCredentials: true,
+                    });
                     
                     if(response.data.username == new_name){
                         setUser({
@@ -48,7 +49,12 @@ const Setting = () => {
                         setNew_email('');
                         setNew_pass('');
                         setRe_pass('');
-                        changeSuccess();
+                        Swal.fire({
+                          title: 'สำเร็จ!',
+                          text: 'อัพเดทข้อมูลเรียบร้อยแล้ว',
+                          icon: 'success',
+                          confirmButtonText: 'ตกลง'
+                        });
                     }
                     
                 } catch (error) {
@@ -64,12 +70,6 @@ const Setting = () => {
             }
         }
     };
-    const changeSuccess = () => {
-        setShowsuccess(true);
-        setTimeout(() => {
-            setShowsuccess(false)
-        }, 3000);
-    }
     useEffect(() => {
         const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`;
         const fetchuser = async() => {
@@ -104,11 +104,6 @@ const Setting = () => {
                             <button className="flex justify-center items-center ml-auto bg-green-500 m-2 rounded-xl px-4 py-2 text-gray-50 hover:bg-green-300" onClick={Clicky}>save</button>
                         </div>
                     </div>
-                </div>
-                <div className= {`flex flex-col absolute bg-gray-100  shadow-xl backdrop:opacity-20 p-15 top-15 rounded-xl  ${showsuccess? '' : 'hidden'}`}>
-                    <img width="150" height="150" src="https://img.icons8.com/ios-filled/150/40C057/ok--v1.png" alt="ok--v1"/>
-                    <div className="flex justify-center">Successfully changed</div>
-
                 </div>
             </div>
     </div>
