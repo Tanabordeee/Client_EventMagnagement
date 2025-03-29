@@ -2,7 +2,7 @@ import {  useOutletContext } from "react-router-dom";
 import EventDetail from "./noti_com/EventDetail"
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import LoadingComponent from "../loadingComponent";
 interface dataEvent{
   eventName : string;
   eventType : string;
@@ -19,9 +19,11 @@ function Notification() {
   const [listevent, setListevent] = useState<dataEvent[]>([]);
   const [event, setEvent] = useState<dataEvent | null>(null);
   const [select, setSelct] = useState<Boolean[]>([]);
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     const getData = async() => {
       try{
+        setLoad(true);
         const respon = await axios.get(url, {withCredentials : true});
         if(respon.data.events.length > 0){
           if(search){
@@ -37,6 +39,7 @@ function Notification() {
         console.log('Error: ', error);
         // navigate("/");
       }
+      setLoad(false);
     };
     getData();
   }, [search]);
@@ -50,7 +53,7 @@ function Notification() {
     setSelct(newselect);
   }
   
-  if(listevent.length == 0){
+  if(listevent.length == 0 && load == false){
     return (
       <>
           <div className="flex-1 p-3 min-h-full py-6">
@@ -66,31 +69,35 @@ function Notification() {
     )
   }else{
     return (
-      <div className="flex-1 p-3 min-h-full py-6">
-          <div className="flex justify-center p-4 text-4xl font-bold">Notification</div>
-          <div className="flex flex-2 justify-between lg:p-6">
-              <div className="flex flex-col mx-6 max-sm:p-2 p-6 bg-[#E7E9EC] rounded-xl shadow-lg">
-                  <div className="text-2xl font-bold pb-2">My Event</div>
-                  {listevent.map((value,index) => {
-                    return(
-                      <div onClick={() => changeEvent(index)} key={index}>
-                        <button 
-                        className={`p-1 text-lg transition-transform transform hover:scale-125 ${select[index]? 'text-red-500 bg-gray-200' : 'text-black'}`} 
-                        onClick={() => selected(index)}>
-                          {value.eventName}
-                        </button>
-                      </div>
-                    )
-                  })}
+      <>
+        {load ? <LoadingComponent/> : (
+          <div className="flex-1 p-3 min-h-full py-6">
+              <div className="flex justify-center p-4 text-4xl font-bold">Notification</div>
+              <div className="flex flex-2 justify-between lg:p-6">
+                  <div className="flex flex-col mx-6 max-sm:p-2 p-6 bg-[#E7E9EC] rounded-xl shadow-lg">
+                      <div className="text-2xl font-bold pb-2">My Event</div>
+                      {listevent.map((value,index) => {
+                        return(
+                          <div onClick={() => changeEvent(index)} key={index}>
+                            <button 
+                            className={`p-1 text-lg transition-transform transform hover:scale-125 ${select[index]? 'text-red-500 bg-gray-200' : 'text-black'}`} 
+                            onClick={() => selected(index)}>
+                              {value.eventName}
+                            </button>
+                          </div>
+                        )
+                      })}
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className= {`bg-gray-200 rounded-lg shadow-lg p-10 sm:w-fit xl:w-200 max-sm:p-2 ${event == null? 'hidden' : ''}`}>
+                      {event == null? null : <EventDetail Eventprop = {event}/>}
+                    </div>
+                  </div>
+                  
               </div>
-              <div className="flex-1 flex justify-center">
-                <div className= {`bg-gray-200 rounded-lg shadow-lg p-10 sm:w-fit xl:w-200 max-sm:p-2 ${event == null? 'hidden' : ''}`}>
-                  {event == null? null : <EventDetail Eventprop = {event}/>}
-                </div>
-              </div>
-              
           </div>
-      </div>
+        )}
+      </>
     )
   }
 }

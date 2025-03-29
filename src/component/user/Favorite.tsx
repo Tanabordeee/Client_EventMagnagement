@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Event from "./Event"
 import axios from "axios"
 import { useOutletContext } from "react-router-dom";
-
+import LoadingComponent from "../loadingComponent";
 interface dataEvent{
   eventName : string,
   eventDate : string,
@@ -16,10 +16,13 @@ function Favorite() {
   const search = useOutletContext();
   const url = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   const [dataevent, setDataevent] = useState<dataEvent[]>([]);
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     const fetchData = async() => {
       try{
+        setLoad(true);
         const response = await axios.get(url, {withCredentials : true});
+        setLoad(false);
         if(response.data.events.length > 0){
           if(search){
             const searcher = response.data.events.filter((item :dataEvent) => item.eventName === search)
@@ -35,7 +38,7 @@ function Favorite() {
     };
     fetchData();
   }, [search]);
-  if(dataevent.length == 0){
+  if(dataevent.length == 0 && load){
     return (
       <>
           <div className="flex-1 p-3 min-h-full py-6">
@@ -53,6 +56,7 @@ function Favorite() {
 
   return (
       <>
+          {load ? <LoadingComponent/> : 
           <div className="flex-1 p-3 min-h-full py-6">
               <h2 className='pb-2 pt-1 pl-3 text-4xl font-bold justify-center flex'>Favorite</h2>
               <div className="flex flex-wrap p-3">
@@ -65,7 +69,7 @@ function Favorite() {
                   })}
                   
               </div>
-          </div>
+          </div>}
       </>
     )
   }

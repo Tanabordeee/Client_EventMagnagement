@@ -1,7 +1,7 @@
 import axios from "axios";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
-
+import LoadingComponent from "../loadingComponent";
 interface Listevent {
   Eventprop:{
     eventName : string;
@@ -25,6 +25,7 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
   const url_getprofile = `${import.meta.env.VITE_REACT_API_URL}users/profile`
   const [status, setStatus] = useState<boolean | null>(null);
   const [events, setEvents] = useState<DataEvent[]>([]);
+  const [load, setLoad] = useState(false);
   useEffect(() => {
     const fetchstatus = async() => {
       try{
@@ -51,8 +52,10 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
     const url_fav = status? `${import.meta.env.VITE_REACT_API_URL}event/unfavorite/${Eventprop.eventID}`:
     `${import.meta.env.VITE_REACT_API_URL}event/favorites/${Eventprop.eventID}`
     try{
+      setLoad(true);
       await axios.patch(url_fav, {}, {withCredentials: true} )
       setStatus(!status)
+      setLoad(false);
     }catch(error){
       console.log(error)
     }
@@ -64,8 +67,14 @@ const Event: React.FC<Listevent> = ({Eventprop}) => {
         <img src={Eventprop.image} className="max-lg:w-50 max-lg:h-30 w-80 h-60 rounded-xl object-cover" />
       </div>
       <div className="flex flex-col justify-center">
-        <button className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 bg-green-200 hover:cursor-pointer 
-          hover:bg-stone-300  ${status? 'text-black-200 bg-red-200': 'text-black-200 bg-green-200'}`} onClick={changestatus}>{status? 'Cancel' : 'Apply'}</button>
+        { load ? <LoadingComponent/> : (
+          <button 
+            className={`text-xl md:text-2xl rounded-xl max-lg:p-2 p-5 hover:cursor-pointer hover:bg-stone-300 ${status ? 'text-black-200 bg-red-200' : 'text-black-200 bg-green-200'}`} 
+            onClick={changestatus}
+          >
+            {status ? 'Cancel' : 'Apply'}
+          </button>
+        )}
         <p className='p-2 flex md:text-xl justify-center'>เงื่อนไข :{Eventprop.detail}</p>
         <p className='p-2 flex md:text-xl justify-center'>วันที่ :{dayjs(Eventprop.eventDate).format("YYYY-MM-DD")}</p>
         <h2 className='p-2 flex md:text-xl justify-center'>เวลา :{Eventprop.time}</h2>
