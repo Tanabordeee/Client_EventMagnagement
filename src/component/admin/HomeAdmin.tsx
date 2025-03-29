@@ -5,6 +5,7 @@ import {useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import dayjs, {Dayjs} from "dayjs";
+import Swal from 'sweetalert2';
 interface club {
     clubName :string,
 }
@@ -27,21 +28,52 @@ function HomeAdmin() {
     const search = useOutletContext();
     let url = search? `${import.meta.env.VITE_REACT_API_URL}event/getnamebyadmin?eventName=${search}`:
       `${import.meta.env.VITE_REACT_API_URL}event/getallbyadmin`
-    useEffect(() => {
-      
-      const fetchData = async() => {
-        try{
-          const response = await axios.get(url, {withCredentials : true});
-          const extractedEvents = response.data.map((item: dataEvent) => ({
-            ...item,
-            eventDate: dayjs(item.eventDate).format("YYYY-MM-DD")
-          }));
-          setApiEvents(extractedEvents);
-        }catch(error){
+      useEffect(() => {
+    
+        const fetchData = async() => {
+          try{
+            const response = await axios.get(url, {withCredentials : true});
+            const extractedEvents = response.data.map((item: dataEvent) => ({
+              ...item,
+              eventDate: dayjs(item.eventDate).format("YYYY-MM-DD")
+            }));
+            setApiEvents(extractedEvents);
+    
+            // ถ้ามีการค้นหา ให้แสดงกิจกรรมที่ค้นหาเจอทันที
+            if (search) {
+              const searchedEvents = extractedEvents.filter((event: dataEvent) => 
+                event.eventName.toLowerCase().includes((search as string).toLowerCase())
+              );
+              if (searchedEvents.length > 0) {
+                setSelectedEvents(searchedEvents);
+                // เลือกวันที่แรกที่มีกิจกรรมที่ค้นหาเจอ
+                const firstEventDate = dayjs(searchedEvents[0].eventDate);
+                setSelectedDate(firstEventDate);
+                // เลื่อนไปที่เดือนที่มีกิจกรรมที่ค้นหาเจอ
+                setCurrentDate(firstEventDate);
+              }
+            }
+          }catch(error: any){
+            if (error.response?.status === 404) {
+              Swal.fire({
+                title: 'ไม่พบข้อมูล',
+                text: 'ไม่พบกิจกรรมที่คุณกำลังค้นหา',
+                icon: 'warning',
+                confirmButtonText: 'ตกลง'
+              });
+            } else {
+              Swal.fire({
+                title: 'เกิดข้อผิดพลาด',
+                text: 'ไม่สามารถดึงข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                icon: 'error',
+                confirmButtonText: 'ตกลง'
+              });
+            }
+            // navigate('/')
+          }
         }
-      }
-      fetchData();
-    }, [url]);
+        fetchData();
+      }, [url, search]);
     
     const startOfMonth = currentDate.startOf("month");
     const daysInMonth = currentDate.daysInMonth();
