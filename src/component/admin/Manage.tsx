@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState  } from "react";
 import { useOutletContext } from "react-router-dom";
 import AdminCol from "./AdminCol";
+import Swal from "sweetalert2";
 interface club {
     clubName : string
   }
@@ -25,7 +26,17 @@ function Manage() {
             const respon = await axios.get(url, {withCredentials : true});
             if(search){
                 const searcher = respon.data.filter((item :Event) => item.eventName === search)
-                setHistevent(searcher);
+                if(searcher.length > 0){
+                    setHistevent(searcher);
+                }else{
+                    Swal.fire({
+                        title : 'ไม่พบข้อมูล',
+                        text : 'ไม่พบข้อมูลกิจกรรมที่ค้นหา', 
+                        icon : 'error',
+                        confirmButtonText : 'ตกลง'
+                    })
+                    setHistevent(respon.data);
+                }
             }else{
                 setHistevent(respon.data);
             }
