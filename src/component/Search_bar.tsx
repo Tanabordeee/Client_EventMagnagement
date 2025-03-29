@@ -38,6 +38,13 @@ function Search_bar ({clicker} : Props) {
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
     setSearch(e.target.value);
   };
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      searching();
+    }
+  };
+
   const click = () => {
     setIsclick(!isclick);
   }
@@ -75,6 +82,7 @@ function Search_bar ({clicker} : Props) {
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
+                      onKeyPress={handleKeyPress}
                       className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-80 max-sm:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
