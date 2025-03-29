@@ -48,7 +48,7 @@ function AdminMenu() {
             ))}
           </div>
         </div>
-        <footer className='footer'>
+        <footer className='footer p-5'>
           <p>Contact us</p>
           <p>tell : 099-999-9999</p>
           <p>line : @gm2</p>
