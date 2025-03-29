@@ -33,7 +33,6 @@ function Search_club({clicker}: Props) {
     const [gosearch, setGosearch] = useState('')
     const profil_icon = 'https://img.icons8.com/windows/32/user-male-circle.png'
     const history_icon = 'https://img.icons8.com/material-rounded/24/time-machine.png'
-    const noti_icon = 'https://img.icons8.com/windows/32/appointment-reminders--v1.png'
     const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) =>{
       setSearch(e.target.value);
     };
@@ -44,6 +43,11 @@ function Search_club({clicker}: Props) {
       setGosearch(search);
       setSearch('');
     }
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        searching();
+      }
+    };
     const logout = ()=>{
       localStorage.removeItem("club");
       navigate("/");
@@ -74,6 +78,7 @@ function Search_club({clicker}: Props) {
                       placeholder="search"
                       value={search}
                       onChange={onChangeSearch}
+                      onKeyPress={handleKeyPress}
                       className="absolute left-2 top-0 mx-1 rounded-xl bg-white pl-8 py-1 shadow-lg w-80 max-sm:w-40"
                     />
                     <button className="absolute left-2 top-0 backdrop-opacity-0 px-2 py-1 pb-2 text-sm" onClick={searching}>
@@ -84,7 +89,6 @@ function Search_club({clicker}: Props) {
               </div>
               <div className="fucntion">
                 <div className="flex p-2">
-                  <p className="max-md:hidden p-2 "><img src={noti_icon} className="w-6 mt-2 object-cover"/></p>
                   <p className="max-md:hidden p-2 transition-transform transform hover:scale-125">
                     <Link to="historyadd"><img src={history_icon} className="w-6 mt-2 object-cover"/></Link>
                   </p>
