@@ -72,10 +72,9 @@ const AdminCol: React.FC<Listevent> = ({Eventprop}) => {
         {/* <div className=" border w-auto break-words text-center">-</div> */}
         <div className="border w-auto break-words text-center">
           <div className="flex max-md:flex-col text-center justify-center">
-            <div className={`${Status? 'text-green-500': 'text-red-500'}`}>{Status? "Approve" : "Not Approve"}</div>
-            <div className={`w-auto break-words text-center hover:cursor-pointer px-2 `}
+            <div className={`w-auto break-words text-center hover:cursor-pointer p-2`}
               onClick={change}>
-                 <button className= {`text-sm border px-2 rounded-xl text-white ${Status? 'bg-red-400': 'bg-green-400'}`}>{Status? "ยกเลิก" : "ตกลง"}</button>
+                 <button className= {`text-sm border px-8 h-8 rounded-xl text-white cursor-pointer ${Status? 'bg-red-400': 'bg-green-400'}`}>{Status? "Reject" : "Approve"}</button>
             </div>
             
           </div>
