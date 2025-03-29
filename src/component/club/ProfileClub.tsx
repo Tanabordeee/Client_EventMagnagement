@@ -40,10 +40,10 @@ function ProfileClub() {
                         withCredentials: true,
                     });
                     
-                    if(response.data.username == new_name){
+                    if(response.data.clubName == new_name){
                         setUser({
-                            clubName : response.data.username,
-                            clubID : response.data.userId
+                            clubName : response.data.clubName,
+                            clubID : response.data.clubID
                         })
                         setNew_name('');
                         setNew_email('');
